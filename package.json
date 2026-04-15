@@ -1,0 +1,32 @@
+{
+  "name": "reactlots-api",
+  "version": "1.0.0",
+  "description": "Fictional, fan-made real state api for The Sims 4",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lairaalmas/reactlots-api.git"
+  },
+  "keywords": [],
+  "author": "lairaalmas",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/lairaalmas/reactlots-api/issues"
+  },
+  "homepage": "https://github.com/lairaalmas/reactlots-api#readme",
+  "dependencies": {
+    "@fastify/cors": "^11.2.0",
+    "fastify": "^5.8.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}
