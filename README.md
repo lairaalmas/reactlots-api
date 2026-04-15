@@ -1,15 +1,68 @@
-# reactlots-api
+# React Lots Api
 
 ⚠️ This is a fictional, fan-made project inspired by _The Sims 4_.
 
 REST API serving static JSON data for *The Sims 4* real estate listings.
 
-## 📄 License
+**Author:** 🦖 [Laira Almas](https://github.com/lairaalmas) (2026)
 
-This project is licensed under the MIT License.
+## 🚀 Tech Stack
+
+- Node.js
+- TypeScript
+
+## 🧩 Project Structure
+
+This project is part of a multi-repo setup:
+
+- [reactlots-api](https://github.com/lairaalmas/reactlots-api) → Static data API
+- [reactlots-app](https://github.com/lairaalmas/reactlots-app) → Frontend + BFF layer
+
+## ▶️ Getting Started
+
+### 1. Install dependencies
+
+```
+npm install
+```
+
+### 2. Run the project
+
+```
+```
+
+## 📚 Documentation
+
+Detailed documentation available at:
+
+👉 [Project docs](./app/docs/README.md)
+
+## 🔗 Useful links / references:
+
+### The Sims 4 worlds
+
+- **Oasis Springs:**
+  - [The Sims Wiki - Oasis Springs](https://sims.fandom.com/wiki/Oasis_Springs)
+  - [The Sims fan page - Oasis Springs](https://www.teoalida.com/thesims/Oasis-springs/)
+
+- **Willow Creek:**
+  - [The Sims Wiki - Willow Creek](https://sims.fandom.com/wiki/Willow_Creek)
+  - [The Sims fan page - Willow Creek](https://www.teoalida.com/thesims/willow-creek/)
+
+### Legal
+
+- [EA content usage guidelines](https://help.ea.com/za/help/faq/how-to-request-permission-for-ea-games-content/)
 
 ## ⚖️ Disclaimer
 
-This project includes data inspired by *The Sims 4*.
+This is a fan-made, non-commercial project created for educational and portfolio purposes.
 
-All related content is the property of Electronic Arts Inc. and Maxis and is used for illustrative, non-commercial purposes only.
+This project is not affiliated with, endorsed by, or sponsored by [Eletronic Arts](https://www.ea.com/ea-studios) or [Maxis](https://www.ea.com/ea-studios/maxis).
+
+The Sims 4 and all related assets, including images and game data, are the property of Electronic Arts Inc. and Maxis. Any use of such materials is for illustrative purposes only.
+
+If you are a rights holder and would like any content to be removed, please contact me.
+
+## 📄 License
+
+This project is licensed under the MIT License.
