@@ -59,7 +59,7 @@ This is a fan-made, non-commercial project created for educational and portfolio
 
 This project is not affiliated with, endorsed by, or sponsored by [Eletronic Arts](https://www.ea.com/ea-studios) or [Maxis](https://www.ea.com/ea-studios/maxis).
 
-The Sims 4 and all related assets, including images and game data, are the property of Electronic Arts Inc. and Maxis. Any use of such materials is for illustrative purposes only.
+The Sims 4 and all related assets, including images and game data, are the property of Eletronic Arts Inc. and Maxis. Any use of such materials is for illustrative purposes only.
 
 If you are a rights holder and would like any content to be removed, please contact me.
 

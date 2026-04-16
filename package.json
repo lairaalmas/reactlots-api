@@ -14,11 +14,8 @@
   },
   "keywords": [],
   "author": "lairaalmas",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/lairaalmas/reactlots-api/issues"
-  },
+  "license": "MIT",
+  "type": "module",
   "homepage": "https://github.com/lairaalmas/reactlots-api#readme",
   "dependencies": {
     "@fastify/cors": "^11.2.0",
