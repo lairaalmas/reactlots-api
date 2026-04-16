@@ -48,11 +48,13 @@
     "split2": "^4.2.0",
     "thread-stream": "^4.0.0",
     "toad-cache": "^3.7.0",
-    "tsx": "^4.21.0",
-    "typescript": "^6.0.2",
     "undici-types": "^7.19.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
