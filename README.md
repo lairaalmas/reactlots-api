@@ -2,7 +2,7 @@
 
 ⚠️ This is a fictional, fan-made project inspired by _The Sims 4_.
 
-REST API serving static JSON data for *The Sims 4* real estate listings.
+REST API serving static JSON data for _The Sims 4_ real estate listings.
 
 **Author:** 🦖 [Laira Almas](https://github.com/lairaalmas) (2026)
 
@@ -29,6 +29,7 @@ npm install
 ### 2. Run the project
 
 ```
+npm run dev
 ```
 
 ## 📚 Documentation
