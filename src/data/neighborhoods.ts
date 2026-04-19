@@ -38,50 +38,63 @@ const data: Neighborhood[] = [
     worldId: 'willow-creek',
   },
   {
-    id: 'undefined',
-    title: 'Undefined',
+    id: 'willow-creek-undefined',
+    title: 'Other',
     description: '',
     worldId: 'willow-creek',
   },
-  // 'oasis-springs': [
-  // {
-  //   id: 'bedrock-strait',
-  //   title: 'Bedrock Strait',
-  //   description: '',
-  // },
-  // {
-  //   id: 'parched-prospect',
-  //   title: 'Parched Prospect',
-  //   description: '',
-  // },
-  // {
-  //   id: 'akyward-palms',
-  //   title: 'Skyward Palms',
-  //   description: '',
-  // },
-  // {
-  //   id: 'acquisition-butte',
-  //   title: 'Acquisition Butte',
-  //   description: '',
-  // },
-  // {
-  //   id: 'mirage-canyon',
-  //   title: 'Mirage Canyon',
-  //   description: '',
-  // },
-  // {
-  //   id: 'desert-bloom-park',
-  //   title: 'Desert Bloom Park',
-  //   description: '',
-  // },
-  // // secret lot
-  // {
-  //   id: 'forgotten-grotto',
-  //   title: 'Forgotten Grotto',
-  //   description: '',
-  // },
-  // ],
+  {
+    id: 'bedrock-strait',
+    title: 'Bedrock Strait',
+    description: '',
+    worldId: 'oasis-springs',
+  },
+  {
+    id: 'parched-prospect',
+    title: 'Parched Prospect',
+    description: '',
+    worldId: 'oasis-springs',
+  },
+  {
+    id: 'akyward-palms',
+    title: 'Skyward Palms',
+    description: '',
+    worldId: 'oasis-springs',
+  },
+  {
+    id: 'acquisition-butte',
+    title: 'Acquisition Butte',
+    description: '',
+    worldId: 'oasis-springs',
+  },
+  {
+    id: 'mirage-canyon',
+    title: 'Mirage Canyon',
+    description: '',
+    worldId: 'oasis-springs',
+  },
+  {
+    id: 'oasis-springs-undefined',
+    title: 'Other',
+    description: '',
+    worldId: 'oasis-springs',
+  },
 ];
+
+export const neighborhoodsMapper: Record<string, string> = {
+  'foundry-cove': 'Foundry cove',
+  'courtyard-lane': 'Courtyard Lane',
+  'pendula-view': 'Pendula View',
+  'sage-estates': 'Sage Estates',
+  'crawdad-quarter': 'Crawdad Quarter',
+  'willow-creek-undefined': 'Other',
+  'bedrock-strait': 'Bedrock Strait',
+  'parched-prospect': 'Parched Prospect',
+  'akyward-palms': 'Skyward Palms',
+  'acquisition-butte': 'Acquisition Butte',
+  'mirage-canyon': 'Mirage Canyon',
+  'oasis-springs-undefined': 'Other',
+};
 
 export const neighborhoods: NeighborhoodDTO[] = data.map((neigh: Neighborhood) => ({
   id: neigh.id,
