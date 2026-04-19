@@ -1,5 +1,5 @@
 import type { Neighborhood, NeighborhoodDTO } from '../types/neighborhood.js';
-import { worldMapper } from '../types/world.js';
+import { worldMapper } from '../data/worlds.js';
 
 const data: Neighborhood[] = [
   {
@@ -81,7 +81,7 @@ const data: Neighborhood[] = [
   },
 ];
 
-export const neighborhoodsMapper: Record<string, string> = {
+export const neighborhoodMapper: Record<string, string> = {
   'foundry-cove': 'Foundry cove',
   'courtyard-lane': 'Courtyard Lane',
   'pendula-view': 'Pendula View',

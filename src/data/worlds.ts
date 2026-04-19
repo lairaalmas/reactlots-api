@@ -14,3 +14,8 @@ export const worlds: WorldDTO[] = [
       'An oasis nestled in the austere beauty of the western desert, this haven of eclectic culture is fringed by countless soaring palms, and lent vibrant color through impossibly lush landscaping. Oasis Springs offers relaxing retreats from the sun to any traveler who discovers it.',
   },
 ];
+
+export const worldMapper: Record<string, string> = {
+  'oasis-springs': 'Oasis Springs',
+  'willow-creek': 'Willow Creek',
+};
