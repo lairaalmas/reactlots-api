@@ -30,7 +30,6 @@ const data: Neighborhood[] = [
       "Willow Creek's most desirable area, Sage Estates features large, sprawling estates, lush landscaping, and the best high society has to offer.",
     worldId: 'willow-creek',
   },
-  // only community lots
   {
     id: 'crawdad-quarter',
     title: 'Crawdad Quarter',
@@ -38,18 +37,9 @@ const data: Neighborhood[] = [
       'Crawdad Quarter is the heart of Willow Creek. All of the towns liveliness, from parks to nightlife, can be found in this neighborhood.',
     worldId: 'willow-creek',
   },
-  // only park
   {
-    id: 'magnolia-blossom-park',
-    title: 'Magnolia Blossom Park',
-    description:
-      'Magnolia Blossom Park is a historic park where Willow Creek inhabitants from all walks of life can come together to enjoy nature in a lush, green environment.',
-    worldId: 'willow-creek',
-  },
-  // only secret lot
-  {
-    id: 'sylvian-glade',
-    title: 'Sylvan Glade',
+    id: 'undefined',
+    title: 'Undefined',
     description: '',
     worldId: 'willow-creek',
   },
