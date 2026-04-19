@@ -1,6 +1,6 @@
-import type { World } from '../types/world.js';
+import type { WorldDTO } from '../types/world.js';
 
-export const worlds: World[] = [
+export const worlds: WorldDTO[] = [
   {
     id: 'willow-creek',
     title: 'Willow Creek',
