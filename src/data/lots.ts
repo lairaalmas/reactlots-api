@@ -416,7 +416,7 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'crawdad-quarter',
     },
     {
-      id: 'movers--shakers-gym',
+      id: 'movers-and-shakers-gym',
       title: 'Movers & Shakers Gym',
       description: '',
       price: 85115,
@@ -874,7 +874,7 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'mirage-canyon',
     },
     {
-      id: 'burners--builders',
+      id: 'burners-and-builders',
       title: 'Burners & Builders',
       description: '',
       price: 95043,
