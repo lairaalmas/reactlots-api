@@ -7,11 +7,11 @@ import { neighborhoodsRoutes } from './routes/neighborhoods.js';
 export function buildApp() {
   const app = Fastify({ logger: true });
 
-  app.register(cors, {origin: true });
+  app.register(cors, { origin: true });
 
-  app.register(lotsRoutes, { prefix: '/lots' } );
-  app.register(worldsRoutes, { prefix: '/worlds' } );
-  app.register(neighborhoodsRoutes, { prefix: '/neighborhoods' } );
+  app.register(lotsRoutes, { prefix: '/lots' });
+  app.register(worldsRoutes, { prefix: '/worlds' });
+  app.register(neighborhoodsRoutes, { prefix: '/neighborhoods' });
 
   return app;
 }
