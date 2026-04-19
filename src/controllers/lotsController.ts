@@ -31,6 +31,20 @@ const parseLotQueryParam = ({ param = 'param', value }: ParseLotQueryParam): str
   return trimmed;
 };
 
+const parseLotId = (value: string): string => {
+  if (!value) {
+    throw new Error('Lot id is required');
+  }
+
+  const trimmed = typeof value === 'string' ? value?.trim() : '';
+
+  if (!trimmed || trimmed.length > 50 || !isValidSlug(trimmed)) {
+    throw new Error('Lot id is invalid');
+  }
+
+  return trimmed;
+};
+
 export const getLots = async (request: FastifyRequest<{ Querystring: Query }>, reply: FastifyReply) => {
   const _world = request.query.world;
   const _neigh = request.query.neighborhood;
@@ -44,23 +58,10 @@ export const getLots = async (request: FastifyRequest<{ Querystring: Query }>, r
     const lots = listLots(filters);
 
     return reply.send(lots);
-  } catch (err) {
-    return reply.status(404).send({ message: err || 'Error searching lots' });
+  } catch (err: unknown) {
+    const error = err as Error;
+    return reply.status(404).send({ message: error?.message || 'Error searching lots' });
   }
-};
-
-const parseLotId = (value: string): string => {
-  if (!value) {
-    throw new Error('Lot id is required');
-  }
-
-  const trimmed = typeof value === 'string' ? value?.trim() : '';
-
-  if (!trimmed || trimmed.length > 50 || !isValidSlug(trimmed)) {
-    throw new Error('Lot id is invalid');
-  }
-
-  return trimmed;
 };
 
 export const getLotById = async (request: FastifyRequest<{ Params: Params }>, reply: FastifyReply) => {
@@ -76,7 +77,8 @@ export const getLotById = async (request: FastifyRequest<{ Params: Params }>, re
     }
 
     return reply.send(lot);
-  } catch (err) {
-    return reply.status(404).send({ message: err || 'Error getting lot id' });
+  } catch (err: unknown) {
+    const error = err as Error;
+    return reply.status(404).send({ message: error?.message || 'Error getting lot id' });
   }
 };
