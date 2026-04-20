@@ -1,42 +1,107 @@
-import type { Neighborhood } from '../types/neighborhood.js';
+import type { Neighborhood, NeighborhoodDTO } from '../types/neighborhood.js';
+import { worldMapper } from '../data/worlds.js';
 
-export const neighborhoods: Neighborhood[] = [
-  // wc
+const data: Neighborhood[] = [
   {
     id: 'foundry-cove',
     title: 'Foundry cove',
-    description: '',
-    world: {
-      id: 'willow-creek',
-      title: 'Willow Creek',
-    },
+    description:
+      'Located in southern Willow Creek, Foundry Cove has lots of character (and its share of characters). Residents enjoy modest homes with a canal nearby for fishing, and a charming, active railroad.',
+    worldId: 'willow-creek',
   },
   {
     id: 'courtyard-lane',
     title: 'Courtyard Lane',
-    description: '',
-    world: {
-      id: 'willow-creek',
-      title: 'Willow Creek',
-    },
+    description:
+      'Courtyard Lane offers affordable homes for the upwardly mobile set. Classic styling mingles with larger shotguns and more expansive homes.',
+    worldId: 'willow-creek',
   },
-  // os
+  {
+    id: 'pendula-view',
+    title: 'Pendula View',
+    description:
+      'This historical section of Willow Creek, the Garden Community boasts large mansions and the cache that comes with living in them.',
+    worldId: 'willow-creek',
+  },
+  {
+    id: 'sage-estates',
+    title: 'Sage Estates',
+    description:
+      "Willow Creek's most desirable area, Sage Estates features large, sprawling estates, lush landscaping, and the best high society has to offer.",
+    worldId: 'willow-creek',
+  },
+  {
+    id: 'crawdad-quarter',
+    title: 'Crawdad Quarter',
+    description:
+      'Crawdad Quarter is the heart of Willow Creek. All of the towns liveliness, from parks to nightlife, can be found in this neighborhood.',
+    worldId: 'willow-creek',
+  },
+  {
+    id: 'willow-creek-undefined',
+    title: 'Other',
+    description: '',
+    worldId: 'willow-creek',
+  },
   {
     id: 'bedrock-strait',
     title: 'Bedrock Strait',
     description: '',
-    world: {
-      id: 'oasis-springs',
-      title: 'Oasis Springs',
-    },
+    worldId: 'oasis-springs',
   },
   {
     id: 'parched-prospect',
     title: 'Parched Prospect',
     description: '',
-    world: {
-      id: 'oasis-springs',
-      title: 'Oasis Springs',
-    },
+    worldId: 'oasis-springs',
+  },
+  {
+    id: 'akyward-palms',
+    title: 'Skyward Palms',
+    description: '',
+    worldId: 'oasis-springs',
+  },
+  {
+    id: 'acquisition-butte',
+    title: 'Acquisition Butte',
+    description: '',
+    worldId: 'oasis-springs',
+  },
+  {
+    id: 'mirage-canyon',
+    title: 'Mirage Canyon',
+    description: '',
+    worldId: 'oasis-springs',
+  },
+  {
+    id: 'oasis-springs-undefined',
+    title: 'Other',
+    description: '',
+    worldId: 'oasis-springs',
   },
 ];
+
+export const neighborhoodMapper: Record<string, string> = {
+  'foundry-cove': 'Foundry cove',
+  'courtyard-lane': 'Courtyard Lane',
+  'pendula-view': 'Pendula View',
+  'sage-estates': 'Sage Estates',
+  'crawdad-quarter': 'Crawdad Quarter',
+  'willow-creek-undefined': 'Other',
+  'bedrock-strait': 'Bedrock Strait',
+  'parched-prospect': 'Parched Prospect',
+  'akyward-palms': 'Skyward Palms',
+  'acquisition-butte': 'Acquisition Butte',
+  'mirage-canyon': 'Mirage Canyon',
+  'oasis-springs-undefined': 'Other',
+};
+
+export const neighborhoods: NeighborhoodDTO[] = data.map((neigh: Neighborhood) => ({
+  id: neigh.id,
+  title: neigh.title,
+  description: neigh.description,
+  world: {
+    id: neigh.worldId,
+    title: worldMapper[neigh.worldId] || '',
+  },
+}));

@@ -1,4 +1,4 @@
-export type World = {
+export type WorldDTO = {
   id: string;
   title: string;
   description: string;
