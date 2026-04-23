@@ -1,14 +1,24 @@
-const LOT_TYPES = [
-  // used (lot types from game)
-  'residential',
-  'library',
-  'museum',
+// Readonly tuples of literal values (const assertion)
+const LOT_TYPES = ['residential', 'community', 'special'] as const;
+// Union type derived from a tuple (indexed access type)
+type LotType = (typeof LOT_TYPES)[number];
+
+const AVAILABILITY = ['available', 'occupied', 'unavailable'] as const;
+type LotAvailability = (typeof AVAILABILITY)[number];
+
+const BUILDING_TYPES = [
+  // residential (used)
+  'house',
+  'apartment',
+  // community (used)
+  'bar',
   'gym',
+  'library',
+  'lounge',
+  'museum',
   'nightclub',
   'park',
-  'bar',
-  'lounge',
-  // unused (lot types from game)
+  // community (unused)
   'generic',
   'national park',
   'playground',
@@ -16,26 +26,13 @@ const LOT_TYPES = [
   'vacation rental',
   'veterinary clinic',
   'wedding Venue',
-  // used (lot types that are not in game)
-  'secret lot',
+  // special (used)
+  'secret',
 ] as const;
-const BUILDING_TYPES = ['house', 'empty lot', 'other'] as const;
-const LOT_STATUS = ['available', 'inhabited', 'unavailable'] as const;
+type buildingType = (typeof BUILDING_TYPES)[number];
 
-type LotType = (typeof LOT_TYPES)[number];
-type BuildingType = (typeof BUILDING_TYPES)[number];
-type LotStatus = (typeof LOT_STATUS)[number];
-
-type LotDimensions = {
-  width: number;
-  depth: number;
-};
-type LotDetails = {
-  dimensions: LotDimensions;
-  bedrooms: number;
-  bathrooms: number;
-  floors: number;
-};
+const BUILDING_STATUS = ['empty', 'built'] as const;
+type buildingStatus = (typeof BUILDING_STATUS)[number];
 
 type EntityReference = {
   id: string;
@@ -47,10 +44,19 @@ export type Lot = {
   title: string;
   description: string;
   price: number;
-  lotDetails: LotDetails;
-  lotType: LotType;
-  buildingType: BuildingType;
-  status: LotStatus;
+  dimensions: {
+    width: number;
+    depth: number;
+  };
+  type: LotType;
+  availability: LotAvailability;
+  buildingDetails: {
+    type: buildingType;
+    status: buildingStatus;
+    bedrooms: number;
+    bathrooms: number;
+    floors: number;
+  };
   imageURL: string;
   worldId: string;
   neighborhoodId: string;
@@ -61,10 +67,19 @@ export type LotDTO = {
   title: string;
   description: string;
   price: number;
-  lot_details: LotDetails;
-  lot_type: LotType;
-  building_type: BuildingType;
-  status: LotStatus;
+  dimensions: {
+    width: number;
+    depth: number;
+  };
+  type: LotType;
+  availability: LotAvailability;
+  building_details: {
+    type: buildingType;
+    status: buildingStatus;
+    bedrooms: number;
+    bathrooms: number;
+    floors: number;
+  };
   image_url: string;
   world: EntityReference;
   neighborhood: EntityReference;
