@@ -9,8 +9,8 @@ const data: Record<string, Lot[]> = {
       id: 'bargain-bend',
       title: 'Bargain Bend',
       description: 'A sizeable Backwater lot, perfect for building your dream home.',
-      // price: 2000
       price: 2000,
+      pricePreGame: { base: 2000, furnished: null, unfurnished: null, buldozed: null },
       dimensions: {
         width: 30,
         depth: 20,
@@ -32,8 +32,8 @@ const data: Record<string, Lot[]> = {
       id: 'streamlet-single',
       title: 'Streamlet Single',
       description: 'A simple starter home for a singleton or a couple.',
-      // price: 15875,
-      price: 15415,
+      price: 15875,
+      pricePreGame: { base: 15415, furnished: 20000 - 4585, unfurnished: 20000 - 9630, buldozed: 20000 - 18500 },
       dimensions: {
         width: 20,
         depth: 15,
@@ -56,8 +56,8 @@ const data: Record<string, Lot[]> = {
       id: 'crick-cabana',
       title: 'Crick Cabana',
       description: 'This small shotgun-style home is perfect for a small family.',
-      // price: 13418,
-      price: 13268,
+      price: 13418,
+      pricePreGame: { base: 13268, furnished: 20000 - 6732, unfurnished: 20000 - 12302, buldozed: 20000 - 18500 },
       dimensions: {
         width: 20,
         depth: 15,
@@ -79,8 +79,8 @@ const data: Record<string, Lot[]> = {
       id: 'daisy-hovel',
       title: 'Daisy Hovel',
       description: "This home's open concept design is flexible with plenty of outdoor space.",
-      // price: 16311,
-      price: 14583,
+      price: 16311,
+      pricePreGame: { base: 14583, furnished: 20000 - 5417, unfurnished: 20000 - 9753, buldozed: 20000 - 18000 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -103,6 +103,7 @@ const data: Record<string, Lot[]> = {
       title: 'Garden Essence',
       description: 'A sprawling colonial with landscaping perfect for outdoor entertaining.',
       price: 85545,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 40,
         depth: 30,
@@ -126,6 +127,7 @@ const data: Record<string, Lot[]> = {
       title: 'Sylvan Glade',
       description: '',
       price: 0,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 15,
         depth: 10,
@@ -148,7 +150,8 @@ const data: Record<string, Lot[]> = {
       id: 'potters-splay',
       title: 'Potters Splay',
       description: 'With this large waterfront lot, your only limit is your imagination.',
-      price: 2500, // ok
+      price: 2500,
+      pricePreGame: { base: 2500, furnished: null, unfurnished: null, buldozed: null },
       dimensions: {
         width: 30,
         depth: 20,
@@ -172,6 +175,7 @@ const data: Record<string, Lot[]> = {
       title: 'Brook Bungalow',
       description: 'Built for outdoor living, this colonial features a wraparound porch and balcony.',
       price: 95721,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 40,
         depth: 30,
@@ -195,6 +199,7 @@ const data: Record<string, Lot[]> = {
       title: 'Riverside Roost',
       description: 'This modified double shotgun has plenty of space for a comfort and entertaining.',
       price: 41329,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -218,6 +223,7 @@ const data: Record<string, Lot[]> = {
       title: 'Pique Hearth',
       description: '',
       price: 129940,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -241,6 +247,7 @@ const data: Record<string, Lot[]> = {
       title: 'Rindle Rose',
       description: 'A cozy cottage with a welcoming porch that just screams, "RELAX!"',
       price: 36149,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 20,
         depth: 15,
@@ -263,8 +270,8 @@ const data: Record<string, Lot[]> = {
       id: 'hallow-slough',
       title: 'Hallow Slough',
       description: 'An expansive lot in a much-sought-after enclave, this is your potential paradise.',
-      // price: 5500,
       price: 5500,
+      pricePreGame: { base: 5500, furnished: null, unfurnished: null, buldozed: null },
       dimensions: {
         width: 30,
         depth: 20,
@@ -288,6 +295,7 @@ const data: Record<string, Lot[]> = {
       title: 'Umbrage Manor',
       description: 'A huge colonial with lovely grounds, this home is sure to impress.',
       price: 157882,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 40,
         depth: 30,
@@ -311,6 +319,7 @@ const data: Record<string, Lot[]> = {
       title: 'Parkshore',
       description: 'A large, traditional home with verandas and balconies galore.',
       price: 105336,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 40,
         depth: 30,
@@ -333,6 +342,7 @@ const data: Record<string, Lot[]> = {
       title: 'Ophelia Villa',
       description: 'History (and mystery) emanates from this tri-story Gothic mansion.',
       price: 105336,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -356,8 +366,8 @@ const data: Record<string, Lot[]> = {
       id: 'oakenstead',
       title: 'Oakenstead',
       description: 'A large property with classical styling, this is the quintessential Garden Estates home.',
-      // price: 253863,
-      price: 232512,
+      price: 253863,
+      pricePreGame: { base: 232512 },
       dimensions: {
         width: 50,
         depth: 50,
@@ -380,6 +390,7 @@ const data: Record<string, Lot[]> = {
       title: 'Cypress Terrace',
       description: 'Modern meets traditional in this three-story home with extensive landscaping.',
       price: 254137,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 40,
         depth: 30,
@@ -404,6 +415,7 @@ const data: Record<string, Lot[]> = {
       title: 'Municipal Muses Museum',
       description: '',
       price: 129533,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 40,
         depth: 30,
@@ -427,6 +439,7 @@ const data: Record<string, Lot[]> = {
       title: 'The Blue Velvet Nightclub',
       description: '',
       price: 93468,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -450,6 +463,7 @@ const data: Record<string, Lot[]> = {
       title: 'Movers & Shakers Gym',
       description: '',
       price: 85115,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -473,6 +487,7 @@ const data: Record<string, Lot[]> = {
       title: 'Willow Creek Archive Library',
       description: '',
       price: 103410,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -498,6 +513,7 @@ const data: Record<string, Lot[]> = {
       description:
         'Magnolia Blossom Park is a historic park where Willow Creek inhabitants from all walks of life can come together to enjoy nature in a lush, green environment.',
       price: 82671,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 50,
         depth: 50,
@@ -523,8 +539,8 @@ const data: Record<string, Lot[]> = {
       id: 'sandtrap-flat',
       title: 'Sandtrap Flat',
       description: '',
-      // price: 16982,
-      price: 15842,
+      price: 16982,
+      pricePreGame: { base: 15842, furnished: 20000 - 4158, unfurnished: 20000 - 8983, buldozed: 20000 - 18000 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -547,8 +563,8 @@ const data: Record<string, Lot[]> = {
       id: 'nookstone',
       title: 'Nookstone',
       description: '',
-      // price: 13019,
-      price: 12925,
+      price: 13019,
+      pricePreGame: { base: 12925, furnished: 20000 - 7041, unfurnished: 20000 - 12521, buldozed: 20000 - 18500 },
       dimensions: {
         width: 20,
         depth: 15,
@@ -570,8 +586,8 @@ const data: Record<string, Lot[]> = {
       id: 'pebble-burrow',
       title: 'Pebble Burrow',
       description: '',
-      // price: 1500,
       price: 1500,
+      pricePreGame: { base: 1500, furnished: null, unfurnished: null, buldozed: null },
       dimensions: {
         width: 30,
         depth: 20,
@@ -595,6 +611,7 @@ const data: Record<string, Lot[]> = {
       title: 'Slipshod Mesquite',
       description: '',
       price: 25519,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 40,
         depth: 30,
@@ -617,8 +634,8 @@ const data: Record<string, Lot[]> = {
       id: 'agave-abode',
       title: 'Agave Abode',
       description: '',
-      // price: 18239,
-      price: 17704,
+      price: 18239,
+      pricePreGame: { base: 17704, furnished: 20000 - 2296, unfurnished: 20000 - 8216, buldozed: 20000 - 18500 },
       dimensions: {
         width: 20,
         depth: 15,
@@ -642,6 +659,7 @@ const data: Record<string, Lot[]> = {
       title: 'Vista Quarry',
       description: '',
       price: 48023,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -665,6 +683,7 @@ const data: Record<string, Lot[]> = {
       title: 'Raffia Quinta',
       description: '',
       price: 39072,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 20,
         depth: 15,
@@ -687,8 +706,8 @@ const data: Record<string, Lot[]> = {
       id: 'dusty-turf',
       title: 'Dusty Turf',
       description: '',
-      // price: 3500,
       price: 3500,
+      pricePreGame: { base: 3500, furnished: null, unfurnished: null, buldozed: null },
       dimensions: {
         width: 30,
         depth: 20,
@@ -711,6 +730,7 @@ const data: Record<string, Lot[]> = {
       title: 'Springscape',
       description: '',
       price: 64678,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -733,6 +753,7 @@ const data: Record<string, Lot[]> = {
       title: 'Cacti Casa',
       description: '',
       price: 74701,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 40,
         depth: 30,
@@ -756,6 +777,7 @@ const data: Record<string, Lot[]> = {
       title: 'Granada Place',
       description: '',
       price: 116860,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -779,6 +801,7 @@ const data: Record<string, Lot[]> = {
       title: 'Arid Ridge',
       description: '',
       price: 5500,
+      pricePreGame: { base: 5500, furnished: null, unfurnished: null, buldozed: null },
       dimensions: {
         width: 40,
         depth: 30,
@@ -801,6 +824,7 @@ const data: Record<string, Lot[]> = {
       title: 'Sultry Springside',
       description: '',
       price: 146560,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -824,6 +848,7 @@ const data: Record<string, Lot[]> = {
       title: 'Rio Verde',
       description: '',
       price: 175822,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 40,
         depth: 30,
@@ -847,6 +872,7 @@ const data: Record<string, Lot[]> = {
       title: 'Affluista Mansion',
       description: '',
       price: 227609,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 50,
         depth: 50,
@@ -870,6 +896,7 @@ const data: Record<string, Lot[]> = {
       title: 'Yuma Heights',
       description: '',
       price: 311508,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 40,
         depth: 30,
@@ -894,6 +921,7 @@ const data: Record<string, Lot[]> = {
       title: 'The Futures Past',
       description: '',
       price: 91791,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -917,6 +945,7 @@ const data: Record<string, Lot[]> = {
       title: 'The Solar Flare',
       description: '',
       price: 61980,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -940,6 +969,7 @@ const data: Record<string, Lot[]> = {
       title: 'Burners & Builders',
       description: '',
       price: 95043,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 40,
         depth: 30,
@@ -963,6 +993,7 @@ const data: Record<string, Lot[]> = {
       title: 'Rattlesnake Juice',
       description: '',
       price: 84683,
+      pricePreGame: { base: undefined },
       dimensions: {
         width: 30,
         depth: 20,
@@ -987,6 +1018,7 @@ const data: Record<string, Lot[]> = {
       title: 'Desert Bloom Park',
       description: '',
       price: 110866,
+      pricePreGame: { base: undefined },
       type: 'community',
       availability: 'unavailable',
       dimensions: {
@@ -1009,6 +1041,7 @@ const data: Record<string, Lot[]> = {
       title: 'Forgotten Grotto',
       description: '',
       price: 0,
+      pricePreGame: { base: undefined },
       type: 'special',
       availability: 'unavailable',
       dimensions: {
@@ -1036,6 +1069,7 @@ const mapLots = (): LotDTO[] => {
     title: lot.title,
     description: lot.description,
     price: lot.price,
+    price_pre_game: lot.pricePreGame || {},
     dimensions: lot.dimensions,
     type: lot.type,
     availability: lot.availability,

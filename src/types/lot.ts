@@ -39,11 +39,19 @@ type EntityReference = {
   title: string;
 };
 
+type LotPricePreGame = {
+  base?: number | null;
+  furnished?: number | null;
+  unfurnished?: number | null;
+  buldozed?: number | null;
+};
+
 export type Lot = {
   id: string;
   title: string;
   description: string;
   price: number;
+  pricePreGame: LotPricePreGame;
   dimensions: {
     width: number;
     depth: number;
@@ -67,6 +75,7 @@ export type LotDTO = {
   title: string;
   description: string;
   price: number;
+  price_pre_game: LotPricePreGame;
   dimensions: {
     width: number;
     depth: number;

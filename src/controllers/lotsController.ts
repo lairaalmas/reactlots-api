@@ -1,9 +1,14 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 import { listLots, findLotById } from '../services/lotsService.js';
+import type { Filters } from '../services/lotsService.js';
 
-type Query = {
+type QueryParams = {
   world?: string;
   neighborhood?: string;
+  building_status?: string;
+  bedrooms?: string;
+  bathrooms?: string;
+  floors?: string;
 };
 type Params = {
   id: string;
@@ -17,7 +22,13 @@ const isValidSlug = (value: string): boolean => {
   return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 };
 
-const parseLotQueryParam = ({ param = 'param', value }: ParseLotQueryParam): string => {
+const isValidNumber = (value: number): boolean => {
+  if (isNaN(value) || value < 0 || value > 10) return false;
+
+  return true;
+};
+
+const parseLotQueryParamString = ({ param = 'param', value }: ParseLotQueryParam): string => {
   if (!value) {
     return '';
   }
@@ -29,6 +40,26 @@ const parseLotQueryParam = ({ param = 'param', value }: ParseLotQueryParam): str
   }
 
   return trimmed;
+};
+
+const parseLotQueryParamNumber = ({ param = 'param', value }: ParseLotQueryParam): number => {
+  if (!value) {
+    return 0;
+  }
+
+  const trimmed = typeof value === 'string' ? value?.trim() : '';
+
+  if (!trimmed || trimmed.length > 50) {
+    throw new Error(`${param} is invalid`);
+  }
+
+  const numericValue = parseInt(trimmed);
+
+  if (!isValidNumber(numericValue)) {
+    throw new Error(`${param} is invalid`);
+  }
+
+  return numericValue;
 };
 
 const parseLotId = (value: string): string => {
@@ -45,14 +76,22 @@ const parseLotId = (value: string): string => {
   return trimmed;
 };
 
-export const getLots = async (request: FastifyRequest<{ Querystring: Query }>, reply: FastifyReply) => {
+export const getLots = async (request: FastifyRequest<{ Querystring: QueryParams }>, reply: FastifyReply) => {
   const _world = request.query.world;
   const _neigh = request.query.neighborhood;
+  const _buildingStatus = request.query.building_status;
+  const _bedrooms = request.query.bedrooms;
+  const _bathrooms = request.query.bathrooms;
+  const _floors = request.query.floors;
 
   try {
-    const filters = {
-      world: parseLotQueryParam({ param: 'world', value: _world }),
-      neighborhood: parseLotQueryParam({ param: 'neighborhood', value: _neigh }),
+    const filters: Filters = {
+      world: parseLotQueryParamString({ param: 'world', value: _world }),
+      neighborhood: parseLotQueryParamString({ param: 'neighborhood', value: _neigh }),
+      buildingStatus: parseLotQueryParamString({ param: 'building_status', value: _buildingStatus }),
+      bedrooms: parseLotQueryParamNumber({ param: 'bedrooms', value: _bedrooms }),
+      bathrooms: parseLotQueryParamNumber({ param: 'bathrooms', value: _bathrooms }),
+      floors: parseLotQueryParamNumber({ param: 'floors', value: _floors }),
     };
 
     const lots = listLots(filters);
