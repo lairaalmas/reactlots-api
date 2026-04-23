@@ -4,23 +4,26 @@ import { neighborhoodMapper } from './neighborhoods.js';
 
 const data: Record<string, Lot[]> = {
   'willow-creek': [
+    // foundry cove
     {
       id: 'bargain-bend',
       title: 'Bargain Bend',
       description: 'A sizeable Backwater lot, perfect for building your dream home.',
+      // price: 2000
       price: 2000,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'residential',
-      buildingType: 'empty lot',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/0/06/Bargain_Bend.png/revision/latest?cb=20140912235111',
       worldId: 'willow-creek',
       neighborhoodId: 'foundry-cove',
@@ -29,19 +32,21 @@ const data: Record<string, Lot[]> = {
       id: 'streamlet-single',
       title: 'Streamlet Single',
       description: 'A simple starter home for a singleton or a couple.',
-      price: 15875,
-      lotDetails: {
-        dimensions: {
-          width: 20,
-          depth: 15,
-        },
+      // price: 15875,
+      price: 15415,
+      dimensions: {
+        width: 20,
+        depth: 15,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 1,
         bathrooms: 1,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/a/ae/Streamlet_Single.png/revision/latest?cb=20140912235553',
       worldId: 'willow-creek',
@@ -51,19 +56,21 @@ const data: Record<string, Lot[]> = {
       id: 'crick-cabana',
       title: 'Crick Cabana',
       description: 'This small shotgun-style home is perfect for a small family.',
-      price: 13418,
-      lotDetails: {
-        dimensions: {
-          width: 20,
-          depth: 15,
-        },
+      // price: 13418,
+      price: 13268,
+      dimensions: {
+        width: 20,
+        depth: 15,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 2,
         bathrooms: 1,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/c/cb/Crick_Cabana.png/revision/latest?cb=20140913000119',
       worldId: 'willow-creek',
       neighborhoodId: 'foundry-cove',
@@ -72,19 +79,21 @@ const data: Record<string, Lot[]> = {
       id: 'daisy-hovel',
       title: 'Daisy Hovel',
       description: "This home's open concept design is flexible with plenty of outdoor space.",
-      price: 16311,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      // price: 16311,
+      price: 14583,
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 1,
         bathrooms: 1,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/6/6c/Daisy_Hovel.png/revision/latest?cb=20140913000538',
       worldId: 'willow-creek',
       neighborhoodId: 'foundry-cove',
@@ -94,18 +103,19 @@ const data: Record<string, Lot[]> = {
       title: 'Garden Essence',
       description: 'A sprawling colonial with landscaping perfect for outdoor entertaining.',
       price: 85545,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'occupied',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 3,
         bathrooms: 1,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'inhabited',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/b/b3/Garden_Essence_Patch_174.jpg/revision/latest?cb=20250323144938',
       worldId: 'willow-creek',
@@ -116,39 +126,42 @@ const data: Record<string, Lot[]> = {
       title: 'Sylvan Glade',
       description: '',
       price: 0,
-      lotDetails: {
-        dimensions: {
-          width: 15,
-          depth: 10,
-        },
+      dimensions: {
+        width: 15,
+        depth: 10,
+      },
+      type: 'special',
+      availability: 'unavailable',
+      buildingDetails: {
+        type: 'secret',
+        status: 'built',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'secret lot',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/4/46/Sylvan_Tree.png/revision/latest?cb=20140913002758',
       worldId: 'willow-creek',
       neighborhoodId: 'foundry-cove',
     },
+    // courtyard lane
     {
       id: 'potters-splay',
       title: 'Potters Splay',
       description: 'With this large waterfront lot, your only limit is your imagination.',
-      price: 2500,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      price: 2500, // ok
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'residential',
-      buildingType: 'empty lot',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/9/9e/Potters_Splay.png/revision/latest?cb=20140913014124',
       worldId: 'willow-creek',
@@ -159,18 +172,19 @@ const data: Record<string, Lot[]> = {
       title: 'Brook Bungalow',
       description: 'Built for outdoor living, this colonial features a wraparound porch and balcony.',
       price: 95721,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 3,
         bathrooms: 2,
         floors: 2,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/d/d6/Brook_Bungalow.png/revision/latest?cb=20140913014454',
       worldId: 'willow-creek',
@@ -181,18 +195,19 @@ const data: Record<string, Lot[]> = {
       title: 'Riverside Roost',
       description: 'This modified double shotgun has plenty of space for a comfort and entertaining.',
       price: 41329,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 2,
         bathrooms: 2,
         floors: 2,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/c/c1/Riverside_Roost.png/revision/latest?cb=20140913015318',
       worldId: 'willow-creek',
@@ -203,18 +218,19 @@ const data: Record<string, Lot[]> = {
       title: 'Pique Hearth',
       description: '',
       price: 129940,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'occupied',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 3,
         bathrooms: 3,
         floors: 2,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'inhabited',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/f/f7/Pique_Hearth_Patch_174.jpg/revision/latest?cb=20250323145817',
       worldId: 'willow-creek',
@@ -225,39 +241,43 @@ const data: Record<string, Lot[]> = {
       title: 'Rindle Rose',
       description: 'A cozy cottage with a welcoming porch that just screams, "RELAX!"',
       price: 36149,
-      lotDetails: {
-        dimensions: {
-          width: 20,
-          depth: 15,
-        },
+      dimensions: {
+        width: 20,
+        depth: 15,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 2,
         bathrooms: 1,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/6/65/Rindle_Rose.png/revision/latest?cb=20140913021305',
       worldId: 'willow-creek',
       neighborhoodId: 'courtyard-lane',
     },
+    // pendula view
     {
       id: 'hallow-slough',
       title: 'Hallow Slough',
       description: 'An expansive lot in a much-sought-after enclave, this is your potential paradise.',
+      // price: 5500,
       price: 5500,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'residential',
-      buildingType: 'empty lot',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/9/93/Hallow_Slough.png/revision/latest?cb=20140913235805',
       worldId: 'willow-creek',
@@ -268,18 +288,19 @@ const data: Record<string, Lot[]> = {
       title: 'Umbrage Manor',
       description: 'A huge colonial with lovely grounds, this home is sure to impress.',
       price: 157882,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 3,
         bathrooms: 2,
         floors: 2,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/3/3c/Umbrage_manor.png/revision/latest?cb=20150324165452',
       worldId: 'willow-creek',
@@ -290,18 +311,19 @@ const data: Record<string, Lot[]> = {
       title: 'Parkshore',
       description: 'A large, traditional home with verandas and balconies galore.',
       price: 105336,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 4,
         bathrooms: 3,
         floors: 2,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/f/f4/Parkshore.png/revision/latest?cb=20140914000724',
       worldId: 'willow-creek',
       neighborhoodId: 'pendula-view',
@@ -311,40 +333,44 @@ const data: Record<string, Lot[]> = {
       title: 'Ophelia Villa',
       description: 'History (and mystery) emanates from this tri-story Gothic mansion.',
       price: 105336,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'occupied',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 3,
         bathrooms: 2,
         floors: 3,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'inhabited',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/d/db/Ophelia_Villa_Patch_174.png/revision/latest?cb=20250118161732',
       worldId: 'willow-creek',
       neighborhoodId: 'pendula-view',
     },
+    // sage states
     {
       id: 'oakenstead',
       title: 'Oakenstead',
       description: 'A large property with classical styling, this is the quintessential Garden Estates home.',
-      price: 253863,
-      lotDetails: {
-        dimensions: {
-          width: 50,
-          depth: 50,
-        },
+      // price: 253863,
+      price: 232512,
+      dimensions: {
+        width: 50,
+        depth: 50,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 4,
         bathrooms: 3,
         floors: 2,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/2/2c/Oakenstead.png/revision/latest?cb=20140915230818',
       worldId: 'willow-creek',
       neighborhoodId: 'sage-estates',
@@ -354,40 +380,43 @@ const data: Record<string, Lot[]> = {
       title: 'Cypress Terrace',
       description: 'Modern meets traditional in this three-story home with extensive landscaping.',
       price: 254137,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'occupied',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 5,
         bathrooms: 4,
         floors: 3,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'inhabited',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/6/6f/Cypress_Terrace.png/revision/latest?cb=20140915231101',
       worldId: 'willow-creek',
       neighborhoodId: 'sage-estates',
     },
+    // crawdad quarter
     {
       id: 'municipal-muses-museum',
       title: 'Municipal Muses Museum',
       description: '',
       price: 129533,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'community',
+      availability: 'unavailable',
+      buildingDetails: {
+        type: 'museum',
+        status: 'built',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'museum',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/7/7c/Municipal_Muses_Museum.png/revision/latest?cb=20140915233730',
       worldId: 'willow-creek',
@@ -398,18 +427,19 @@ const data: Record<string, Lot[]> = {
       title: 'The Blue Velvet Nightclub',
       description: '',
       price: 93468,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'community',
+      availability: 'unavailable',
+      buildingDetails: {
+        type: 'nightclub',
+        status: 'built',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'nightclub',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/3/38/The_Blue_Velvet_Nightclub.png/revision/latest?cb=20140915233839',
       worldId: 'willow-creek',
@@ -420,18 +450,19 @@ const data: Record<string, Lot[]> = {
       title: 'Movers & Shakers Gym',
       description: '',
       price: 85115,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'community',
+      availability: 'unavailable',
+      buildingDetails: {
+        type: 'gym',
+        status: 'built',
         bedrooms: 0,
         bathrooms: 0,
         floors: 2,
       },
-      lotType: 'gym',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/5/56/Movers_%26_Shakers_Gym.png/revision/latest?cb=20140915234156',
       worldId: 'willow-creek',
@@ -442,41 +473,44 @@ const data: Record<string, Lot[]> = {
       title: 'Willow Creek Archive Library',
       description: '',
       price: 103410,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'community',
+      availability: 'unavailable',
+      buildingDetails: {
+        type: 'library',
+        status: 'built',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'library',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/c/cb/Willow_Creek_Archive_Library.png/revision/latest?cb=20140915234556',
       worldId: 'willow-creek',
       neighborhoodId: 'crawdad-quarter',
     },
+    // other (willow-creek-undefined)
     {
       id: 'magnolia-blossom-park',
       title: 'Magnolia Blossom Park',
       description:
         'Magnolia Blossom Park is a historic park where Willow Creek inhabitants from all walks of life can come together to enjoy nature in a lush, green environment.',
       price: 82671,
-      lotDetails: {
-        dimensions: {
-          width: 50,
-          depth: 50,
-        },
+      dimensions: {
+        width: 50,
+        depth: 50,
+      },
+      type: 'community',
+      availability: 'unavailable',
+      buildingDetails: {
+        type: 'park',
+        status: 'built',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'park',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/3/39/Magnolia_Blossom_Park.png/revision/latest?cb=20250204125814',
       worldId: 'willow-creek',
@@ -484,23 +518,26 @@ const data: Record<string, Lot[]> = {
     },
   ],
   'oasis-springs': [
+    // bedrock strait
     {
       id: 'sandtrap-flat',
       title: 'Sandtrap Flat',
       description: '',
-      price: 16982,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      // price: 16982,
+      price: 15842,
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 1,
         bathrooms: 1,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/4/41/Sandtrap_Flat.png/revision/latest?cb=20151219231159',
       worldId: 'oasis-springs',
@@ -510,19 +547,21 @@ const data: Record<string, Lot[]> = {
       id: 'nookstone',
       title: 'Nookstone',
       description: '',
-      price: 13019,
-      lotDetails: {
-        dimensions: {
-          width: 20,
-          depth: 15,
-        },
+      // price: 13019,
+      price: 12925,
+      dimensions: {
+        width: 20,
+        depth: 15,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 1,
         bathrooms: 1,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/0/0a/Nookstone.png/revision/latest?cb=20151219231021',
       worldId: 'oasis-springs',
       neighborhoodId: 'bedrock-strait',
@@ -531,19 +570,21 @@ const data: Record<string, Lot[]> = {
       id: 'pebble-burrow',
       title: 'Pebble Burrow',
       description: '',
+      // price: 1500,
       price: 1500,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'residential',
-      buildingType: 'empty lot',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/1/10/Pebble_Burrow.png/revision/latest?cb=20151219231111',
       worldId: 'oasis-springs',
@@ -554,18 +595,19 @@ const data: Record<string, Lot[]> = {
       title: 'Slipshod Mesquite',
       description: '',
       price: 25519,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'occupied',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 1,
         bathrooms: 1,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'inhabited',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/3/3c/Slipshod_Mesquite.png/revision/latest?cb=20140908005205',
       worldId: 'oasis-springs',
@@ -575,40 +617,44 @@ const data: Record<string, Lot[]> = {
       id: 'agave-abode',
       title: 'Agave Abode',
       description: '',
-      price: 18239,
-      lotDetails: {
-        dimensions: {
-          width: 20,
-          depth: 15,
-        },
+      // price: 18239,
+      price: 17704,
+      dimensions: {
+        width: 20,
+        depth: 15,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 1,
         bathrooms: 1,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/1/12/Agave_Abode.png/revision/latest?cb=20151219230924',
       worldId: 'oasis-springs',
       neighborhoodId: 'bedrock-strait',
     },
+    // parched prospect
     {
       id: 'vista-quarry',
       title: 'Vista Quarry',
       description: '',
       price: 48023,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 2,
         bathrooms: 1,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/6/67/Vista_Quarry.png/revision/latest/scale-to-width-down/1000?cb=20151220011254',
       worldId: 'oasis-springs',
@@ -619,18 +665,19 @@ const data: Record<string, Lot[]> = {
       title: 'Raffia Quinta',
       description: '',
       price: 39072,
-      lotDetails: {
-        dimensions: {
-          width: 20,
-          depth: 15,
-        },
+      dimensions: {
+        width: 20,
+        depth: 15,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 2,
         bathrooms: 2,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/d/df/Raffia_Quinta.png/revision/latest/scale-to-width-down/1000?cb=20151220011126',
       worldId: 'oasis-springs',
@@ -640,19 +687,21 @@ const data: Record<string, Lot[]> = {
       id: 'dusty-turf',
       title: 'Dusty Turf',
       description: '',
+      // price: 3500,
       price: 3500,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'residential',
-      buildingType: 'empty lot',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/f/fe/Dusty_Turf.png/revision/latest?cb=20151220011038',
       worldId: 'oasis-springs',
       neighborhoodId: 'parched-prospect',
@@ -662,18 +711,19 @@ const data: Record<string, Lot[]> = {
       title: 'Springscape',
       description: '',
       price: 64678,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 3,
         bathrooms: 2,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/8/89/Springscape.png/revision/latest?cb=20151220011212',
       worldId: 'oasis-springs',
       neighborhoodId: 'parched-prospect',
@@ -683,39 +733,42 @@ const data: Record<string, Lot[]> = {
       title: 'Cacti Casa',
       description: '',
       price: 74701,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'occupied',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 4,
         bathrooms: 5,
         floors: 1,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'inhabited',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/e/e6/Cacti_Casa.png/revision/latest?cb=20151220010956',
       worldId: 'oasis-springs',
       neighborhoodId: 'parched-prospect',
     },
+    // akyward-palms
     {
       id: 'granada-place',
       title: 'Granada Place',
       description: '',
       price: 116860,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 3,
         bathrooms: 3,
         floors: 2,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/a/ad/Granada_Place.png/revision/latest?cb=20151221233433',
       worldId: 'oasis-springs',
@@ -726,18 +779,19 @@ const data: Record<string, Lot[]> = {
       title: 'Arid Ridge',
       description: '',
       price: 5500,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'residential',
-      buildingType: 'empty lot',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/3/35/Arid_Ridge.png/revision/latest?cb=20151221233316',
       worldId: 'oasis-springs',
       neighborhoodId: 'akyward-palms',
@@ -747,18 +801,19 @@ const data: Record<string, Lot[]> = {
       title: 'Sultry Springside',
       description: '',
       price: 146560,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'occupied',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 3,
         bathrooms: 3,
         floors: 2,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'inhabited',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/7/76/Sultry_Springside.png/revision/latest?cb=20151221233717',
       worldId: 'oasis-springs',
@@ -769,39 +824,42 @@ const data: Record<string, Lot[]> = {
       title: 'Rio Verde',
       description: '',
       price: 175822,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 5,
         bathrooms: 4,
         floors: 3,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/6/63/Rio_Verde.png/revision/latest?cb=20151221233549',
       worldId: 'oasis-springs',
       neighborhoodId: 'akyward-palms',
     },
+    // acquisition butte
     {
       id: 'affluista-mansion',
       title: 'Affluista Mansion',
       description: '',
       price: 227609,
-      lotDetails: {
-        dimensions: {
-          width: 50,
-          depth: 50,
-        },
+      dimensions: {
+        width: 50,
+        depth: 50,
+      },
+      type: 'residential',
+      availability: 'occupied',
+      buildingDetails: {
+        type: 'house',
+        status: 'built',
         bedrooms: 2,
         bathrooms: 3,
         floors: 3,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'inhabited',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/2/2b/Affluista_Mansion_High_Quality.png/revision/latest?cb=20170630122812',
       worldId: 'oasis-springs',
@@ -812,40 +870,43 @@ const data: Record<string, Lot[]> = {
       title: 'Yuma Heights',
       description: '',
       price: 311508,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
         bedrooms: 4,
+        type: 'house',
+        status: 'built',
         bathrooms: 4,
         floors: 3,
       },
-      lotType: 'residential',
-      buildingType: 'house',
-      status: 'available',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/6/64/Yuma_Heights_High_Quality.png/revision/latest?cb=20170630122858',
       worldId: 'oasis-springs',
       neighborhoodId: 'acquisition-butte',
     },
+    // mirage canyon
     {
       id: 'the-futures-past',
       title: 'The Futures Past',
       description: '',
       price: 91791,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'community',
+      availability: 'unavailable',
+      buildingDetails: {
+        type: 'museum',
+        status: 'built',
         bedrooms: 0,
         bathrooms: 0,
         floors: 3,
       },
-      lotType: 'museum',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/8/85/The_Futures_Past.png/revision/latest?cb=20151223022036',
       worldId: 'oasis-springs',
@@ -856,18 +917,19 @@ const data: Record<string, Lot[]> = {
       title: 'The Solar Flare',
       description: '',
       price: 61980,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'community',
+      availability: 'unavailable',
+      buildingDetails: {
         bedrooms: 0,
+        type: 'lounge',
+        status: 'built',
         bathrooms: 4,
         floors: 2,
       },
-      lotType: 'lounge',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/0/01/The_Solar_Flare.png/revision/latest?cb=20250216023444',
       worldId: 'oasis-springs',
@@ -878,18 +940,19 @@ const data: Record<string, Lot[]> = {
       title: 'Burners & Builders',
       description: '',
       price: 95043,
-      lotDetails: {
-        dimensions: {
-          width: 40,
-          depth: 30,
-        },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'community',
+      availability: 'unavailable',
+      buildingDetails: {
+        type: 'gym',
+        status: 'built',
         bedrooms: 0,
         bathrooms: 0,
         floors: 1,
       },
-      lotType: 'gym',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/2/2c/Burners_%26_Builders.png/revision/latest?cb=20151223021344',
       worldId: 'oasis-springs',
@@ -900,40 +963,43 @@ const data: Record<string, Lot[]> = {
       title: 'Rattlesnake Juice',
       description: '',
       price: 84683,
-      lotDetails: {
-        dimensions: {
-          width: 30,
-          depth: 20,
-        },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'community',
+      availability: 'unavailable',
+      buildingDetails: {
+        type: 'bar',
+        status: 'built',
         bedrooms: 0,
         bathrooms: 0,
         floors: 1,
       },
-      lotType: 'bar',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/1/18/Rattlesnake_Juice_1.png/revision/latest?cb=20141225235017',
       worldId: 'oasis-springs',
       neighborhoodId: 'mirage-canyon',
     },
+    // other (oasis-springs-undefined)
     {
       id: 'desert-bloom-park',
       title: 'Desert Bloom Park',
       description: '',
       price: 110866,
-      lotDetails: {
-        dimensions: {
-          width: 50,
-          depth: 50,
-        },
+      type: 'community',
+      availability: 'unavailable',
+      dimensions: {
+        width: 50,
+        depth: 50,
+      },
+      buildingDetails: {
+        type: 'park',
+        status: 'built',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'park',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL: 'https://static.wikia.nocookie.net/sims/images/4/4c/Desert_Bloom.png/revision/latest?cb=20151223005748',
       worldId: 'oasis-springs',
       neighborhoodId: 'oasis-springs-undefined',
@@ -943,18 +1009,19 @@ const data: Record<string, Lot[]> = {
       title: 'Forgotten Grotto',
       description: '',
       price: 0,
-      lotDetails: {
-        dimensions: {
-          width: 15,
-          depth: 10,
-        },
+      type: 'special',
+      availability: 'unavailable',
+      dimensions: {
+        width: 15,
+        depth: 10,
+      },
+      buildingDetails: {
+        type: 'secret',
+        status: 'built',
         bedrooms: 0,
         bathrooms: 0,
         floors: 0,
       },
-      lotType: 'secret lot',
-      buildingType: 'other',
-      status: 'unavailable',
       imageURL:
         'https://static.wikia.nocookie.net/sims/images/d/d9/Sims4_forgotten_grotto_entrance.jpg/revision/latest/scale-to-width-down/1000?cb=20150818121602',
       worldId: 'oasis-springs',
@@ -969,18 +1036,24 @@ const mapLots = (): LotDTO[] => {
     title: lot.title,
     description: lot.description,
     price: lot.price,
-    lot_details: lot.lotDetails,
-    lot_type: lot.lotType,
-    building_type: lot.buildingType,
-    status: lot.status,
+    dimensions: lot.dimensions,
+    type: lot.type,
+    availability: lot.availability,
+    building_details: {
+      type: lot.buildingDetails.type,
+      status: lot.buildingDetails.status,
+      bedrooms: lot.buildingDetails.bedrooms,
+      bathrooms: lot.buildingDetails.bathrooms,
+      floors: lot.buildingDetails.floors,
+    },
     image_url: lot.imageURL,
     world: {
       id: lot.worldId,
-      title: worldMapper[lot.worldId] || '',
+      title: worldMapper[lot.worldId] || lot.worldId,
     },
     neighborhood: {
       id: lot.neighborhoodId,
-      title: neighborhoodMapper[lot.neighborhoodId] || '',
+      title: neighborhoodMapper[lot.neighborhoodId] || lot.neighborhoodId,
     },
   }));
 };
