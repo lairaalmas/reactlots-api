@@ -2,6 +2,7 @@ import type { Neighborhood, NeighborhoodDTO } from '../types/neighborhood.js';
 import { worldMapper } from '../data/worlds.js';
 
 const data: Neighborhood[] = [
+  // willow creek
   {
     id: 'foundry-cove',
     title: 'Foundry cove',
@@ -43,6 +44,7 @@ const data: Neighborhood[] = [
     description: '',
     worldId: 'willow-creek',
   },
+  // oasis springs
   {
     id: 'bedrock-strait',
     title: 'Bedrock Strait',
@@ -79,21 +81,46 @@ const data: Neighborhood[] = [
     description: '',
     worldId: 'oasis-springs',
   },
+  // newcrest
+  {
+    id: 'bridgeview',
+    title: 'Bridgeview',
+    description: 'TODO',
+    worldId: 'newcrest',
+  },
+  {
+    id: 'llama-lagoon',
+    title: 'Llama Lagoon',
+    description: 'TODO',
+    worldId: 'newcrest',
+  },
+  {
+    id: 'ridgeline-drive',
+    title: 'Ridgeline Drive',
+    description: 'TODO',
+    worldId: 'newcrest',
+  },
 ];
 
 export const neighborhoodMapper: Record<string, string> = {
+  // willow creek
   'foundry-cove': 'Foundry cove',
   'courtyard-lane': 'Courtyard Lane',
   'pendula-view': 'Pendula View',
   'sage-estates': 'Sage Estates',
   'crawdad-quarter': 'Crawdad Quarter',
   'willow-creek-undefined': 'Other',
+  // oasis springs
   'bedrock-strait': 'Bedrock Strait',
   'parched-prospect': 'Parched Prospect',
   'akyward-palms': 'Skyward Palms',
   'acquisition-butte': 'Acquisition Butte',
   'mirage-canyon': 'Mirage Canyon',
   'oasis-springs-undefined': 'Other',
+  // newcrest
+  bridgeview: 'Bridgeview',
+  'llama-lagoon': 'Lama Lagoon',
+  'ridgeline-drive': 'Ridgeline Drive',
 };
 
 export const neighborhoods: NeighborhoodDTO[] = data.map((neigh: Neighborhood) => ({

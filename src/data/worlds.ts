@@ -13,9 +13,16 @@ export const worlds: WorldDTO[] = [
     description:
       'An oasis nestled in the austere beauty of the western desert, this haven of eclectic culture is fringed by countless soaring palms, and lent vibrant color through impossibly lush landscaping. Oasis Springs offers relaxing retreats from the sun to any traveler who discovers it.',
   },
+  {
+    id: 'newcrest',
+    title: 'Newcrest',
+    description:
+      "Don't let the abundance of space fool you. Take a look around, admire the wonderful scenery, and explore the endless possibilities. Do you see it? This is your whole new world! What are you waiting for?",
+  },
 ];
 
 export const worldMapper: Record<string, string> = {
   'oasis-springs': 'Oasis Springs',
   'willow-creek': 'Willow Creek',
+  newcrest: 'Newcrest',
 };

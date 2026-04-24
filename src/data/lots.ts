@@ -10,7 +10,7 @@ const data: Record<string, Lot[]> = {
       title: 'Bargain Bend',
       description: 'A sizeable Backwater lot, perfect for building your dream home.',
       price: 2000,
-      pricePreGame: { base: 2000, furnished: null, unfurnished: null, buldozed: null },
+      priceDetails: { preGame: 2000, inGame: -1 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -33,7 +33,7 @@ const data: Record<string, Lot[]> = {
       title: 'Streamlet Single',
       description: 'A simple starter home for a singleton or a couple.',
       price: 15875,
-      pricePreGame: { base: 15415, furnished: 20000 - 4585, unfurnished: 20000 - 9630, buldozed: 20000 - 18500 },
+      priceDetails: { preGame: 15415, inGame: 15415 },
       dimensions: {
         width: 20,
         depth: 15,
@@ -57,7 +57,7 @@ const data: Record<string, Lot[]> = {
       title: 'Crick Cabana',
       description: 'This small shotgun-style home is perfect for a small family.',
       price: 13418,
-      pricePreGame: { base: 13268, furnished: 20000 - 6732, unfurnished: 20000 - 12302, buldozed: 20000 - 18500 },
+      priceDetails: { preGame: 13268, inGame: 13268 },
       dimensions: {
         width: 20,
         depth: 15,
@@ -80,7 +80,7 @@ const data: Record<string, Lot[]> = {
       title: 'Daisy Hovel',
       description: "This home's open concept design is flexible with plenty of outdoor space.",
       price: 16311,
-      pricePreGame: { base: 14583, furnished: 20000 - 5417, unfurnished: 20000 - 9753, buldozed: 20000 - 18000 },
+      priceDetails: { preGame: 14583, inGame: 15891 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -99,11 +99,12 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'foundry-cove',
     },
     {
+      // BFF
       id: 'garden-essence',
       title: 'Garden Essence',
       description: 'A sprawling colonial with landscaping perfect for outdoor entertaining.',
       price: 85545,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 85545 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -127,7 +128,7 @@ const data: Record<string, Lot[]> = {
       title: 'Sylvan Glade',
       description: '',
       price: 0,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: -1 },
       dimensions: {
         width: 15,
         depth: 10,
@@ -151,7 +152,7 @@ const data: Record<string, Lot[]> = {
       title: 'Potters Splay',
       description: 'With this large waterfront lot, your only limit is your imagination.',
       price: 2500,
-      pricePreGame: { base: 2500, furnished: null, unfurnished: null, buldozed: null },
+      priceDetails: { preGame: 2500, inGame: 2500 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -175,7 +176,7 @@ const data: Record<string, Lot[]> = {
       title: 'Brook Bungalow',
       description: 'Built for outdoor living, this colonial features a wraparound porch and balcony.',
       price: 95721,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 91681 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -199,7 +200,7 @@ const data: Record<string, Lot[]> = {
       title: 'Riverside Roost',
       description: 'This modified double shotgun has plenty of space for a comfort and entertaining.',
       price: 41329,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 40114 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -219,11 +220,12 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'courtyard-lane',
     },
     {
+      // Pancakes
       id: 'pique-hearth',
       title: 'Pique Hearth',
       description: '',
       price: 129940,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 120945 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -247,7 +249,7 @@ const data: Record<string, Lot[]> = {
       title: 'Rindle Rose',
       description: 'A cozy cottage with a welcoming porch that just screams, "RELAX!"',
       price: 36149,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 35074 },
       dimensions: {
         width: 20,
         depth: 15,
@@ -271,7 +273,7 @@ const data: Record<string, Lot[]> = {
       title: 'Hallow Slough',
       description: 'An expansive lot in a much-sought-after enclave, this is your potential paradise.',
       price: 5500,
-      pricePreGame: { base: 5500, furnished: null, unfurnished: null, buldozed: null },
+      priceDetails: { preGame: 5500, inGame: 5500 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -295,7 +297,7 @@ const data: Record<string, Lot[]> = {
       title: 'Umbrage Manor',
       description: 'A huge colonial with lovely grounds, this home is sure to impress.',
       price: 157882,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 157882 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -319,7 +321,7 @@ const data: Record<string, Lot[]> = {
       title: 'Parkshore',
       description: 'A large, traditional home with verandas and balconies galore.',
       price: 105336,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 101951 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -338,11 +340,12 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'pendula-view',
     },
     {
+      // Goth
       id: 'ophelia-villa',
       title: 'Ophelia Villa',
       description: 'History (and mystery) emanates from this tri-story Gothic mansion.',
       price: 105336,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 226386 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -367,7 +370,7 @@ const data: Record<string, Lot[]> = {
       title: 'Oakenstead',
       description: 'A large property with classical styling, this is the quintessential Garden Estates home.',
       price: 253863,
-      pricePreGame: { base: 232512 },
+      priceDetails: { preGame: 232512, inGame: 231138 },
       dimensions: {
         width: 50,
         depth: 50,
@@ -386,11 +389,12 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'sage-estates',
     },
     {
+      // Spencer-Kim-Lewis
       id: 'cypress-terrace',
       title: 'Cypress Terrace',
       description: 'Modern meets traditional in this three-story home with extensive landscaping.',
       price: 254137,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 232512 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -411,11 +415,11 @@ const data: Record<string, Lot[]> = {
     },
     // crawdad quarter
     {
-      id: 'municipal-muses-museum',
-      title: 'Municipal Muses Museum',
+      id: 'municipal-muses',
+      title: 'Municipal Muses',
       description: '',
       price: 129533,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 122873 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -435,11 +439,11 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'crawdad-quarter',
     },
     {
-      id: 'the-blue-velvet-nightclub',
-      title: 'The Blue Velvet Nightclub',
+      id: 'the-blue-velvet',
+      title: 'The Blue Velvet',
       description: '',
       price: 93468,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 93558 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -459,11 +463,11 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'crawdad-quarter',
     },
     {
-      id: 'movers-and-shakers-gym',
-      title: 'Movers & Shakers Gym',
+      id: 'movers-and-shakers',
+      title: 'Movers & Shakers',
       description: '',
       price: 85115,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 85139 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -483,11 +487,11 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'crawdad-quarter',
     },
     {
-      id: 'willow-creek-archive-library',
-      title: 'Willow Creek Archive Library',
+      id: 'willow-creek-archive',
+      title: 'Willow Creek Archive',
       description: '',
       price: 103410,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 103410 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -508,12 +512,12 @@ const data: Record<string, Lot[]> = {
     },
     // other (willow-creek-undefined)
     {
-      id: 'magnolia-blossom-park',
-      title: 'Magnolia Blossom Park',
+      id: 'magnolia-blossom',
+      title: 'Magnolia Blossom',
       description:
         'Magnolia Blossom Park is a historic park where Willow Creek inhabitants from all walks of life can come together to enjoy nature in a lush, green environment.',
       price: 82671,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 69642 },
       dimensions: {
         width: 50,
         depth: 50,
@@ -540,7 +544,10 @@ const data: Record<string, Lot[]> = {
       title: 'Sandtrap Flat',
       description: '',
       price: 16982,
-      pricePreGame: { base: 15842, furnished: 20000 - 4158, unfurnished: 20000 - 8983, buldozed: 20000 - 18000 },
+      priceDetails: {
+        preGame: 15842,
+        inGame: 15842,
+      },
       dimensions: {
         width: 30,
         depth: 20,
@@ -564,7 +571,10 @@ const data: Record<string, Lot[]> = {
       title: 'Nookstone',
       description: '',
       price: 13019,
-      pricePreGame: { base: 12925, furnished: 20000 - 7041, unfurnished: 20000 - 12521, buldozed: 20000 - 18500 },
+      priceDetails: {
+        preGame: 12925,
+        inGame: 12959,
+      },
       dimensions: {
         width: 20,
         depth: 15,
@@ -587,7 +597,7 @@ const data: Record<string, Lot[]> = {
       title: 'Pebble Burrow',
       description: '',
       price: 1500,
-      pricePreGame: { base: 1500, furnished: null, unfurnished: null, buldozed: null },
+      priceDetails: { preGame: 1500, inGame: 1500 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -607,11 +617,12 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'bedrock-strait',
     },
     {
+      // Zest
       id: 'slipshod-mesquite',
       title: 'Slipshod Mesquite',
       description: '',
       price: 25519,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 35974 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -635,7 +646,10 @@ const data: Record<string, Lot[]> = {
       title: 'Agave Abode',
       description: '',
       price: 18239,
-      pricePreGame: { base: 17704, furnished: 20000 - 2296, unfurnished: 20000 - 8216, buldozed: 20000 - 18500 },
+      priceDetails: {
+        preGame: 17704,
+        inGame: 17704,
+      },
       dimensions: {
         width: 20,
         depth: 15,
@@ -659,7 +673,7 @@ const data: Record<string, Lot[]> = {
       title: 'Vista Quarry',
       description: '',
       price: 48023,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 44368 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -683,7 +697,7 @@ const data: Record<string, Lot[]> = {
       title: 'Raffia Quinta',
       description: '',
       price: 39072,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 37562 },
       dimensions: {
         width: 20,
         depth: 15,
@@ -707,7 +721,7 @@ const data: Record<string, Lot[]> = {
       title: 'Dusty Turf',
       description: '',
       price: 3500,
-      pricePreGame: { base: 3500, furnished: null, unfurnished: null, buldozed: null },
+      priceDetails: { preGame: 3500, inGame: -1 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -730,7 +744,7 @@ const data: Record<string, Lot[]> = {
       title: 'Springscape',
       description: '',
       price: 64678,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 63488 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -749,11 +763,12 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'parched-prospect',
     },
     {
+      // roomies
       id: 'cacti-casa',
       title: 'Cacti Casa',
       description: '',
       price: 74701,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 133086 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -777,7 +792,7 @@ const data: Record<string, Lot[]> = {
       title: 'Granada Place',
       description: '',
       price: 116860,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 114595 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -801,7 +816,7 @@ const data: Record<string, Lot[]> = {
       title: 'Arid Ridge',
       description: '',
       price: 5500,
-      pricePreGame: { base: 5500, furnished: null, unfurnished: null, buldozed: null },
+      priceDetails: { preGame: 5500, inGame: 5500 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -820,11 +835,12 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'akyward-palms',
     },
     {
+      // caliente
       id: 'sultry-springside',
       title: 'Sultry Springside',
       description: '',
       price: 146560,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 174922 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -848,7 +864,7 @@ const data: Record<string, Lot[]> = {
       title: 'Rio Verde',
       description: '',
       price: 175822,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 172947 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -868,11 +884,12 @@ const data: Record<string, Lot[]> = {
     },
     // acquisition butte
     {
+      // Landgraab
       id: 'affluista-mansion',
       title: 'Affluista Mansion',
       description: '',
       price: 227609,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 278612 },
       dimensions: {
         width: 50,
         depth: 50,
@@ -896,7 +913,7 @@ const data: Record<string, Lot[]> = {
       title: 'Yuma Heights',
       description: '',
       price: 311508,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 297883 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -921,7 +938,7 @@ const data: Record<string, Lot[]> = {
       title: 'The Futures Past',
       description: '',
       price: 91791,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 90036 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -945,7 +962,7 @@ const data: Record<string, Lot[]> = {
       title: 'The Solar Flare',
       description: '',
       price: 61980,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 59015 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -969,7 +986,7 @@ const data: Record<string, Lot[]> = {
       title: 'Burners & Builders',
       description: '',
       price: 95043,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 93083 },
       dimensions: {
         width: 40,
         depth: 30,
@@ -993,7 +1010,7 @@ const data: Record<string, Lot[]> = {
       title: 'Rattlesnake Juice',
       description: '',
       price: 84683,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 81078 },
       dimensions: {
         width: 30,
         depth: 20,
@@ -1014,11 +1031,11 @@ const data: Record<string, Lot[]> = {
     },
     // other (oasis-springs-undefined)
     {
-      id: 'desert-bloom-park',
-      title: 'Desert Bloom Park',
+      id: 'desert-bloom',
+      title: 'Desert Bloom',
       description: '',
       price: 110866,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: 102086 },
       type: 'community',
       availability: 'unavailable',
       dimensions: {
@@ -1041,7 +1058,7 @@ const data: Record<string, Lot[]> = {
       title: 'Forgotten Grotto',
       description: '',
       price: 0,
-      pricePreGame: { base: undefined },
+      priceDetails: { preGame: undefined, inGame: -1 },
       type: 'special',
       availability: 'unavailable',
       dimensions: {
@@ -1061,35 +1078,396 @@ const data: Record<string, Lot[]> = {
       neighborhoodId: 'oasis-springs-undefined',
     },
   ],
+  newcrest: [
+    // bridgeview
+    {
+      id: 'fern-park',
+      title: 'Fern Park',
+      description: '',
+      price: 2000,
+      priceDetails: { preGame: 2000, inGame: 2000 },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL:
+        'https://static.wikia.nocookie.net/sims/images/f/f2/Fern_Park.png/revision/latest/scale-to-width-down/250?cb=20230312045545',
+      worldId: 'newcrest',
+      neighborhoodId: 'bridgeview',
+    },
+    {
+      id: 'beech-byway',
+      title: 'Beech Byway',
+      description: '',
+      price: 2000,
+      priceDetails: {},
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL:
+        'https://static.wikia.nocookie.net/sims/images/b/bb/Beech_Byway.png/revision/latest/scale-to-width-down/250?cb=20230312045255',
+      worldId: 'newcrest',
+      neighborhoodId: 'bridgeview',
+    },
+    {
+      id: 'midtown-meadows',
+      title: 'Midtown Meadows',
+      description: '',
+      price: 3000,
+      priceDetails: { preGame: 3000, inGame: 3000 },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL:
+        'https://static.wikia.nocookie.net/sims/images/1/10/Midtown_Meadows.png/revision/latest/scale-to-width-down/250?cb=20230312044803',
+      worldId: 'newcrest',
+      neighborhoodId: 'bridgeview',
+    },
+    {
+      id: 'oak-alcove',
+      title: 'Oak Alcove',
+      description: '',
+      price: 1500,
+      priceDetails: { preGame: 1500, inGame: 1500 },
+      dimensions: {
+        width: 20,
+        depth: 15,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL:
+        'https://static.wikia.nocookie.net/sims/images/6/64/Oak_Alcove.png/revision/latest/scale-to-width-down/250?cb=20230312045758',
+      worldId: 'newcrest',
+      neighborhoodId: 'bridgeview',
+    },
+    {
+      id: 'comfy-cubby',
+      title: 'Comfy Cubby',
+      description: '',
+      price: 1500,
+      priceDetails: { preGame: 1500, inGame: 1500 },
+      dimensions: {
+        width: 20,
+        depth: 15,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL:
+        'https://static.wikia.nocookie.net/sims/images/9/9e/Comfy_Cubby.png/revision/latest/scale-to-width-down/250?cb=20230312045855',
+      worldId: 'newcrest',
+      neighborhoodId: 'bridgeview',
+    },
+    // Ridgeline Drive
+    {
+      id: 'optimists-outlook',
+      title: "Optimist's Outlook",
+      description: '',
+      price: 3000,
+      priceDetails: { preGame: 3000, inGame: 3000 },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL: 'TODO',
+      worldId: 'newcrest',
+      neighborhoodId: 'ridgeline-drive',
+    },
+    {
+      id: 'hillside-highlands',
+      title: 'Hillside Highlands',
+      description: '',
+      price: 2000,
+      priceDetails: { preGame: 2000, inGame: 2000 },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL: 'TODO',
+      worldId: 'newcrest',
+      neighborhoodId: 'ridgeline-drive',
+    },
+    {
+      id: 'civic-cliffs',
+      title: 'Civic Cliffs',
+      description: '',
+      price: 2000,
+      priceDetails: { preGame: 2000, inGame: 2000 },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL: 'TODO',
+      worldId: 'newcrest',
+      neighborhoodId: 'ridgeline-drive',
+    },
+    {
+      id: 'cookout-lookout',
+      title: 'Cookout Lookout',
+      description: '',
+      price: 2000,
+      priceDetails: { preGame: 2000, inGame: 2000 },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL: 'TODO',
+      worldId: 'newcrest',
+      neighborhoodId: 'ridgeline-drive',
+    },
+    {
+      id: 'Sandy Run',
+      title: 'sandy-run',
+      description: '',
+      price: 25000,
+      priceDetails: { preGame: 2500, inGame: 2500 },
+      dimensions: {
+        width: 40,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL: 'TODO',
+      worldId: 'newcrest',
+      neighborhoodId: 'ridgeline-drive',
+    },
+    // Llama Lagoon
+    {
+      id: 'twin-oracle-point',
+      title: 'Twin Oracle Point',
+      description: '',
+      price: 8500,
+      priceDetails: { preGame: 8500, inGame: 8500 },
+      dimensions: {
+        width: 50,
+        depth: 40,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL: 'TODO',
+      worldId: 'newcrest',
+      neighborhoodId: 'llama-lagoon',
+    },
+    {
+      id: 'rippling-flats',
+      title: 'Rippling Flats',
+      description: '',
+      price: 3000,
+      priceDetails: { preGame: 3000, inGame: 3000 },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL: 'TODO',
+      worldId: 'newcrest',
+      neighborhoodId: 'llama-lagoon',
+    },
+    {
+      id: 'avarice-acres',
+      title: 'Avarice Acres',
+      description: '',
+      price: 3000,
+      priceDetails: { preGame: 3000, inGame: 3000 },
+      dimensions: {
+        width: 40,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL: 'TODO',
+      worldId: 'newcrest',
+      neighborhoodId: 'llama-lagoon',
+    },
+    {
+      id: 'tranquil-crescent',
+      title: 'Tranquil Crescent',
+      description: '',
+      price: 2500,
+      priceDetails: { preGame: 2500, inGame: 2500 },
+      dimensions: {
+        width: 30,
+        depth: 30,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL: 'TODO',
+      worldId: 'newcrest',
+      neighborhoodId: 'llama-lagoon',
+    },
+    {
+      id: 'asphalt-abodes',
+      title: 'Asphalt Abodes',
+      description: '',
+      price: 2000,
+      priceDetails: { preGame: 2000, inGame: 2000 },
+      dimensions: {
+        width: 30,
+        depth: 20,
+      },
+      type: 'residential',
+      availability: 'available',
+      buildingDetails: {
+        type: 'house',
+        status: 'empty',
+        bedrooms: 0,
+        bathrooms: 0,
+        floors: 0,
+      },
+      imageURL: 'TODO',
+      worldId: 'newcrest',
+      neighborhoodId: 'llama-lagoon',
+    },
+  ],
 };
 
 const mapLots = (): LotDTO[] => {
-  return [...(data['willow-creek'] || []), ...(data['oasis-springs'] || [])]?.map((lot: Lot) => ({
-    id: lot.id,
-    title: lot.title,
-    description: lot.description,
-    price: lot.price,
-    price_pre_game: lot.pricePreGame || {},
-    dimensions: lot.dimensions,
-    type: lot.type,
-    availability: lot.availability,
-    building_details: {
-      type: lot.buildingDetails.type,
-      status: lot.buildingDetails.status,
-      bedrooms: lot.buildingDetails.bedrooms,
-      bathrooms: lot.buildingDetails.bathrooms,
-      floors: lot.buildingDetails.floors,
-    },
-    image_url: lot.imageURL,
-    world: {
-      id: lot.worldId,
-      title: worldMapper[lot.worldId] || lot.worldId,
-    },
-    neighborhood: {
-      id: lot.neighborhoodId,
-      title: neighborhoodMapper[lot.neighborhoodId] || lot.neighborhoodId,
-    },
-  }));
+  return [...(data['willow-creek'] || []), ...(data['oasis-springs'] || []), ...(data['newcrest'] || [])]?.map(
+    (lot: Lot) => ({
+      id: lot.id,
+      title: lot.title,
+      description: lot.description,
+      price: lot.price,
+      price_details: {
+        wiki: lot.priceDetails?.wiki,
+        pre_game: lot.priceDetails?.preGame,
+        in_game: lot.priceDetails?.inGame,
+      },
+      dimensions: lot.dimensions,
+      type: lot.type,
+      availability: lot.availability,
+      building_details: {
+        type: lot.buildingDetails.type,
+        status: lot.buildingDetails.status,
+        bedrooms: lot.buildingDetails.bedrooms,
+        bathrooms: lot.buildingDetails.bathrooms,
+        floors: lot.buildingDetails.floors,
+      },
+      image_url: lot.imageURL,
+      world: {
+        id: lot.worldId,
+        title: worldMapper[lot.worldId] || lot.worldId,
+      },
+      neighborhood: {
+        id: lot.neighborhoodId,
+        title: neighborhoodMapper[lot.neighborhoodId] || lot.neighborhoodId,
+      },
+    })
+  );
 };
 
 export const lots: LotDTO[] = mapLots();

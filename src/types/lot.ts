@@ -1,11 +1,6 @@
 // Readonly tuples of literal values (const assertion)
 const LOT_TYPES = ['residential', 'community', 'special'] as const;
-// Union type derived from a tuple (indexed access type)
-type LotType = (typeof LOT_TYPES)[number];
-
 const AVAILABILITY = ['available', 'occupied', 'unavailable'] as const;
-type LotAvailability = (typeof AVAILABILITY)[number];
-
 const BUILDING_TYPES = [
   // residential (used)
   'house',
@@ -29,9 +24,12 @@ const BUILDING_TYPES = [
   // special (used)
   'secret',
 ] as const;
-type buildingType = (typeof BUILDING_TYPES)[number];
-
 const BUILDING_STATUS = ['empty', 'built'] as const;
+
+// Union type derived from a tuple (indexed access type)
+type LotType = (typeof LOT_TYPES)[number];
+type LotAvailability = (typeof AVAILABILITY)[number];
+type buildingType = (typeof BUILDING_TYPES)[number];
 type buildingStatus = (typeof BUILDING_STATUS)[number];
 
 type EntityReference = {
@@ -39,11 +37,15 @@ type EntityReference = {
   title: string;
 };
 
-type LotPricePreGame = {
-  base?: number | null;
-  furnished?: number | null;
-  unfurnished?: number | null;
-  buldozed?: number | null;
+type LotPriceDetails = {
+  preGame?: number | null;
+  inGame?: number | null;
+  wiki?: number | null;
+};
+type LotPriceDetailsDTO = {
+  pre_game?: number | null;
+  in_game?: number | null;
+  wiki?: number | null;
 };
 
 export type Lot = {
@@ -51,7 +53,7 @@ export type Lot = {
   title: string;
   description: string;
   price: number;
-  pricePreGame: LotPricePreGame;
+  priceDetails: LotPriceDetails;
   dimensions: {
     width: number;
     depth: number;
@@ -75,7 +77,7 @@ export type LotDTO = {
   title: string;
   description: string;
   price: number;
-  price_pre_game: LotPricePreGame;
+  price_details: LotPriceDetailsDTO;
   dimensions: {
     width: number;
     depth: number;
@@ -92,4 +94,36 @@ export type LotDTO = {
   image_url: string;
   world: EntityReference;
   neighborhood: EntityReference;
+};
+
+const LOT_QUERY_PARAM_SORT = ['asc', 'desc'] as const;
+const LOT_QUERY_PARAM_SORT_BY = ['price', 'berdrooms', 'bathroooms', 'floors'] as const;
+export type LotQueryParamSort = (typeof LOT_QUERY_PARAM_SORT)[number];
+export type LotQueryParamSortBy = (typeof LOT_QUERY_PARAM_SORT_BY)[number];
+
+export type LotFilters = {
+  world?: string;
+  neighborhood?: string;
+  type?: string;
+  availability?: string;
+  buildingType?: string;
+  buildingStatus?: string;
+  bedrooms?: number;
+  bathrooms?: number;
+  floors?: number;
+  sort?: string;
+  sortBy?: string;
+};
+export type LotQueryParams = {
+  world?: string;
+  neighborhood?: string;
+  type?: string;
+  availability?: string;
+  building_type?: string;
+  building_status?: string;
+  bedrooms?: string;
+  bathrooms?: string;
+  floors?: string;
+  sort?: LotQueryParamSort;
+  sort_by?: LotQueryParamSortBy;
 };

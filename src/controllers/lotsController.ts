@@ -1,15 +1,7 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
-import { listLots, findLotById } from '../services/lotsService.js';
-import type { Filters } from '../services/lotsService.js';
+import { listLots, findLotById, sortLots } from '../services/lotsService.js';
+import type { LotFilters, LotQueryParams } from '../types/lot.js';
 
-type QueryParams = {
-  world?: string;
-  neighborhood?: string;
-  building_status?: string;
-  bedrooms?: string;
-  bathrooms?: string;
-  floors?: string;
-};
 type Params = {
   id: string;
 };
@@ -76,27 +68,45 @@ const parseLotId = (value: string): string => {
   return trimmed;
 };
 
-export const getLots = async (request: FastifyRequest<{ Querystring: QueryParams }>, reply: FastifyReply) => {
+export const getLots = async (request: FastifyRequest<{ Querystring: LotQueryParams }>, reply: FastifyReply) => {
   const _world = request.query.world;
   const _neigh = request.query.neighborhood;
+  // const _price = request.query.price;
+  // const _dimensions = request.query.dimensions;
+  const _type = request.query.type;
+  const _availability = request.query.availability;
+  const _buildingType = request.query.building_type;
   const _buildingStatus = request.query.building_status;
   const _bedrooms = request.query.bedrooms;
   const _bathrooms = request.query.bathrooms;
   const _floors = request.query.floors;
 
+  const _sort = request.query.sort;
+  const _sortBy = request.query.sort_by;
+
   try {
-    const filters: Filters = {
+    const filters: LotFilters = {
       world: parseLotQueryParamString({ param: 'world', value: _world }),
       neighborhood: parseLotQueryParamString({ param: 'neighborhood', value: _neigh }),
+      type: parseLotQueryParamString({ param: 'type', value: _type }),
+      availability: parseLotQueryParamString({ param: 'availability', value: _availability }),
+      buildingType: parseLotQueryParamString({ param: 'building_type', value: _buildingType }),
       buildingStatus: parseLotQueryParamString({ param: 'building_status', value: _buildingStatus }),
       bedrooms: parseLotQueryParamNumber({ param: 'bedrooms', value: _bedrooms }),
       bathrooms: parseLotQueryParamNumber({ param: 'bathrooms', value: _bathrooms }),
       floors: parseLotQueryParamNumber({ param: 'floors', value: _floors }),
+      sort: parseLotQueryParamString({ param: 'sort', value: _sort }),
+      sortBy: parseLotQueryParamString({ param: 'sort_by', value: _sortBy }),
     };
 
     const lots = listLots(filters);
 
-    return reply.send(lots);
+    console.log(filters);
+
+    const sortedLots = sortLots(lots, filters?.sort, filters?.sortBy);
+    // console.log(sortedLots);
+
+    return reply.send(sortedLots);
   } catch (err: unknown) {
     const error = err as Error;
     return reply.status(404).send({ message: error?.message || 'Error searching lots' });
