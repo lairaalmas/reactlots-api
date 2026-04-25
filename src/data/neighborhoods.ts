@@ -85,43 +85,51 @@ const data: Neighborhood[] = [
   {
     id: 'bridgeview',
     title: 'Bridgeview',
-    description: 'TODO',
+    description: 'This family-friendly neighborhood has a lovely picnic area and a striking city skyline backdrop.',
     worldId: 'newcrest',
   },
   {
     id: 'llama-lagoon',
     title: 'Llama Lagoon',
-    description: 'TODO',
+    description:
+      "With lakeside walkways and public playground equipment, this neighborhood's just the right amount of cosmopolitan.",
     worldId: 'newcrest',
   },
   {
     id: 'ridgeline-drive',
     title: 'Ridgeline Drive',
-    description: 'TODO',
+    description:
+      'This busy strip of real estate lining the streets of the Newcrest suburbs boasts ample hiking trails.',
     worldId: 'newcrest',
   },
+  // san myshuno
+  {
+    id: 'spice-market',
+    title: 'Spice Market',
+    description: 'A family neighborhood famous for its Spice Festival, Flea Market and dockland views.',
+    worldId: 'san-myshuno',
+  },
+  {
+    id: 'arts-quarted',
+    title: 'Arts Quarter',
+    description:
+      'Home to the Humor and Hijinks Festival, the bohemian Arts Quarter is beloved by musicians, artists and all manner of creative types.',
+    worldId: 'san-myshuno',
+  },
+  {
+    id: 'fashion-district',
+    title: 'Fashion District',
+    description:
+      'Popular with young and trendy Sims, the Fashion District is also home to the Romance Festival and GeekCon.',
+    worldId: 'san-myshuno',
+  },
+  {
+    id: 'uptown',
+    title: 'Uptown',
+    description: 'The luxurious heart of the City, Uptown is home to the rich, powerful... and slightly odd.',
+    worldId: 'san-myshuno',
+  },
 ];
-
-export const neighborhoodMapper: Record<string, string> = {
-  // willow creek
-  'foundry-cove': 'Foundry cove',
-  'courtyard-lane': 'Courtyard Lane',
-  'pendula-view': 'Pendula View',
-  'sage-estates': 'Sage Estates',
-  'crawdad-quarter': 'Crawdad Quarter',
-  'willow-creek-undefined': 'Other',
-  // oasis springs
-  'bedrock-strait': 'Bedrock Strait',
-  'parched-prospect': 'Parched Prospect',
-  'akyward-palms': 'Skyward Palms',
-  'acquisition-butte': 'Acquisition Butte',
-  'mirage-canyon': 'Mirage Canyon',
-  'oasis-springs-undefined': 'Other',
-  // newcrest
-  bridgeview: 'Bridgeview',
-  'llama-lagoon': 'Lama Lagoon',
-  'ridgeline-drive': 'Ridgeline Drive',
-};
 
 export const neighborhoods: NeighborhoodDTO[] = data.map((neigh: Neighborhood) => ({
   id: neigh.id,
@@ -132,3 +140,11 @@ export const neighborhoods: NeighborhoodDTO[] = data.map((neigh: Neighborhood) =
     title: worldMapper[neigh.worldId] || '',
   },
 }));
+
+export const neighborhoodMapper: Record<string, string> = neighborhoods.reduce(
+  (acc, n: NeighborhoodDTO) => {
+    acc[n.id] = n.title;
+    return acc;
+  },
+  {} as Record<string, string>
+);

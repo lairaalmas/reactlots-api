@@ -19,10 +19,19 @@ export const worlds: WorldDTO[] = [
     description:
       "Don't let the abundance of space fool you. Take a look around, admire the wonderful scenery, and explore the endless possibilities. Do you see it? This is your whole new world! What are you waiting for?",
   },
+  {
+    id: 'san-myshuno',
+    title: 'San Myshuno',
+    description: '',
+  },
 ];
 
-export const worldMapper: Record<string, string> = {
-  'oasis-springs': 'Oasis Springs',
-  'willow-creek': 'Willow Creek',
-  newcrest: 'Newcrest',
-};
+export const worldMapper: Record<string, string> = worlds.reduce(
+  (acc, n: WorldDTO) => {
+    acc[n.id] = n.title;
+    return acc;
+  },
+  {} as Record<string, string>
+);
+
+console.log(worldMapper);
