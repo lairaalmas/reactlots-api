@@ -34,5 +34,3 @@ export const worldMapper: Record<string, string> = worlds.reduce(
   },
   {} as Record<string, string>
 );
-
-console.log(worldMapper);
