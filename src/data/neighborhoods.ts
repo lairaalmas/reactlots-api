@@ -141,6 +141,7 @@ export const neighborhoods: NeighborhoodDTO[] = data.map((neigh: Neighborhood) =
   },
 }));
 
+// [ {}, {} ] -> { _:_, _:_}
 export const neighborhoodMapper: Record<string, string> = neighborhoods.reduce(
   (acc, n: NeighborhoodDTO) => {
     acc[n.id] = n.title;

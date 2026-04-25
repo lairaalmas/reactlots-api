@@ -26,6 +26,7 @@ export const worlds: WorldDTO[] = [
   },
 ];
 
+// [ {}, {} ] -> { _:_, _:_}
 export const worldMapper: Record<string, string> = worlds.reduce(
   (acc, n: WorldDTO) => {
     acc[n.id] = n.title;

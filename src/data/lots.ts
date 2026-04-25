@@ -1435,39 +1435,42 @@ const data: Record<string, Lot[]> = {
   ],
 };
 
-const mapLots = (): LotDTO[] => {
-  const dataList = Object.values(data).reduce((acc, n) => [...acc, ...n], [] as Lot[]);
+const mapLot = (lot: Lot): LotDTO => ({
+  id: lot.id,
+  title: lot.title,
+  description: lot.description,
+  price: lot.price,
+  price_details: {
+    wiki: lot.priceDetails?.wiki,
+    pre_game: lot.priceDetails?.preGame,
+    in_game: lot.priceDetails?.inGame,
+  },
+  dimensions: lot.dimensions,
+  type: lot.type,
+  availability: lot.availability,
+  building_details: {
+    type: lot.buildingDetails.type,
+    status: lot.buildingDetails.status,
+    bedrooms: lot.buildingDetails.bedrooms,
+    bathrooms: lot.buildingDetails.bathrooms,
+    floors: lot.buildingDetails.floors,
+  },
+  image_url: lot.imageURL,
+  world: {
+    id: lot.worldId,
+    title: worldMapper[lot.worldId] || lot.worldId,
+  },
+  neighborhood: {
+    id: lot.neighborhoodId,
+    title: neighborhoodMapper[lot.neighborhoodId] || lot.neighborhoodId,
+  },
+});
 
-  return dataList.map((lot: Lot) => ({
-    id: lot.id,
-    title: lot.title,
-    description: lot.description,
-    price: lot.price,
-    price_details: {
-      wiki: lot.priceDetails?.wiki,
-      pre_game: lot.priceDetails?.preGame,
-      in_game: lot.priceDetails?.inGame,
-    },
-    dimensions: lot.dimensions,
-    type: lot.type,
-    availability: lot.availability,
-    building_details: {
-      type: lot.buildingDetails.type,
-      status: lot.buildingDetails.status,
-      bedrooms: lot.buildingDetails.bedrooms,
-      bathrooms: lot.buildingDetails.bathrooms,
-      floors: lot.buildingDetails.floors,
-    },
-    image_url: lot.imageURL,
-    world: {
-      id: lot.worldId,
-      title: worldMapper[lot.worldId] || lot.worldId,
-    },
-    neighborhood: {
-      id: lot.neighborhoodId,
-      title: neighborhoodMapper[lot.neighborhoodId] || lot.neighborhoodId,
-    },
-  }));
-};
+// { _: [ {} ], _, [ {} ] } -> [ {}, {} ]
+const mapLots = () =>
+  Object.values(data).reduce((acc, world) => {
+    const worldLots = world.map((lot) => mapLot(lot));
+    return [...acc, ...worldLots];
+  }, [] as LotDTO[]);
 
 export const lots: LotDTO[] = mapLots();
