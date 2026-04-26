@@ -1,8 +1,11 @@
+import type { ThemeColors } from './neighborhood.js';
+
 // Readonly tuples of literal values (const assertion)
 const LOT_TYPES = ['residential', 'community', 'special'] as const;
 const AVAILABILITY = ['available', 'occupied', 'unavailable'] as const;
 const BUILDING_TYPES = [
   // residential (used)
+  'empty',
   'house',
   'apartment',
   // community (used)
@@ -13,6 +16,10 @@ const BUILDING_TYPES = [
   'museum',
   'nightclub',
   'park',
+  // new community (used)
+  'karaoke bar',
+  'arts center',
+  'central park',
   // community (unused)
   'generic',
   'national park',
@@ -24,35 +31,40 @@ const BUILDING_TYPES = [
   // special (used)
   'secret',
 ] as const;
-const BUILDING_STATUS = ['empty', 'built'] as const;
 
 // Union type derived from a tuple (indexed access type)
 type LotType = (typeof LOT_TYPES)[number];
 type LotAvailability = (typeof AVAILABILITY)[number];
-type buildingType = (typeof BUILDING_TYPES)[number];
-type buildingStatus = (typeof BUILDING_STATUS)[number];
+type BuildingType = (typeof BUILDING_TYPES)[number];
+type TransactionType = 'rent' | 'buy';
 
 type EntityReference = {
   id: string;
   title: string;
+  color?: ThemeColors;
 };
 
 type LotPriceDetails = {
   preGame?: number | null;
   inGame?: number | null;
   wiki?: number | null;
+  rent?: number | null;
+  deposit?: number | null;
+  furniture?: number | null;
 };
 type LotPriceDetailsDTO = {
   pre_game?: number | null;
   in_game?: number | null;
   wiki?: number | null;
+  rent?: number | null;
+  deposit?: number | null;
+  furniture?: number | null;
 };
 
 export type Lot = {
   id: string;
   title: string;
   description: string;
-  price: number;
   priceDetails: LotPriceDetails;
   dimensions: {
     width: number;
@@ -61,8 +73,7 @@ export type Lot = {
   type: LotType;
   availability: LotAvailability;
   buildingDetails: {
-    type: buildingType;
-    status: buildingStatus;
+    type: BuildingType;
     bedrooms: number;
     bathrooms: number;
     floors: number;
@@ -76,6 +87,7 @@ export type LotDTO = {
   id: string;
   title: string;
   description: string;
+  transaction_type: TransactionType;
   price: number;
   price_details: LotPriceDetailsDTO;
   dimensions: {
@@ -85,8 +97,7 @@ export type LotDTO = {
   type: LotType;
   availability: LotAvailability;
   building_details: {
-    type: buildingType;
-    status: buildingStatus;
+    type: BuildingType;
     bedrooms: number;
     bathrooms: number;
     floors: number;
@@ -106,11 +117,13 @@ export type LotFilters = {
   neighborhood?: string;
   type?: string;
   availability?: string;
+  transactionType?: string;
   buildingType?: string;
-  buildingStatus?: string;
   bedrooms?: number;
   bathrooms?: number;
   floors?: number;
+  minPrice?: number;
+  maxPrice?: number;
   sort?: string;
   sortBy?: string;
 };
@@ -119,11 +132,13 @@ export type LotQueryParams = {
   neighborhood?: string;
   type?: string;
   availability?: string;
+  transaction_type?: string;
   building_type?: string;
-  building_status?: string;
   bedrooms?: string;
   bathrooms?: string;
   floors?: string;
+  min_price?: string;
+  max_price?: string;
   sort?: LotQueryParamSort;
   sort_by?: LotQueryParamSortBy;
 };

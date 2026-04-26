@@ -22,15 +22,18 @@ export const worlds: WorldDTO[] = [
   {
     id: 'san-myshuno',
     title: 'San Myshuno',
-    description: '',
+    description:
+      'This city is made up of four distinct districts: the Spice Market, the Fashion District, The Arts Quarter and Uptown. In addition, Myshuno Meadows is a large city park tucked beneath the skyscrapers if your Sims need to get away for a touch of nature. Depending on where your Sims choose to live, you\’ll get a very different flavor of the city. You might find yourself in a cramped, roach-infested studio apartment in the Arts Quarter… Or you might be enjoying a breathtaking view of the city from your very own tricked-out rooftop penthouse Jacuzzi in Uptown.',
   },
 ];
 
-// [ {}, {} ] -> { _:_, _:_}
-export const worldMapper: Record<string, string> = worlds.reduce(
+// [ {}, {} ] -> { _:{}, _:{}}
+export const worldMapper = worlds.reduce(
   (acc, n: WorldDTO) => {
-    acc[n.id] = n.title;
+    acc[n.id] = n;
     return acc;
   },
-  {} as Record<string, string>
+  {} as Record<string, WorldDTO>
 );
+
+// console.log(worldMapper);

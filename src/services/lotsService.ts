@@ -7,9 +7,8 @@ export const listLots = (filters: LotFilters) => {
     const matchNeighborhood = filters.neighborhood === '' || lot?.neighborhood?.id === filters.neighborhood;
     const matchType = filters.type === '' || lot?.type === filters.type;
     const matchAvailability = filters.availability === '' || lot?.availability === filters.availability;
+    const matchTransactionType = filters.transactionType === '' || lot?.transaction_type === filters.transactionType;
     const matchBuildingType = filters.buildingType === '' || lot?.building_details?.type === filters.buildingType;
-    const matchBuildingStatus =
-      filters.buildingStatus === '' || lot?.building_details?.status === filters.buildingStatus;
     const matchBedrooms = filters.bedrooms === 0 || lot?.building_details?.bedrooms === filters.bedrooms;
     const matchBathrooms = filters.bathrooms === 0 || lot?.building_details?.bathrooms === filters.bathrooms;
     const matchFloors = filters.floors === 0 || lot?.building_details?.floors === filters.floors;
@@ -19,7 +18,7 @@ export const listLots = (filters: LotFilters) => {
       matchNeighborhood &&
       matchType &&
       matchAvailability &&
-      matchBuildingStatus &&
+      matchTransactionType &&
       matchBuildingType &&
       matchBedrooms &&
       matchBathrooms &&

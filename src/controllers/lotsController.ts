@@ -71,15 +71,18 @@ const parseLotId = (value: string): string => {
 export const getLots = async (request: FastifyRequest<{ Querystring: LotQueryParams }>, reply: FastifyReply) => {
   const _world = request.query.world;
   const _neigh = request.query.neighborhood;
-  // const _price = request.query.price;
-  // const _dimensions = request.query.dimensions;
+
   const _type = request.query.type;
   const _availability = request.query.availability;
+  const _transactionType = request.query.transaction_type;
+
   const _buildingType = request.query.building_type;
-  const _buildingStatus = request.query.building_status;
   const _bedrooms = request.query.bedrooms;
   const _bathrooms = request.query.bathrooms;
   const _floors = request.query.floors;
+
+  // const _min_price = request.query.minPrice;
+  // const _max_price = request.query.maxPrice;
 
   const _sort = request.query.sort;
   const _sortBy = request.query.sort_by;
@@ -90,8 +93,8 @@ export const getLots = async (request: FastifyRequest<{ Querystring: LotQueryPar
       neighborhood: parseLotQueryParamString({ param: 'neighborhood', value: _neigh }),
       type: parseLotQueryParamString({ param: 'type', value: _type }),
       availability: parseLotQueryParamString({ param: 'availability', value: _availability }),
+      transactionType: parseLotQueryParamString({ param: 'transaction_type', value: _transactionType }),
       buildingType: parseLotQueryParamString({ param: 'building_type', value: _buildingType }),
-      buildingStatus: parseLotQueryParamString({ param: 'building_status', value: _buildingStatus }),
       bedrooms: parseLotQueryParamNumber({ param: 'bedrooms', value: _bedrooms }),
       bathrooms: parseLotQueryParamNumber({ param: 'bathrooms', value: _bathrooms }),
       floors: parseLotQueryParamNumber({ param: 'floors', value: _floors }),
@@ -101,10 +104,7 @@ export const getLots = async (request: FastifyRequest<{ Querystring: LotQueryPar
 
     const lots = listLots(filters);
 
-    console.log(filters);
-
     const sortedLots = sortLots(lots, filters?.sort, filters?.sortBy);
-    // console.log(sortedLots);
 
     return reply.send(sortedLots);
   } catch (err: unknown) {
