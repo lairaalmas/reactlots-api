@@ -3,3 +3,5 @@ export type WorldDTO = {
   title: string;
   description: string;
 };
+export type WorldSummaryDTO = Pick<WorldDTO, 'id' | 'title'>;
+export type WorldSummaryById = Record<string, WorldSummaryDTO>;

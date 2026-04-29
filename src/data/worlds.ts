@@ -1,5 +1,6 @@
-import type { WorldDTO } from '../types/world.js';
+import type { WorldDTO, WorldSummaryById } from '../types/world.js';
 
+// [ { <full world info> } ]
 export const worlds: WorldDTO[] = [
   {
     id: 'willow-creek',
@@ -27,13 +28,12 @@ export const worlds: WorldDTO[] = [
   },
 ];
 
-// [ {}, {} ] -> { _:{}, _:{}}
-export const worldMapper = worlds.reduce(
-  (acc, n: WorldDTO) => {
-    acc[n.id] = n;
-    return acc;
-  },
-  {} as Record<string, WorldDTO>
-);
-
-// console.log(worldMapper);
+// { 'world-id': { id, title } }
+export const worldSummaryById = worlds.reduce<WorldSummaryById>((acc, w) => {
+  // only info used by other entities
+  acc[w.id] = {
+    id: w.id,
+    title: w.title,
+  };
+  return acc;
+}, {});
