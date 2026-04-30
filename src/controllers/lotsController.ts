@@ -1,6 +1,7 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 import { listLots, findLotById, sortLots } from '../services/lotsService.js';
 import type { LotFilters, LotQueryParams } from '../types/lot.js';
+import { isValidSlug } from '../utils/functions.js';
 
 type Params = {
   id: string;
@@ -8,10 +9,6 @@ type Params = {
 type ParseLotQueryParam = {
   param: string;
   value: string | undefined;
-};
-
-const isValidSlug = (value: string): boolean => {
-  return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 };
 
 const isValidNumber = (value: number): boolean => {
