@@ -141,4 +141,5 @@ export const neighborhoodData: NeighborhoodData = {
       color: 'default',
     },
   ],
+  // 'test-world': [{ id: 'test-neighborhood' }],
 };

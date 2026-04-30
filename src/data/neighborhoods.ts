@@ -27,22 +27,22 @@ const validateDomainFields = (id: string, title: string, index: number) => {
     isValid = false;
   }
   if (!title) {
-    console.warn(`${WARN_LOG} Missing title. Fallbacked to id.`);
+    console.warn(`${WARN_LOG} Missing title for '${id}'. Fallbacked to id.`);
   }
   return isValid;
 };
 
-const mapToDTO = (list: NeighborhoodData) => {
+const mapToDTO = (neighborhoodsByWorld: NeighborhoodData) => {
   // for each world key
   const validNeighborhoods = WORLD_KEYS.reduce<NeighborhoodDTO[]>((acc, worldId) => {
     // if there is no info for that world, skip
-    if (!list[worldId]) {
+    if (!neighborhoodsByWorld[worldId]) {
       console.warn(`${WARN_LOG} Known world '${worldId}' is not mapped in neighborhoods. Skipping.`);
       return acc;
     }
 
     // for each neighborhood listed in the world key
-    const neighborhoods = list[worldId].reduce<NeighborhoodDTO[]>((accN, n, index) => {
+    const neighborhoods = neighborhoodsByWorld[worldId].reduce<NeighborhoodDTO[]>((accN, n, index) => {
       if (!validateDomainFields(n.id, n.title, index)) return acc;
 
       if (!worldSummaryById[worldId]?.title)
@@ -68,10 +68,10 @@ const mapToDTO = (list: NeighborhoodData) => {
   }, []);
 
   // Log worlds in neighborhood list that are not in worldSummaryById
-  Object.keys(list)
-    .filter((worldId) => !WORLD_KEYS.includes(worldId))
-    .forEach((worldId) => {
-      console.warn(`${WARN_LOG} World '${worldId}' from neighborhood list is unknown. Not mapped.`);
+  Object.keys(neighborhoodsByWorld)
+    .filter((id) => !WORLD_KEYS.includes(id))
+    .forEach((id) => {
+      console.warn(`${WARN_LOG} World '${id}' from neighborhood list is unknown. Not mapped.`);
     });
 
   return validNeighborhoods;

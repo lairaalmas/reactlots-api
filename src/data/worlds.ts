@@ -22,7 +22,7 @@ const validateDomainFields = (id: string, title: string, index: number) => {
     isValid = false;
   }
   if (!title) {
-    console.warn(`${WARN_LOG} Missing title. Fallbacked to id.`);
+    console.warn(`${WARN_LOG} Missing title for '${id}'. Fallbacked to id.`);
   }
   return isValid;
 };

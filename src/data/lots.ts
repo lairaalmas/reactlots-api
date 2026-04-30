@@ -33,7 +33,7 @@ const validateDomainFields = (id: string, title: string, index: number) => {
     isValid = false;
   }
   if (!title) {
-    console.warn(`${WARN_LOG} Missing title. Fallbacked to id.`);
+    console.warn(`${WARN_LOG} Missing title for '${id}'. Fallbacked to id.`);
   }
   return isValid;
 };
@@ -116,6 +116,17 @@ const mapToDTO = (lotsByWorld: LotDataByWorld): LotDTO[] => {
 
     return [...accN, ...lots];
   }, []);
+
+  Object.keys(lotsByWorld)
+    .filter((id) => !WORLD_KEYS.includes(id))
+    .forEach((id) => {
+      console.warn(`${WARN_LOG} World '${id}' from lot list is unknown. Not mapped.`);
+    });
+  Object.keys(lotsByNeighborhood)
+    .filter((id) => !NEIGHBORHOOD_KEYS.includes(id))
+    .forEach((id) => {
+      console.warn(`${WARN_LOG} Neighborhood '${id}' from lot list is unknown. Not mapped.`);
+    });
 
   return validLots;
 };

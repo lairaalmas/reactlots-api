@@ -25,4 +25,5 @@ export const worldData: WorldDTO[] = [
     description:
       'This city is made up of four distinct districts: the Spice Market, the Fashion District, The Arts Quarter and Uptown. In addition, Myshuno Meadows is a large city park tucked beneath the skyscrapers if your Sims need to get away for a touch of nature. Depending on where your Sims choose to live, you\’ll get a very different flavor of the city. You might find yourself in a cramped, roach-infested studio apartment in the Arts Quarter… Or you might be enjoying a breathtaking view of the city from your very own tricked-out rooftop penthouse Jacuzzi in Uptown.',
   },
+  // { id: 'test-world' },
 ];

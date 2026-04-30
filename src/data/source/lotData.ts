@@ -40,7 +40,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -61,7 +60,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 2,
           bathrooms: 1,
           floors: 1,
@@ -82,7 +80,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -104,7 +101,6 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 3,
           bathrooms: 1,
           floors: 1,
@@ -125,7 +121,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'secret',
-
           bedrooms: numberValueDoesntExist,
           bathrooms: numberValueDoesntExist,
           floors: numberValueDoesntExist,
@@ -168,7 +163,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 3,
           bathrooms: 2,
           floors: 2,
@@ -189,7 +183,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 2,
           bathrooms: 2,
           floors: 2,
@@ -211,7 +204,6 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 3,
           bathrooms: 3,
           floors: 2,
@@ -232,7 +224,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 2,
           bathrooms: 1,
           floors: 1,
@@ -275,7 +266,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 3,
           bathrooms: 2,
           floors: 2,
@@ -296,7 +286,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 4,
           bathrooms: 3,
           floors: 2,
@@ -317,7 +306,6 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 3,
           bathrooms: 2,
           floors: 3,
@@ -340,7 +328,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 4,
           bathrooms: 3,
           floors: 2,
@@ -361,7 +348,6 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 5,
           bathrooms: 4,
           floors: 3,
@@ -384,7 +370,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'museum',
-
           bedrooms: numberValueDoesntExist,
           bathrooms: numberValueDoesntExist,
           floors: numberValueDoesntExist,
@@ -445,7 +430,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'library',
-
           bedrooms: numberValueDoesntExist,
           bathrooms: numberValueDoesntExist,
           floors: numberValueDoesntExist,
@@ -469,7 +453,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'park',
-
           bedrooms: numberValueDoesntExist,
           bathrooms: numberValueDoesntExist,
           floors: numberValueDoesntExist,
@@ -494,7 +477,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -515,7 +497,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -556,7 +537,6 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -577,7 +557,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -600,7 +579,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 2,
           bathrooms: 1,
           floors: 1,
@@ -621,7 +599,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 2,
           bathrooms: 2,
           floors: 1,
@@ -661,7 +638,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 3,
           bathrooms: 2,
           floors: 1,
@@ -683,7 +659,6 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 4,
           bathrooms: 5,
           floors: 1,
@@ -705,7 +680,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 3,
           bathrooms: 3,
           floors: 2,
@@ -746,7 +720,6 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 3,
           bathrooms: 3,
           floors: 2,
@@ -767,7 +740,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 5,
           bathrooms: 4,
           floors: 3,
@@ -790,7 +762,6 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         buildingDetails: {
           type: 'house',
-
           bedrooms: 2,
           bathrooms: 3,
           floors: 3,
@@ -812,7 +783,6 @@ export const lotData: LotDataByWorld = {
         buildingDetails: {
           bedrooms: 4,
           type: 'house',
-
           bathrooms: 4,
           floors: 3,
         },
@@ -834,7 +804,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'museum',
-
           bedrooms: numberValueTBD,
           bathrooms: numberValueTBD,
           floors: 3,
@@ -917,7 +886,6 @@ export const lotData: LotDataByWorld = {
         },
         buildingDetails: {
           type: 'park',
-
           bedrooms: numberValueDoesntExist,
           bathrooms: numberValueDoesntExist,
           floors: numberValueDoesntExist,
@@ -938,7 +906,6 @@ export const lotData: LotDataByWorld = {
         },
         buildingDetails: {
           type: 'secret',
-
           bedrooms: numberValueDoesntExist,
           bathrooms: numberValueDoesntExist,
           floors: numberValueDoesntExist,
@@ -954,7 +921,6 @@ export const lotData: LotDataByWorld = {
         id: 'fern-park',
         title: 'Fern Park',
         description: stringValueDoesntExist,
-
         priceDetails: { wiki: 2000, preGame: 2000, inGame: 2000 },
         dimensions: {
           width: 30,
@@ -975,7 +941,6 @@ export const lotData: LotDataByWorld = {
         id: 'beech-byway',
         title: 'Beech Byway',
         description: stringValueDoesntExist,
-
         priceDetails: { wiki: 2000, preGame: 2000, inGame: 2000 },
         dimensions: {
           width: 30,
@@ -996,7 +961,6 @@ export const lotData: LotDataByWorld = {
         id: 'midtown-meadows',
         title: 'Midtown Meadows',
         description: stringValueDoesntExist,
-
         priceDetails: { wiki: 3000, preGame: 3000, inGame: 3000 },
         dimensions: {
           width: 40,
@@ -1017,7 +981,6 @@ export const lotData: LotDataByWorld = {
         id: 'oak-alcove',
         title: 'Oak Alcove',
         description: stringValueDoesntExist,
-
         priceDetails: { wiki: 1500, preGame: 1500, inGame: 1500 },
         dimensions: {
           width: 20,
@@ -1038,7 +1001,6 @@ export const lotData: LotDataByWorld = {
         id: 'comfy-cubby',
         title: 'Comfy Cubby',
         description: stringValueDoesntExist,
-
         priceDetails: { wiki: 1500, preGame: 1500, inGame: 1500 },
         dimensions: {
           width: 20,
@@ -1274,7 +1236,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'apartment',
-
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -1303,7 +1264,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'apartment',
-
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -1331,7 +1291,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'apartment',
-
           bedrooms: 2,
           bathrooms: 1,
           floors: 1,
@@ -1344,7 +1303,6 @@ export const lotData: LotDataByWorld = {
         id: 'culpepper-house-d',
         title: '20 Culpepper House',
         description: 'A spacious brownstone apartment with bay windows, dockside views and an open plan kitchen.',
-
         priceDetails: {
           // wiki: numberValueDoesntExist,
           // preGame: numberValueDoesntExist,
@@ -1361,7 +1319,6 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         buildingDetails: {
           type: 'apartment',
-
           bedrooms: 2,
           bathrooms: 2,
           floors: 1,
@@ -1431,7 +1388,6 @@ export const lotData: LotDataByWorld = {
         title: 'The Old Salt House',
         description:
           'A sleek family home in a converted docklands building, The Old Salt House is a triumph of urban renewal.',
-
         priceDetails: { wiki: 113443, preGame: numberValueDoesntExist, inGame: 113378 },
         dimensions: {
           width: 30,
@@ -1454,7 +1410,6 @@ export const lotData: LotDataByWorld = {
         title: 'waterside-warble',
         description:
           "Constructed from a converted cannery, Waterside Warble's original warehouse layout was the perfect canvas to section off some intimate karaoke rooms.",
-
         priceDetails: { wiki: 91516, preGame: numberValueDoesntExist, inGame: 88361 },
         dimensions: {
           width: 30,
@@ -1464,7 +1419,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'karaoke bar',
-
           bedrooms: 3,
           bathrooms: 2,
           floors: 2,
@@ -1481,7 +1435,6 @@ export const lotData: LotDataByWorld = {
         title: '910 Medina Studios',
         description:
           "A cramped apartment with... personality that overlooks the Art Quarter's lovely center plaza. The cozy kitchen is just big enough and the living room boasts a classic mauve carpet.",
-
         priceDetails: {
           // preGame: numberValueDoesntExist,
           // inGame: 500,
@@ -1497,7 +1450,6 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         buildingDetails: {
           type: 'apartment',
-
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -1510,7 +1462,6 @@ export const lotData: LotDataByWorld = {
         title: '920 Medina Studios',
         description:
           "It's said a medium once lived in this spooky little place. Who knows what strange after effects may linger here...",
-
         priceDetails: {
           wiki: numberValueTBD,
           preGame: numberValueDoesntExist,
@@ -1538,7 +1489,6 @@ export const lotData: LotDataByWorld = {
         id: 'medina-studios-c',
         title: '930 Medina Studios',
         description: 'Surprisingly cheap for its size, this fine old apartment is the most grand in the building.',
-
         priceDetails: {
           // wiki:
           // preGame:
@@ -1555,7 +1505,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'apartment',
-
           bedrooms: 3,
           bathrooms: 1,
           floors: 1,
@@ -1570,7 +1519,6 @@ export const lotData: LotDataByWorld = {
         title: '121 Hakim House',
         description:
           'Though not the largest apartment in the building, the home studio and funky furnishings are certainly a desirable plus!',
-
         priceDetails: {
           // wiki: numberValueTBD,
           // preGame: numberValueDoesntExist,
@@ -1598,7 +1546,6 @@ export const lotData: LotDataByWorld = {
         id: 'hakim-house-b',
         title: '122 Hakim House',
         description: 'Spacious and luxurious, this apartment also has a historical connection to a famous local artist',
-
         priceDetails: {
           // wiki: numberValueTBD,
           // preGame: numberValueDoesntExist,
@@ -1628,7 +1575,6 @@ export const lotData: LotDataByWorld = {
         title: 'FountainView Penthouse',
         description:
           'Boasting some of the finest views in the Arts Quarter, this penthouse is prime real estate indeed.',
-
         priceDetails: { wiki: 83188, preGame: numberValueDoesntExist, inGame: 84188 },
         dimensions: {
           width: 30,
@@ -1638,7 +1584,6 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           type: 'apartment',
-
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -1652,7 +1597,6 @@ export const lotData: LotDataByWorld = {
         title: 'Cashbah Gallery',
         description:
           'This modern glass structure in the heart of the Arts Quarter is a chic destination for a date or a recreational day devoted to improving your artistic skills.',
-
         priceDetails: { wiki: 201329, preGame: numberValueDoesntExist, inGame: 201329 },
         dimensions: {
           width: 40,
@@ -1733,7 +1677,6 @@ export const lotData: LotDataByWorld = {
         title: '1310 21 Chic Street',
         description:
           "This quaint apartment's generous windows are front-row seats for watching the city dwellers outside. This space makes perfect living quarters for a small group of roommates needing easy access to the center of the bustling city!",
-
         priceDetails: {
           // wiki: 1000, preGame: 1000, inGame: numberValueTBD,
           rent: 500,
@@ -1760,7 +1703,6 @@ export const lotData: LotDataByWorld = {
         id: 'twenty-one-chic-street-b',
         title: '1312 21 Chic Street',
         description: 'The perfect starter apartment, this compact studio commands great views of the Fashion District.',
-
         priceDetails: {
           // wiki: numberValueTBD,
           // preGame: numberValueDoesntExist,
@@ -1788,7 +1730,6 @@ export const lotData: LotDataByWorld = {
         id: 'twenty-one-chic-street-c',
         title: '1313 21 Chic Street',
         description: "This place is incredibly, suspiciously cheap. It's like the Landlord can't give it away...",
-
         priceDetails: {
           // wiki: 600,
           // preGame: 600,
@@ -1818,7 +1759,6 @@ export const lotData: LotDataByWorld = {
         title: '1 Torendi Tower Penthouse',
         description:
           'This huge penthouse with a priceless view of the Fashion District has room for everything! With permits for complete interior remodeling, owners will be able to create the perfect home, no matter how grand their visions.',
-
         priceDetails: { wiki: 244264, preGame: numberValueDoesntExist, inGame: 240429 },
         dimensions: {
           width: 40,
@@ -1841,7 +1781,6 @@ export const lotData: LotDataByWorld = {
         title: 'Planet Honey Popl',
         description:
           "Built in the center of the Fashion District, Planet Honey Pop! Karaoke Bar's sprightly melodies are in perfect harmony with the songs of the metro train below",
-
         priceDetails: { wiki: 91944, preGame: numberValueDoesntExist, inGame: 91464 },
         dimensions: {
           width: 30,
@@ -2041,6 +1980,9 @@ export const lotData: LotDataByWorld = {
       },
     ],
   },
+  // 'test-world': {
+  //   'test-neighborhood': [{ id: 'test-lot' }],
+  // },
 };
 
 export default lotData;
