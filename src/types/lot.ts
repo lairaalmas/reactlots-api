@@ -79,8 +79,6 @@ export type Lot = {
     floors: number;
   };
   imageURL: string;
-  worldId: string;
-  neighborhoodId: string;
 };
 
 export type LotDTO = {

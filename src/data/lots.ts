@@ -1,29 +1,20 @@
 import type { LotDTO, Lot } from '../types/lot.js';
-import { worldMapper, worlds } from './worlds.js';
-import { neighborhoodMapper } from './neighborhoods.js';
+import { worldSummaryById } from './worlds.js';
+import { neighborhoodSummaryById } from './neighborhoods.js';
+import { lotData } from './source/lotData.js';
+import type { LotDataByWorld } from './source/lotData.js';
 
-import { willowCreekData } from './lotsByWorld/willow-creek.js';
-import { oasisSpringsData } from './lotsByWorld/oasis-springs.js';
-import { newcrestData } from './lotsByWorld/newcrest.js';
-import { sanMyshunoData } from './lotsByWorld/san-myshuno.js';
+const ERROR_LOG = '❌ Error mapping lots:';
+const WARN_LOG = '⚠️ Warning mapping lots:';
 
 // unfurnished - 1x deposit + Nx weekply
 // furniture - 1x deposito + 1x furniture + Nx weekly
 
-const data: Record<string, Lot[]> = {
-  'willow-creek': willowCreekData,
-  'oasis-springs': oasisSpringsData,
-  newcrest: newcrestData,
-  'san-myshuno': Object.values(sanMyshunoData).reduce((acc, n) => [...acc, ...n], [] as Lot[]),
-};
-
-const mapLot = (lot: Lot): LotDTO => ({
+const mapLot = (lot: Lot, neighborhoodId: string, worldId: string): LotDTO => ({
   id: lot.id,
   title: lot.title,
   description: lot.description,
-  // dynamic
   transaction_type: lot.priceDetails?.rent ? 'rent' : 'buy',
-  // dynamic
   price: lot.priceDetails?.rent ? lot.priceDetails?.rent : lot.priceDetails?.wiki || -5,
   price_details: {
     wiki: lot.priceDetails?.wiki,
@@ -43,34 +34,40 @@ const mapLot = (lot: Lot): LotDTO => ({
     floors: lot.buildingDetails.floors,
   },
   image_url: lot.imageURL,
-  // dynamic
   world: {
-    id: lot.worldId,
-    title: worldMapper[lot.worldId]?.title || lot.worldId,
+    id: worldId,
+    title: worldSummaryById[worldId]?.title || '',
   },
-  // dynamic
   neighborhood: {
-    id: lot.neighborhoodId,
-    title: neighborhoodMapper[lot.neighborhoodId]?.title || lot.neighborhoodId,
-    color: neighborhoodMapper[lot.neighborhoodId]?.color || 'default',
+    id: neighborhoodId,
+    title: neighborhoodSummaryById[neighborhoodId]?.title || '',
+    color: neighborhoodSummaryById[neighborhoodId]?.color || 'default',
   },
 });
 
-// { _: [ {} ], _, [ {} ] } -> [ {}, {} ]
-const mapLots = () =>
-  Object.values(data).reduce((acc, world) => {
-    const worldLots = world.map((lot) => mapLot(lot));
+const lotDataArray = (data: LotDataByWorld): LotDTO[] => {
+  const list: LotDTO[] = [];
 
-    return [...acc, ...worldLots];
-  }, [] as LotDTO[]);
+  // world list
+  Object.entries(data).forEach(([worldId, neighborhoodList]) => {
+    if (!worldSummaryById[worldId]) console.warn(`${WARN_LOG} world id '${worldId}' from lot list is unknown`);
 
-export const lots: LotDTO[] = mapLots();
+    // neighborhood list
+    Object.entries(neighborhoodList).forEach(([neighborhoodId, lotList]) => {
+      if (!neighborhoodSummaryById[neighborhoodId])
+        console.warn(`${WARN_LOG} neighborhood id '${neighborhoodId}' from lot list is unknown`);
 
-export const lotsMapper = lots.reduce(
-  (acc, n: LotDTO) => {
-    acc[n.id] = n;
-    return acc;
-  },
-  {} as Record<string, LotDTO>
-);
-// console.log(lotsMapper);
+      // lot list
+      lotList.forEach((lot: Lot, index) => {
+        if (!lot.id) console.warn(`${ERROR_LOG} Missing id for Lot[${index}]. Not mapped`);
+        else {
+          list.push(mapLot(lot, neighborhoodId, worldId));
+        }
+      });
+    });
+  });
+
+  return list;
+};
+
+export const lots = lotDataArray(lotData);
