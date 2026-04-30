@@ -1,5 +1,5 @@
-import type { Lot } from '../../types/lot.js';
 import { stringValueDoesntExist, numberValueDoesntExist, numberValueTBD, imgValueTBD } from '../../utils/constants.js';
+import type { Lot } from '../../types/lot.js';
 
 export type LotDataByNeighborhood = Record<string, Lot[]>;
 export type LotDataByWorld = Record<string, LotDataByNeighborhood>;

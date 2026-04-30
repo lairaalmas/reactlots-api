@@ -1,15 +1,15 @@
-import type { LotDTO, Lot } from '../types/lot.js';
-import type { Neighborhood } from '../types/neighborhood.js';
-import type { World } from '../types/world.js';
 import { worldSummaryById } from './worlds.js';
 import { WORLD_KEYS } from './worlds.js';
 import { NEIGHBORHOOD_KEYS, neighborhoodSummaryById } from './neighborhoods.js';
 import { lotData } from './source/lotData.js';
+import { isValidSlug } from '../utils/functions.js';
+import { numberValueTBD } from '../utils/constants.js';
+import type { LotDTO, Lot } from '../types/lot.js';
+import type { Neighborhood } from '../types/neighborhood.js';
+import type { World } from '../types/world.js';
 import type { LotDataByNeighborhood, LotDataByWorld } from './source/lotData.js';
 import type { LotSummaryById } from '../types/lot.js';
-import { isValidSlug } from '../utils/functions.js';
-import type { WorldSummaryById } from '../types/world.js';
-import type { NeighborhoodSummaryById } from '../types/neighborhood.js';
+
 // unfurnished - 1x deposit + Nx weekply
 // furniture - 1x deposito + 1x furniture + Nx weekly
 
@@ -46,8 +46,10 @@ const mapLot = (
   id: lot.id,
   title: lot.title || lot.id,
   description: lot.description || '',
+  // dynamic
   transaction_type: lot.priceDetails?.rent ? 'rent' : 'buy',
-  price: lot.priceDetails?.rent ? lot.priceDetails.rent : lot.priceDetails?.wiki || -5,
+  // dynamic
+  price: lot.priceDetails?.rent ? lot.priceDetails.rent : lot.priceDetails?.wiki || numberValueTBD,
   price_details: {
     wiki: lot.priceDetails?.wiki,
     pre_game: lot.priceDetails?.preGame,

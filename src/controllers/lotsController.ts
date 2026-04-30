@@ -1,7 +1,7 @@
-import type { FastifyRequest, FastifyReply } from 'fastify';
 import { listLots, findLotById, sortLots } from '../services/lotsService.js';
-import type { LotFilters, LotQueryParams } from '../types/lot.js';
 import { isValidSlug } from '../utils/functions.js';
+import type { FastifyRequest, FastifyReply } from 'fastify';
+import type { LotFilters, LotQueryParams } from '../types/lot.js';
 
 type Params = {
   id: string;

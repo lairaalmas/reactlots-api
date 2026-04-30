@@ -1,9 +1,8 @@
-import type { NeighborhoodDTO, NeighborhoodSummaryById } from '../types/neighborhood.js';
 import { worldSummaryById, WORLD_KEYS } from '../data/worlds.js';
 import { isValidSlug } from '../utils/functions.js';
-
-import type { NeighborhoodData } from './source/neighborhoodData.js';
 import { neighborhoodData } from './source/neighborhoodData.js';
+import type { NeighborhoodDTO, NeighborhoodSummaryById } from '../types/neighborhood.js';
+import type { NeighborhoodData } from './source/neighborhoodData.js';
 
 const ERROR_LOG = '❌ Error mapping neighborhoods:';
 const WARN_LOG = '⚠️ Warning mapping neighborhoods:';

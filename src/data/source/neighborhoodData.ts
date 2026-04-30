@@ -1,5 +1,5 @@
-import type { Neighborhood } from '../../types/neighborhood.js';
 import { stringValueDoesntExist } from '../../utils/constants.js';
+import type { Neighborhood } from '../../types/neighborhood.js';
 
 export type NeighborhoodData = Record<string, Neighborhood[]>;
 

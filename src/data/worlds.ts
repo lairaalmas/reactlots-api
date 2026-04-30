@@ -1,6 +1,6 @@
-import type { World, WorldDTO, WorldSummaryById } from '../types/world.js';
 import { isValidSlug } from '../utils/functions.js';
 import { worldData } from './source/worldData.js';
+import type { World, WorldDTO, WorldSummaryById } from '../types/world.js';
 
 const ERROR_LOG = '❌ Error mapping worlds:';
 const WARN_LOG = '⚠️ Warning mapping worlds:';
