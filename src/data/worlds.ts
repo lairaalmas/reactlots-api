@@ -1,34 +1,30 @@
 import type { WorldDTO, WorldSummaryById } from '../types/world.js';
+import { isValidSlug } from '../utils/functions.js';
+import { worldData } from './source/worldData.js';
 
-// [ { <full world info> } ]
-export const worlds: WorldDTO[] = [
-  {
-    id: 'willow-creek',
-    title: 'Willow Creek',
-    description:
-      "Willow Creek is a lush bayou of rolling hills intertwined with marshy riverways. It's home to long-standing reputations and simple lifestyles full of coastal hospitality. Convenient with town comforts, lively neighbors, and a grandeur of property possibilities, Willow Creek is the idyllic place to settle down and settle in.",
-  },
-  {
-    id: 'oasis-springs',
-    title: 'Oasis Springs',
-    description:
-      'An oasis nestled in the austere beauty of the western desert, this haven of eclectic culture is fringed by countless soaring palms, and lent vibrant color through impossibly lush landscaping. Oasis Springs offers relaxing retreats from the sun to any traveler who discovers it.',
-  },
-  {
-    id: 'newcrest',
-    title: 'Newcrest',
-    description:
-      "Don't let the abundance of space fool you. Take a look around, admire the wonderful scenery, and explore the endless possibilities. Do you see it? This is your whole new world! What are you waiting for?",
-  },
-  {
-    id: 'san-myshuno',
-    title: 'San Myshuno',
-    description:
-      'This city is made up of four distinct districts: the Spice Market, the Fashion District, The Arts Quarter and Uptown. In addition, Myshuno Meadows is a large city park tucked beneath the skyscrapers if your Sims need to get away for a touch of nature. Depending on where your Sims choose to live, you\’ll get a very different flavor of the city. You might find yourself in a cramped, roach-infested studio apartment in the Arts Quarter… Or you might be enjoying a breathtaking view of the city from your very own tricked-out rooftop penthouse Jacuzzi in Uptown.',
-  },
-];
+const mapWorlds = (list: WorldDTO[]) => {
+  const ERROR_LOG = '❌ Error mapping worlds:';
+  const WARN_LOG = '⚠️ Warning mapping worlds:';
 
-// { 'world-id': { id, title } }
+  return list.reduce<WorldDTO[]>((acc, w, index) => {
+    if (!w.id) {
+      console.error(`${ERROR_LOG} Missing world id. Data[${index}] was not mapped.`);
+      return acc;
+    }
+
+    if (!isValidSlug(w.id)) {
+      console.error(`${ERROR_LOG} Invalid id format of '${w.id}'. Not mapped.`);
+      return acc;
+    }
+
+    if (!w.title) console.warn(`${WARN_LOG} Missing title field for id '${w.id}'. Fallbacked to id.`);
+
+    return [...acc, { id: w.id, title: w.title || w.id, description: w.description || '' }];
+  }, []);
+};
+
+export const worlds = mapWorlds(worldData);
+
 export const worldSummaryById = worlds.reduce<WorldSummaryById>((acc, w) => {
   // only info used by other entities
   acc[w.id] = {
@@ -37,3 +33,5 @@ export const worldSummaryById = worlds.reduce<WorldSummaryById>((acc, w) => {
   };
   return acc;
 }, {});
+
+export const WORLD_KEYS = Object.keys(worldSummaryById) as Array<keyof WorldSummaryById>;
