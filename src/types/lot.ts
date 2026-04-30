@@ -140,3 +140,6 @@ export type LotQueryParams = {
   sort?: LotQueryParamSort;
   sort_by?: LotQueryParamSortBy;
 };
+
+export type LotSummaryDTO = Partial<LotDTO>;
+export type LotSummaryById = Record<string, LotSummaryDTO>;

@@ -8,74 +8,91 @@ import { neighborhoodData } from './source/neighborhoodData.js';
 const ERROR_LOG = '❌ Error mapping neighborhoods:';
 const WARN_LOG = '⚠️ Warning mapping neighborhoods:';
 
-const mapNeighborhoods = (list: NeighborhoodData) => {
-  const validKeys = [];
+/**
+ * Validations:
+ *
+ * error: id missing
+ * error: id invalid
+ * warn: title missing
+ */
+const validateDomainFields = (id: string, title: string, index: number) => {
+  let isValid = true;
 
+  if (!id) {
+    console.error(`${ERROR_LOG} Missing id. Data${index}] was not mapped.`);
+    isValid = false;
+  }
+  if (!isValidSlug(id)) {
+    console.error(`${ERROR_LOG} Invalid id format '${id}'. Data was not mapped.`);
+    isValid = false;
+  }
+  if (!title) {
+    console.warn(`${WARN_LOG} Missing title. Fallbacked to id.`);
+  }
+  return isValid;
+};
+
+const mapToDTO = (list: NeighborhoodData) => {
   // for each world key
-  const validNeigh = WORLD_KEYS.reduce<NeighborhoodDTO[]>((acc, worldId) => {
+  const validNeighborhoods = WORLD_KEYS.reduce<NeighborhoodDTO[]>((acc, worldId) => {
+    // if there is no info for that world, skip
     if (!list[worldId]) {
-      console.warn(`${WARN_LOG} No neighborhoods mapped for world id '${worldId}'`);
+      console.warn(`${WARN_LOG} Known world '${worldId}' is not mapped in neighborhoods. Skipping.`);
       return acc;
     }
 
-    // for each neighborhood (list) from that world
-    const neighFromWorld = list[worldId].reduce<NeighborhoodDTO[]>((accN, n, index) => {
-      if (!n.id) {
-        console.error(`${ERROR_LOG} Missing neighborhood id from world '${worldId}'. Neigh[${index}] was not mapped.`);
-        return accN;
-      }
-      if (!isValidSlug(n.id)) {
-        console.error(`${ERROR_LOG} Invalid id format of '${n.id}'. Not mapped.`);
-        return accN;
-      }
-      if (!n.title) {
-        if (!n.title) console.warn(`${WARN_LOG} Missing title for '${n.id}'. Fallbacked to id.`);
-        return accN;
-      }
-      if (!worldSummaryById[worldId]?.title) {
-        if (!n.title)
-          console.warn(`${WARN_LOG} Missing reference to world '${worldId}' title. Fallbacked to world id.`);
-        return accN;
-      }
+    // for each neighborhood listed in the world key
+    const neighborhoods = list[worldId].reduce<NeighborhoodDTO[]>((accN, n, index) => {
+      if (!validateDomainFields(n.id, n.title, index)) return acc;
 
-      const neigh = {
-        id: n.id,
-        title: n.title || n.id,
-        description: n.description || '',
-        color: n.color || 'default',
-        world: {
-          id: worldId,
-          title: worldSummaryById[worldId]?.title || worldId,
+      if (!worldSummaryById[worldId]?.title)
+        console.warn(`${WARN_LOG} Missing ref to neighborhood title '${worldId}'. Fallbacking to world id.`);
+
+      // if neighborhood is valid, map to DTO w/ world ref
+      return [
+        ...accN,
+        {
+          id: n.id,
+          title: n.title || n.id,
+          description: n.description || '',
+          color: n.color || 'default',
+          world: {
+            id: worldId,
+            title: worldSummaryById[worldId]?.title || worldId,
+          },
         },
-      };
-      return [...accN, neigh];
+      ];
     }, []);
 
-    validKeys.push(worldId);
-
-    return [...acc, ...neighFromWorld];
+    return [...acc, ...neighborhoods];
   }, []);
 
-  const keysDiff = Object.keys(neighborhoodData).length - validKeys.length;
-  if (keysDiff > 0) {
-    console.warn(`${WARN_LOG} There are neighborhoods mapped to ${keysDiff} unknown world(s).`);
-  }
+  // Log worlds in neighborhood list that are not in worldSummaryById
+  Object.keys(list)
+    .filter((worldId) => !WORLD_KEYS.includes(worldId))
+    .forEach((worldId) => {
+      console.warn(`${WARN_LOG} World '${worldId}' from neighborhood list is unknown. Not mapped.`);
+    });
 
-  return validNeigh;
+  return validNeighborhoods;
 };
+export const neighborhoods = mapToDTO(neighborhoodData);
 
-export const neighborhoods = mapNeighborhoods(neighborhoodData);
-
-// { 'neigh-id': { <full neighborhood info> } }
+// ref
 export const neighborhoodSummaryById = neighborhoods.reduce<NeighborhoodSummaryById>((acc, n) => {
-  const neigh = {
-    id: n.id,
-    title: n.title,
-    color: n.color,
-    world: { ...n.world },
+  return {
+    ...acc,
+    [n.id]: {
+      id: n.id,
+      title: n.title,
+      color: n.color,
+      world: {
+        id: n.world.id,
+        title: n.world.title,
+      },
+    },
   };
-  acc[n.id] = neigh;
-  return acc;
 }, {});
-
 export const NEIGHBORHOOD_KEYS = Object.keys(neighborhoodSummaryById) as Array<keyof NeighborhoodSummaryById>;
+
+// console.log(NEIGHBORHOOD_KEYS);
