@@ -42,35 +42,46 @@ const mapLot = (
   lot: Lot,
   neighborhood: Pick<Neighborhood, 'id' | 'title' | 'color'>,
   world: Pick<World, 'id' | 'title'>
-): LotDTO => ({
-  id: lot.id,
-  title: lot.title || lot.id,
-  description: lot.description || '',
-  // dynamic
-  transaction_type: lot.priceDetails?.rent ? 'rent' : 'buy',
-  // dynamic
-  price: lot.priceDetails?.rent ? lot.priceDetails.rent : lot.priceDetails?.wiki || numberValueTBD,
-  price_details: {
-    wiki: lot.priceDetails?.wiki,
-    pre_game: lot.priceDetails?.preGame,
-    in_game: lot.priceDetails?.inGame,
-    rent: lot.priceDetails?.rent,
-    deposit: lot.priceDetails?.deposit,
-    furniture: lot.priceDetails?.furniture,
-  },
-  dimensions: lot.dimensions,
-  type: lot.type,
-  availability: lot.availability,
-  building_details: {
-    type: lot.buildingDetails?.type,
-    bedrooms: lot.buildingDetails?.bedrooms,
-    bathrooms: lot.buildingDetails?.bathrooms,
-    floors: lot.buildingDetails?.floors,
-  },
-  image_url: lot.imageURL || '',
-  world,
-  neighborhood,
-});
+): LotDTO => {
+  let transType = 'buy';
+  if (lot.rentDetails?.rent) {
+    transType = lot.priceHistory?.wiki ? 'both' : 'rent';
+  }
+
+  return {
+    id: lot.id,
+    title: lot.title || lot.id,
+    description: lot.description || '',
+    // dynamic
+    transaction_type: lot.rentDetails?.rent ? 'rent' : 'buy',
+    // dynamic
+    price: lot.rentDetails?.rent ? lot.rentDetails.rent : lot.priceHistory?.wiki || numberValueTBD,
+    rent_details: {
+      rent: lot.rentDetails?.rent || numberValueTBD,
+      deposit: lot.rentDetails?.deposit || numberValueTBD,
+      furniture: lot.rentDetails?.furniture,
+      period: lot.rentDetails?.period || 'week',
+    },
+    price_history: {
+      wiki: lot.priceHistory?.wiki,
+      pre_game: lot.priceHistory?.preGame,
+      in_game: lot.priceHistory?.inGame,
+    },
+    dimensions: lot.dimensions,
+    type: lot.type,
+    availability: lot.availability,
+    building_details: {
+      type: lot.buildingDetails?.type,
+      bedrooms: lot.buildingDetails?.bedrooms,
+      bathrooms: lot.buildingDetails?.bathrooms,
+      floors: lot.buildingDetails?.floors,
+    },
+    owner: lot.owner || '',
+    image_url: lot.imageURL || '',
+    world,
+    neighborhood,
+  };
+};
 
 const transformLotData = (list: LotDataByWorld): LotDataByNeighborhood => {
   const neighsList = Object.values(list);
