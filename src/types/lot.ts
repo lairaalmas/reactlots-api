@@ -117,7 +117,6 @@ export type LotDTO = {
   // metadata
   id: string;
   title: string;
-  // ??? apartment_title?: string;
   description: string;
   image_url: string;
   // metadata - ref
@@ -149,6 +148,7 @@ export type LotDTO = {
     bedrooms?: number;
     bathrooms?: number;
     floors?: number;
+    title?: string;
   };
 };
 
