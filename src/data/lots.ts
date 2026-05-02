@@ -93,6 +93,7 @@ const mapLot = (
       bedrooms: lot.buildingDetails?.bedrooms,
       bathrooms: lot.buildingDetails?.bathrooms,
       floors: lot.buildingDetails?.floors,
+      title: lot?.apartmentTitle,
     },
   };
 };
