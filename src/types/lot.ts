@@ -32,7 +32,7 @@ const COMMUNITY_TYPES = [
   // new (used)
   'karaoke bar',
   'arts center',
-  'central park',
+  'center park',
   // (unused)
   'generic',
   'national park',
@@ -44,29 +44,38 @@ const COMMUNITY_TYPES = [
 ] as const;
 type CommunityLotType = (typeof COMMUNITY_TYPES)[number];
 type CommunityAvailability = 'unavailable';
-type CommunityTransactionType = null;
+type CommunityTransactionType = undefined;
 
 // SPECIFIC INFO - rent x buy
-type RentDetails = {
+type RentDetailItems = {
   rent: number;
   deposit: number;
   furniture?: number;
   period?: 'week' | 'month';
 };
-type PriceHistory = {
+
+type RentDetails = {
+  inGame: RentDetailItems;
+  preGame?: RentDetailItems;
+};
+type BuyDetails = {
   preGame?: number;
   inGame?: number;
-  wiki?: number;
 };
-type PriceHistoryDTO = {
+
+type RentDetailsDTO = {
+  in_game?: RentDetailItems;
+  pre_game?: RentDetailItems;
+};
+type BuyDetailsDTO = {
   pre_game?: number;
   in_game?: number;
-  wiki?: number;
 };
 
 type BaseLot = {
   id: string;
   title: string;
+  apartmentTitle?: string;
   description: string;
   type: LotType;
   dimensions: {
@@ -75,58 +84,72 @@ type BaseLot = {
   };
   imageURL: string;
   rentDetails?: RentDetails;
-  priceHistory?: PriceHistory;
+  buyDetails?: BuyDetails;
 };
 
 type ResidentialLot = BaseLot & {
   availability: ResidentialAvailability;
   buildingDetails: {
     type: ResidentialLotType;
-    bedrooms: number;
-    bathrooms: number;
-    floors: number;
+    bedrooms?: number;
+    bathrooms?: number;
+    floors?: number;
   };
   owner?: string;
+  transactionType: ResidentialTransactionType;
 };
 
 type CommunityLot = BaseLot & {
   availability: CommunityAvailability;
   buildingDetails: {
     type: CommunityLotType;
-    bedrooms: number;
-    bathrooms: number;
-    floors: number;
+    bedrooms?: number;
+    bathrooms?: number;
+    floors?: number;
   };
   owner?: undefined;
+  transactionType: CommunityTransactionType;
 };
 
 export type Lot = ResidentialLot | CommunityLot;
 
 export type LotDTO = {
+  // metadata
   id: string;
   title: string;
+  // ??? apartment_title?: string;
   description: string;
+  image_url: string;
+  // metadata - ref
+  world: WorldReference;
+  neighborhood: NeighborhoodReference;
+  // lot
   type: LotType;
   dimensions: {
     width: number;
     depth: number;
   };
-  image_url: string;
   availability: ResidentialAvailability | CommunityAvailability;
+  // lot - sim
+  owner?: string;
+  // transaction
+  transaction: {
+    type: ResidentialTransactionType | CommunityTransactionType;
+    main_price: number;
+    rent?: Partial<RentDetailItems>;
+    rent_history?: RentDetailsDTO;
+    buy?: {
+      price?: number;
+    };
+    buy_history?: BuyDetailsDTO;
+  };
+  // building
   building_details: {
     type: ResidentialLotType | CommunityLotType;
-    bedrooms: number;
-    bathrooms: number;
-    floors: number;
+    bedrooms?: number;
+    bathrooms?: number;
+    floors?: number;
   };
-  owner?: string;
-  rent_details?: RentDetails;
-  price_history?: PriceHistoryDTO;
-  // refs
-  price: number;
-  transaction_type: ResidentialTransactionType | CommunityTransactionType;
-  world: WorldReference;
-  neighborhood: NeighborhoodReference;
 };
 
 // FILTERS

@@ -43,43 +43,57 @@ const mapLot = (
   neighborhood: Pick<Neighborhood, 'id' | 'title' | 'color'>,
   world: Pick<World, 'id' | 'title'>
 ): LotDTO => {
-  let transType = 'buy';
-  if (lot.rentDetails?.rent) {
-    transType = lot.priceHistory?.wiki ? 'both' : 'rent';
-  }
+  const price = lot.rentDetails?.inGame?.rent
+    ? lot.rentDetails?.inGame?.rent
+    : lot.buyDetails?.inGame || numberValueTBD;
 
   return {
+    // metadata
     id: lot.id,
     title: lot.title || lot.id,
     description: lot.description || '',
-    // dynamic
-    transaction_type: lot.rentDetails?.rent ? 'rent' : 'buy',
-    // dynamic
-    price: lot.rentDetails?.rent ? lot.rentDetails.rent : lot.priceHistory?.wiki || numberValueTBD,
-    rent_details: {
-      rent: lot.rentDetails?.rent || numberValueTBD,
-      deposit: lot.rentDetails?.deposit || numberValueTBD,
-      furniture: lot.rentDetails?.furniture,
-      period: lot.rentDetails?.period || 'week',
-    },
-    price_history: {
-      wiki: lot.priceHistory?.wiki,
-      pre_game: lot.priceHistory?.preGame,
-      in_game: lot.priceHistory?.inGame,
-    },
-    dimensions: lot.dimensions,
+    image_url: lot.imageURL || '',
+    // metadata - ref
+    world,
+    neighborhood,
+    // lot
     type: lot.type,
+    dimensions: {
+      width: lot.dimensions?.width,
+      depth: lot.dimensions?.depth,
+    },
     availability: lot.availability,
+    // lot - sim
+    owner: lot.owner || '',
+    // transaction
+    transaction: {
+      type: lot?.transactionType,
+      main_price: price,
+      rent: {
+        rent: lot.rentDetails?.inGame?.rent,
+        deposit: lot.rentDetails?.inGame?.deposit,
+        furniture: lot.rentDetails?.inGame?.furniture,
+        period: lot.rentDetails?.inGame?.period || 'week',
+      },
+      rent_history: {
+        pre_game: lot.rentDetails?.preGame,
+        in_game: lot.rentDetails?.inGame,
+      },
+      buy: {
+        price: lot.buyDetails?.inGame,
+      },
+      buy_history: {
+        pre_game: lot.buyDetails?.preGame,
+        in_game: lot.buyDetails?.inGame,
+      },
+    },
+    // building
     building_details: {
       type: lot.buildingDetails?.type,
       bedrooms: lot.buildingDetails?.bedrooms,
       bathrooms: lot.buildingDetails?.bathrooms,
       floors: lot.buildingDetails?.floors,
     },
-    owner: lot.owner || '',
-    image_url: lot.imageURL || '',
-    world,
-    neighborhood,
   };
 };
 
