@@ -1,107 +1,97 @@
-import type { Neighborhood, NeighborhoodDTO } from '../types/neighborhood.js';
-import { worldMapper } from '../data/worlds.js';
+import { worldSummaryById, WORLD_KEYS } from '../data/worlds.js';
+import { isValidSlug } from '../utils/functions.js';
+import { neighborhoodData } from './source/neighborhoodData.js';
+import type { NeighborhoodDTO, NeighborhoodSummaryById } from '../types/neighborhood.js';
+import type { NeighborhoodData } from './source/neighborhoodData.js';
 
-const data: Neighborhood[] = [
-  {
-    id: 'foundry-cove',
-    title: 'Foundry cove',
-    description:
-      'Located in southern Willow Creek, Foundry Cove has lots of character (and its share of characters). Residents enjoy modest homes with a canal nearby for fishing, and a charming, active railroad.',
-    worldId: 'willow-creek',
-  },
-  {
-    id: 'courtyard-lane',
-    title: 'Courtyard Lane',
-    description:
-      'Courtyard Lane offers affordable homes for the upwardly mobile set. Classic styling mingles with larger shotguns and more expansive homes.',
-    worldId: 'willow-creek',
-  },
-  {
-    id: 'pendula-view',
-    title: 'Pendula View',
-    description:
-      'This historical section of Willow Creek, the Garden Community boasts large mansions and the cache that comes with living in them.',
-    worldId: 'willow-creek',
-  },
-  {
-    id: 'sage-estates',
-    title: 'Sage Estates',
-    description:
-      "Willow Creek's most desirable area, Sage Estates features large, sprawling estates, lush landscaping, and the best high society has to offer.",
-    worldId: 'willow-creek',
-  },
-  {
-    id: 'crawdad-quarter',
-    title: 'Crawdad Quarter',
-    description:
-      'Crawdad Quarter is the heart of Willow Creek. All of the towns liveliness, from parks to nightlife, can be found in this neighborhood.',
-    worldId: 'willow-creek',
-  },
-  {
-    id: 'willow-creek-undefined',
-    title: 'Other',
-    description: '',
-    worldId: 'willow-creek',
-  },
-  {
-    id: 'bedrock-strait',
-    title: 'Bedrock Strait',
-    description: '',
-    worldId: 'oasis-springs',
-  },
-  {
-    id: 'parched-prospect',
-    title: 'Parched Prospect',
-    description: '',
-    worldId: 'oasis-springs',
-  },
-  {
-    id: 'akyward-palms',
-    title: 'Skyward Palms',
-    description: '',
-    worldId: 'oasis-springs',
-  },
-  {
-    id: 'acquisition-butte',
-    title: 'Acquisition Butte',
-    description: '',
-    worldId: 'oasis-springs',
-  },
-  {
-    id: 'mirage-canyon',
-    title: 'Mirage Canyon',
-    description: '',
-    worldId: 'oasis-springs',
-  },
-  {
-    id: 'oasis-springs-undefined',
-    title: 'Other',
-    description: '',
-    worldId: 'oasis-springs',
-  },
-];
+const ERROR_LOG = '❌ Error mapping neighborhoods:';
+const WARN_LOG = '⚠️ Warning mapping neighborhoods:';
 
-export const neighborhoodMapper: Record<string, string> = {
-  'foundry-cove': 'Foundry cove',
-  'courtyard-lane': 'Courtyard Lane',
-  'pendula-view': 'Pendula View',
-  'sage-estates': 'Sage Estates',
-  'crawdad-quarter': 'Crawdad Quarter',
-  'willow-creek-undefined': 'Other',
-  'bedrock-strait': 'Bedrock Strait',
-  'parched-prospect': 'Parched Prospect',
-  'akyward-palms': 'Skyward Palms',
-  'acquisition-butte': 'Acquisition Butte',
-  'mirage-canyon': 'Mirage Canyon',
-  'oasis-springs-undefined': 'Other',
+/**
+ * Validations:
+ *
+ * error: id missing
+ * error: id invalid
+ * warn: title missing
+ */
+const validateDomainFields = (id: string, title: string, index: number) => {
+  let isValid = true;
+
+  if (!id) {
+    console.error(`${ERROR_LOG} Missing id. Data${index}] was not mapped.`);
+    isValid = false;
+  }
+  if (!isValidSlug(id)) {
+    console.error(`${ERROR_LOG} Invalid id format '${id}'. Data was not mapped.`);
+    isValid = false;
+  }
+  if (!title) {
+    console.warn(`${WARN_LOG} Missing title for '${id}'. Fallbacked to id.`);
+  }
+  return isValid;
 };
 
-export const neighborhoods: NeighborhoodDTO[] = data.map((neigh: Neighborhood) => ({
-  id: neigh.id,
-  title: neigh.title,
-  description: neigh.description,
-  world: {
-    id: neigh.worldId,
-    title: worldMapper[neigh.worldId] || '',
-  },
-}));
+const mapToDTO = (neighborhoodsByWorld: NeighborhoodData) => {
+  // for each world key
+  const validNeighborhoods = WORLD_KEYS.reduce<NeighborhoodDTO[]>((acc, worldId) => {
+    // if there is no info for that world, skip
+    if (!neighborhoodsByWorld[worldId]) {
+      console.warn(`${WARN_LOG} Known world '${worldId}' is not mapped in neighborhoods. Skipping.`);
+      return acc;
+    }
+
+    // for each neighborhood listed in the world key
+    const neighborhoods = neighborhoodsByWorld[worldId].reduce<NeighborhoodDTO[]>((accN, n, index) => {
+      if (!validateDomainFields(n.id, n.title, index)) return acc;
+
+      if (!worldSummaryById[worldId]?.title)
+        console.warn(`${WARN_LOG} Missing ref to neighborhood title '${worldId}'. Fallbacking to world id.`);
+
+      // if neighborhood is valid, map to DTO w/ world ref
+      return [
+        ...accN,
+        {
+          id: n.id,
+          title: n.title || n.id,
+          description: n.description || '',
+          color: n.color || 'default',
+          world: {
+            id: worldId,
+            title: worldSummaryById[worldId]?.title || worldId,
+          },
+        },
+      ];
+    }, []);
+
+    return [...acc, ...neighborhoods];
+  }, []);
+
+  // Log worlds in neighborhood list that are not in worldSummaryById
+  Object.keys(neighborhoodsByWorld)
+    .filter((id) => !WORLD_KEYS.includes(id))
+    .forEach((id) => {
+      console.warn(`${WARN_LOG} World '${id}' from neighborhood list is unknown. Not mapped.`);
+    });
+
+  return validNeighborhoods;
+};
+export const neighborhoods = mapToDTO(neighborhoodData);
+
+// ref
+export const neighborhoodSummaryById = neighborhoods.reduce<NeighborhoodSummaryById>((acc, n) => {
+  return {
+    ...acc,
+    [n.id]: {
+      id: n.id,
+      title: n.title,
+      color: n.color,
+      world: {
+        id: n.world.id,
+        title: n.world.title,
+      },
+    },
+  };
+}, {});
+export const NEIGHBORHOOD_KEYS = Object.keys(neighborhoodSummaryById) as Array<keyof NeighborhoodSummaryById>;
+
+// console.log(NEIGHBORHOOD_KEYS);

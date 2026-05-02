@@ -1,21 +1,51 @@
-import type { WorldDTO } from '../types/world.js';
+import { isValidSlug } from '../utils/functions.js';
+import { worldData } from './source/worldData.js';
+import type { World, WorldDTO, WorldSummaryById } from '../types/world.js';
 
-export const worlds: WorldDTO[] = [
-  {
-    id: 'willow-creek',
-    title: 'Willow Creek',
-    description:
-      "Willow Creek is a lush bayou of rolling hills intertwined with marshy riverways. It's home to long-standing reputations and simple lifestyles full of coastal hospitality. Convenient with town comforts, lively neighbors, and a grandeur of property possibilities, Willow Creek is the idyllic place to settle down and settle in.",
-  },
-  {
-    id: 'oasis-springs',
-    title: 'Oasis Springs',
-    description:
-      'An oasis nestled in the austere beauty of the western desert, this haven of eclectic culture is fringed by countless soaring palms, and lent vibrant color through impossibly lush landscaping. Oasis Springs offers relaxing retreats from the sun to any traveler who discovers it.',
-  },
-];
+const ERROR_LOG = '❌ Error mapping worlds:';
+const WARN_LOG = '⚠️ Warning mapping worlds:';
 
-export const worldMapper: Record<string, string> = {
-  'oasis-springs': 'Oasis Springs',
-  'willow-creek': 'Willow Creek',
+/**
+ * Validations:
+ * error: id missing
+ * error: id invalid
+ * warn: title missing
+ */
+const validateDomainFields = (id: string, title: string, index: number) => {
+  let isValid = true;
+  if (!id) {
+    console.error(`${ERROR_LOG} Missing id. Data${index}] was not mapped.`);
+    isValid = false;
+  }
+  if (!isValidSlug(id)) {
+    console.error(`${ERROR_LOG} Invalid id format '${id}'. Data was not mapped.`);
+    isValid = false;
+  }
+  if (!title) {
+    console.warn(`${WARN_LOG} Missing title for '${id}'. Fallbacked to id.`);
+  }
+  return isValid;
 };
+
+const mapToDTO = (list: World[]) => {
+  return list.reduce<WorldDTO[]>((acc, w, index) => {
+    if (!validateDomainFields(w.id, w.title, index)) return acc;
+
+    return [...acc, { id: w.id, title: w.title || w.id, description: w.description || '' }];
+  }, []);
+};
+export const worlds = mapToDTO(worldData);
+
+// ref info
+export const worldSummaryById = worlds.reduce<WorldSummaryById>((acc, w) => {
+  return {
+    ...acc,
+    [w.id]: {
+      id: w.id,
+      title: w.title,
+    },
+  };
+}, {});
+export const WORLD_KEYS = Object.keys(worldSummaryById) as Array<keyof WorldSummaryById>;
+
+// console.log(WORLD_KEYS);
