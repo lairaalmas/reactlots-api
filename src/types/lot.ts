@@ -1,186 +1,71 @@
-import type { ThemeColors } from './neighborhood.js';
-
-type WorldReference = {
-  id: string;
-  title: string;
-};
-
-type NeighborhoodReference = {
-  id: string;
-  title: string;
-  color: ThemeColors;
-};
-
-// BASE INFO
-type LotType = 'residential' | 'community' | 'special';
-
-// SPECIFIC INFO - residential x community
-const RESIDENTIAL_TYPES = ['empty', 'house', 'apartment'] as const;
-type ResidentialLotType = (typeof RESIDENTIAL_TYPES)[number];
-type ResidentialAvailability = 'available' | 'occupied';
-type ResidentialTransactionType = 'rent' | 'buy' | 'both';
-const COMMUNITY_TYPES = [
-  // (used)
-  'bar',
-  'gym',
+const LOT_TYPES = [
+  // used (lot types from game)
+  'residential',
   'library',
-  'lounge',
   'museum',
+  'gym',
   'nightclub',
   'park',
-  'secret',
-  // new (used)
-  'karaoke bar',
-  'arts center',
-  'center park',
-  // (unused)
+  'bar',
+  'lounge',
+  // unused (lot types from game)
   'generic',
   'national park',
   'playground',
   'pool',
   'vacation rental',
   'veterinary clinic',
-  'wedding venue',
+  'wedding Venue',
+  // used (lot types that are not in game)
+  'secret lot',
 ] as const;
-type CommunityLotType = (typeof COMMUNITY_TYPES)[number];
-type CommunityAvailability = 'unavailable';
-type CommunityTransactionType = undefined;
+const BUILDING_TYPES = ['house', 'empty lot', 'other'] as const;
+const LOT_STATUS = ['available', 'inhabited', 'unavailable'] as const;
 
-// SPECIFIC INFO - rent x buy
-type RentDetailItems = {
-  rent: number;
-  deposit: number;
-  furniture?: number;
-  period?: 'week' | 'month';
-};
+type LotType = (typeof LOT_TYPES)[number];
+type BuildingType = (typeof BUILDING_TYPES)[number];
+type LotStatus = (typeof LOT_STATUS)[number];
 
-type RentDetails = {
-  inGame: RentDetailItems;
-  preGame?: RentDetailItems;
+type LotDimensions = {
+  width: number;
+  depth: number;
 };
-type BuyDetails = {
-  preGame?: number;
-  inGame?: number;
+type LotDetails = {
+  dimensions: LotDimensions;
+  bedrooms: number;
+  bathrooms: number;
+  floors: number;
 };
 
-type RentDetailsDTO = {
-  in_game?: RentDetailItems;
-  pre_game?: RentDetailItems;
-};
-type BuyDetailsDTO = {
-  pre_game?: number;
-  in_game?: number;
-};
-
-type BaseLot = {
+type EntityReference = {
   id: string;
   title: string;
-  apartmentTitle?: string;
+};
+
+export type Lot = {
+  id: string;
+  title: string;
   description: string;
-  type: LotType;
-  dimensions: {
-    width: number;
-    depth: number;
-  };
+  price: number;
+  lotDetails: LotDetails;
+  lotType: LotType;
+  buildingType: BuildingType;
+  status: LotStatus;
   imageURL: string;
-  rentDetails?: RentDetails;
-  buyDetails?: BuyDetails;
+  worldId: string;
+  neighborhoodId: string;
 };
-
-type ResidentialLot = BaseLot & {
-  availability: ResidentialAvailability;
-  buildingDetails: {
-    type: ResidentialLotType;
-    bedrooms?: number;
-    bathrooms?: number;
-    floors?: number;
-  };
-  owner?: string;
-  transactionType: ResidentialTransactionType;
-};
-
-type CommunityLot = BaseLot & {
-  availability: CommunityAvailability;
-  buildingDetails: {
-    type: CommunityLotType;
-    bedrooms?: number;
-    bathrooms?: number;
-    floors?: number;
-  };
-  owner?: undefined;
-  transactionType: CommunityTransactionType;
-};
-
-export type Lot = ResidentialLot | CommunityLot;
 
 export type LotDTO = {
-  // metadata
   id: string;
   title: string;
-  // ??? apartment_title?: string;
   description: string;
+  price: number;
+  lot_details: LotDetails;
+  lot_type: LotType;
+  building_type: BuildingType;
+  status: LotStatus;
   image_url: string;
-  // metadata - ref
-  world: WorldReference;
-  neighborhood: NeighborhoodReference;
-  // lot
-  type: LotType;
-  dimensions: {
-    width: number;
-    depth: number;
-  };
-  availability: ResidentialAvailability | CommunityAvailability;
-  // lot - sim
-  owner?: string;
-  // transaction
-  transaction: {
-    type: ResidentialTransactionType | CommunityTransactionType;
-    main_price: number;
-    rent?: Partial<RentDetailItems>;
-    rent_history?: RentDetailsDTO;
-    buy?: {
-      price?: number;
-    };
-    buy_history?: BuyDetailsDTO;
-  };
-  // building
-  building_details: {
-    type: ResidentialLotType | CommunityLotType;
-    bedrooms?: number;
-    bathrooms?: number;
-    floors?: number;
-  };
+  world: EntityReference;
+  neighborhood: EntityReference;
 };
-
-// FILTERS
-
-type LotQueryParamSort = 'asc' | 'desc';
-type LotQueryParamSortBy = 'price' | 'berdrooms' | 'bathroooms' | 'floors';
-export type LotFilters = {
-  world?: string;
-  neighborhood?: string;
-  type?: string;
-  availability?: string;
-  transactionType?: string;
-  buildingType?: string;
-  bedrooms?: number;
-  bathrooms?: number;
-  floors?: number;
-  minPrice?: number;
-  maxPrice?: number;
-  sort?: LotQueryParamSort;
-  sortBy?: LotQueryParamSortBy;
-};
-export type LotQueryParams = Pick<
-  LotFilters,
-  'world' | 'neighborhood' | 'type' | 'availability' | 'bedrooms' | 'bathrooms' | 'floors' | 'sort'
-> & {
-  transaction_type?: string;
-  building_type?: string;
-  min_price?: string;
-  max_price?: string;
-  sort_by?: LotQueryParamSortBy;
-};
-
-export type LotSummaryDTO = Partial<LotDTO>;
-export type LotSummaryById = Record<string, LotSummaryDTO>;

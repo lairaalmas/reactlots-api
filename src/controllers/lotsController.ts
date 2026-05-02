@@ -1,8 +1,10 @@
-import { listLots, findLotById, sortLots } from '../services/lotsService.js';
-import { isValidSlug } from '../utils/functions.js';
 import type { FastifyRequest, FastifyReply } from 'fastify';
-import type { LotFilters, LotQueryParams } from '../types/lot.js';
+import { listLots, findLotById } from '../services/lotsService.js';
 
+type Query = {
+  world?: string;
+  neighborhood?: string;
+};
 type Params = {
   id: string;
 };
@@ -11,13 +13,11 @@ type ParseLotQueryParam = {
   value: string | undefined;
 };
 
-const isValidNumber = (value: number): boolean => {
-  if (isNaN(value) || value < 0 || value > 10) return false;
-
-  return true;
+const isValidSlug = (value: string): boolean => {
+  return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 };
 
-const parseLotQueryParamString = ({ param = 'param', value }: ParseLotQueryParam): string => {
+const parseLotQueryParam = ({ param = 'param', value }: ParseLotQueryParam): string => {
   if (!value) {
     return '';
   }
@@ -29,26 +29,6 @@ const parseLotQueryParamString = ({ param = 'param', value }: ParseLotQueryParam
   }
 
   return trimmed;
-};
-
-const parseLotQueryParamNumber = ({ param = 'param', value }: ParseLotQueryParam): number => {
-  if (!value) {
-    return 0;
-  }
-
-  const trimmed = typeof value === 'string' ? value?.trim() : '';
-
-  if (!trimmed || trimmed.length > 50) {
-    throw new Error(`${param} is invalid`);
-  }
-
-  const numericValue = parseInt(trimmed);
-
-  if (!isValidNumber(numericValue)) {
-    throw new Error(`${param} is invalid`);
-  }
-
-  return numericValue;
 };
 
 const parseLotId = (value: string): string => {
@@ -65,45 +45,19 @@ const parseLotId = (value: string): string => {
   return trimmed;
 };
 
-export const getLots = async (request: FastifyRequest<{ Querystring: LotQueryParams }>, reply: FastifyReply) => {
+export const getLots = async (request: FastifyRequest<{ Querystring: Query }>, reply: FastifyReply) => {
   const _world = request.query.world;
   const _neigh = request.query.neighborhood;
 
-  const _type = request.query.type;
-  const _availability = request.query.availability;
-  const _transactionType = request.query.transaction_type;
-
-  const _buildingType = request.query.building_type;
-  const _bedrooms = request.query.bedrooms;
-  const _bathrooms = request.query.bathrooms;
-  const _floors = request.query.floors;
-
-  // const _min_price = request.query.minPrice;
-  // const _max_price = request.query.maxPrice;
-
-  const _sort = request.query.sort;
-  const _sortBy = request.query.sort_by;
-
   try {
-    const filters: LotFilters = {
-      world: parseLotQueryParamString({ param: 'world', value: _world }),
-      neighborhood: parseLotQueryParamString({ param: 'neighborhood', value: _neigh }),
-      type: parseLotQueryParamString({ param: 'type', value: _type }),
-      availability: parseLotQueryParamString({ param: 'availability', value: _availability }),
-      transactionType: parseLotQueryParamString({ param: 'transaction_type', value: _transactionType }),
-      buildingType: parseLotQueryParamString({ param: 'building_type', value: _buildingType }),
-      bedrooms: parseLotQueryParamNumber({ param: 'bedrooms', value: _bedrooms }),
-      bathrooms: parseLotQueryParamNumber({ param: 'bathrooms', value: _bathrooms }),
-      floors: parseLotQueryParamNumber({ param: 'floors', value: _floors }),
-      sort: parseLotQueryParamString({ param: 'sort', value: _sort }),
-      sortBy: parseLotQueryParamString({ param: 'sort_by', value: _sortBy }),
+    const filters = {
+      world: parseLotQueryParam({ param: 'world', value: _world }),
+      neighborhood: parseLotQueryParam({ param: 'neighborhood', value: _neigh }),
     };
 
     const lots = listLots(filters);
 
-    const sortedLots = sortLots(lots, filters?.sort, filters?.sortBy);
-
-    return reply.send(sortedLots);
+    return reply.send(lots);
   } catch (err: unknown) {
     const error = err as Error;
     return reply.status(404).send({ message: error?.message || 'Error searching lots' });
