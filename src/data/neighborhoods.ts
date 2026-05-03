@@ -1,8 +1,17 @@
-import { worldSummaryById, WORLD_KEYS } from '../data/worlds.js';
+import { worldSummaryById, WORLD_KEYS } from './worlds.js';
 import { isValidSlug } from '../utils/functions.js';
 import { neighborhoodData } from './source/neighborhoodData.js';
 import type { NeighborhoodDTO, NeighborhoodSummaryById } from '../types/neighborhood.js';
 import type { NeighborhoodData } from './source/neighborhoodData.js';
+
+/**
+ * (Sequence)
+ * source data
+ * validate source
+ * map to DTO
+ * create lookup/index
+ * export keys
+ */
 
 const ERROR_LOG = '❌ Error mapping neighborhoods:';
 const WARN_LOG = '⚠️ Warning mapping neighborhoods:';
@@ -14,14 +23,13 @@ const WARN_LOG = '⚠️ Warning mapping neighborhoods:';
  * error: id invalid
  * warn: title missing
  */
-const validateDomainFields = (id: string, title: string, index: number) => {
+const validateSource = (id: string, title: string) => {
   let isValid = true;
 
   if (!id) {
-    console.error(`${ERROR_LOG} Missing id. Data${index}] was not mapped.`);
+    console.error(`${ERROR_LOG} Missing id. Data was not mapped.`);
     isValid = false;
-  }
-  if (!isValidSlug(id)) {
+  } else if (!isValidSlug(id)) {
     console.error(`${ERROR_LOG} Invalid id format '${id}'. Data was not mapped.`);
     isValid = false;
   }
@@ -32,56 +40,70 @@ const validateDomainFields = (id: string, title: string, index: number) => {
 };
 
 const mapToDTO = (neighborhoodsByWorld: NeighborhoodData) => {
-  // for each world key
-  const validNeighborhoods = WORLD_KEYS.reduce<NeighborhoodDTO[]>((acc, worldId) => {
-    // if there is no info for that world, skip
-    if (!neighborhoodsByWorld[worldId]) {
-      console.warn(`${WARN_LOG} Known world '${worldId}' is not mapped in neighborhoods. Skipping.`);
-      return acc;
+  const result: NeighborhoodDTO[] = [];
+  const mappedIds = new Set<string>();
+
+  // for each ref world key
+  for (const worldId of WORLD_KEYS) {
+    const world = worldSummaryById[worldId];
+    const worldTitle = world?.title || worldId;
+    const neighborhoods = neighborhoodsByWorld[worldId];
+
+    // if there are no items for that world, skip
+    if (!neighborhoods) {
+      console.warn(`${WARN_LOG} Known world '${worldId}' is not present in neighborhood data. Skipping.`);
+      continue;
+    }
+    if (neighborhoods.length === 0) {
+      console.warn(`${WARN_LOG} Known world '${worldId}' has no neighborhoods mapped. Skipping.`);
+      continue;
     }
 
-    // for each neighborhood listed in the world key
-    const neighborhoods = neighborhoodsByWorld[worldId].reduce<NeighborhoodDTO[]>((accN, n, index) => {
-      if (!validateDomainFields(n.id, n.title, index)) return acc;
+    // inform of missing world title
+    if (!world?.title) console.warn(`${WARN_LOG} Missing ref to world title of '${worldId}'. Fallbacking to world id.`);
 
-      if (!worldSummaryById[worldId]?.title)
-        console.warn(`${WARN_LOG} Missing ref to neighborhood title '${worldId}'. Fallbacking to world id.`);
+    // for each neighborhood
+    for (const neighborhood of neighborhoods) {
+      const { id, title, description, color } = neighborhood;
 
-      // if neighborhood is valid, map to DTO w/ world ref
-      return [
-        ...accN,
-        {
-          id: n.id,
-          title: n.title || n.id,
-          description: n.description || '',
-          color: n.color || 'default',
-          world: {
-            id: worldId,
-            title: worldSummaryById[worldId]?.title || worldId,
-          },
+      if (!validateSource(id, title)) continue;
+
+      // If there are duplicate ids, skip
+      if (mappedIds.has(id)) {
+        console.error(`${ERROR_LOG} Duplicate neighborhood id '${id}'. Skipping.`);
+        continue;
+      }
+
+      mappedIds.add(id);
+
+      result.push({
+        id,
+        title: title || id,
+        description: description || '',
+        color: color || 'default',
+        world: {
+          id: worldId,
+          title: worldTitle,
         },
-      ];
-    }, []);
-
-    return [...acc, ...neighborhoods];
-  }, []);
+      });
+    }
+  }
 
   // Log worlds in neighborhood list that are not in worldSummaryById
-  Object.keys(neighborhoodsByWorld)
-    .filter((id) => !WORLD_KEYS.includes(id))
-    .forEach((id) => {
-      console.warn(`${WARN_LOG} World '${id}' from neighborhood list is unknown. Not mapped.`);
-    });
+  for (const worldId of Object.keys(neighborhoodsByWorld)) {
+    if (!WORLD_KEYS.includes(worldId))
+      console.warn(`${WARN_LOG} World '${worldId}' from neighborhood list is unknown. Not mapped.`);
+  }
 
-  return validNeighborhoods;
+  return result;
 };
+
 export const neighborhoods = mapToDTO(neighborhoodData);
 
 // ref
-export const neighborhoodSummaryById = neighborhoods.reduce<NeighborhoodSummaryById>((acc, n) => {
-  return {
-    ...acc,
-    [n.id]: {
+const createNeighborhoodSummaryById = (list: NeighborhoodDTO[]) =>
+  list.reduce<NeighborhoodSummaryById>((acc, n) => {
+    acc[n.id] = {
       id: n.id,
       title: n.title,
       color: n.color,
@@ -89,9 +111,12 @@ export const neighborhoodSummaryById = neighborhoods.reduce<NeighborhoodSummaryB
         id: n.world.id,
         title: n.world.title,
       },
-    },
-  };
-}, {});
+    };
+    return acc;
+  }, {});
+
+export const neighborhoodSummaryById = createNeighborhoodSummaryById(neighborhoods);
+
 export const NEIGHBORHOOD_KEYS = Object.keys(neighborhoodSummaryById) as Array<keyof NeighborhoodSummaryById>;
 
 // console.log(NEIGHBORHOOD_KEYS);

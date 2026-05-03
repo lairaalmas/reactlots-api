@@ -2,9 +2,6 @@ import { isValidSlug } from '../utils/functions.js';
 import { worldData } from './source/worldData.js';
 import type { World, WorldDTO, WorldSummaryById } from '../types/world.js';
 
-const ERROR_LOG = '❌ Error mapping worlds:';
-const WARN_LOG = '⚠️ Warning mapping worlds:';
-
 /**
  * (Sequence)
  * source data
@@ -13,6 +10,9 @@ const WARN_LOG = '⚠️ Warning mapping worlds:';
  * create lookup/index
  * export keys
  */
+
+const ERROR_LOG = '❌ Error mapping worlds:';
+const WARN_LOG = '⚠️ Warning mapping worlds:';
 
 /**
  * Validations:
@@ -64,6 +64,7 @@ const createWorldSummaryById = (list: WorldDTO[]) => {
 
   return worldSummaryById;
 };
+
 export const worldSummaryById = createWorldSummaryById(worlds);
 
 export const WORLD_KEYS = Object.keys(worldSummaryById) as Array<keyof WorldSummaryById>;
