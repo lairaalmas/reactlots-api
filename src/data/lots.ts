@@ -3,12 +3,11 @@ import { WORLD_KEYS } from './worlds.js';
 import { NEIGHBORHOOD_KEYS, neighborhoodSummaryById } from './neighborhoods.js';
 import { lotData } from './source/lotData.js';
 import { isValidSlug } from '../utils/functions.js';
-import { numberValueTBD } from '../utils/constants.js';
 import type { LotDTO, Lot } from '../types/lot.js';
 import type { Neighborhood } from '../types/neighborhood.js';
 import type { World } from '../types/world.js';
 import type { LotDataByNeighborhood, LotDataByWorld } from './source/lotData.js';
-import type { LotSummaryById } from '../types/lot.js';
+import type { MainPriceDTO, RentDetailsDTO, BuyDetailsDTO } from '../types/lot.js';
 
 const ERROR_LOG = '❌ Error mapping lots:';
 const WARN_LOG = '⚠️ Warning mapping lots:';
@@ -22,7 +21,7 @@ const WARN_LOG = '⚠️ Warning mapping lots:';
 const validateSource = (id: string, title: string, index: number) => {
   let isValid = true;
   if (!id) {
-    console.error(`${ERROR_LOG} Missing id. Data${index}] was not mapped.`);
+    console.error(`${ERROR_LOG} Missing id. Data[${index}] was not mapped.`);
     isValid = false;
   }
   if (!isValidSlug(id)) {
@@ -40,14 +39,57 @@ const mapLot = (
   neighborhood: Pick<Neighborhood, 'id' | 'title' | 'color'>,
   world: Pick<World, 'id' | 'title'>
 ): LotDTO => {
-  const price = lot.rentDetails?.inGame?.rent
-    ? lot.rentDetails?.inGame?.rent
-    : lot.buyDetails?.inGame || numberValueTBD;
+  let mainPrice: MainPriceDTO = null;
+  let rentDetails: RentDetailsDTO = {
+    rent: null,
+    deposit: null,
+    furniture: null,
+    period: null,
+    price_history: {
+      in_game: { furniture: null },
+      pre_game: { furniture: null },
+    },
+  };
+  let buyHistory: BuyDetailsDTO = {
+    price: null,
+    price_history: {
+      pre_game: null,
+      in_game: null,
+    },
+  };
+
+  if (lot.type === 'residential') {
+    if (lot.rentDetails) {
+      const { inGame, preGame } = lot.rentDetails;
+      mainPrice = inGame?.rent || null;
+      rentDetails = {
+        rent: inGame?.rent || null,
+        deposit: inGame?.deposit || null,
+        furniture: inGame?.furniture || null,
+        period: inGame?.period || null,
+        price_history: {
+          in_game: { furniture: inGame?.furniture || null },
+          pre_game: { furniture: preGame?.furniture || null },
+        },
+      };
+    }
+    if (lot.buyDetails) {
+      const { inGame, preGame } = lot.buyDetails;
+      if (!mainPrice) mainPrice = inGame || null;
+      buyHistory = {
+        price: inGame || null,
+        price_history: {
+          pre_game: preGame || null,
+          in_game: inGame || null,
+        },
+      };
+    }
+  }
 
   return {
     // metadata
     id: lot.id,
-    title: lot.title || lot.id,
+    title: lot.title,
     description: lot.description || '',
     image_url: lot.imageURL || '',
     // metadata - ref
@@ -61,36 +103,21 @@ const mapLot = (
     },
     availability: lot.availability,
     // lot - sim
-    owner: lot.owner || '',
-    // transaction
-    transaction: {
-      type: lot?.transactionType,
-      main_price: price,
-      rent: {
-        rent: lot.rentDetails?.inGame?.rent,
-        deposit: lot.rentDetails?.inGame?.deposit,
-        furniture: lot.rentDetails?.inGame?.furniture,
-        period: lot.rentDetails?.inGame?.period || 'week',
-      },
-      rent_history: {
-        pre_game: lot.rentDetails?.preGame,
-        in_game: lot.rentDetails?.inGame,
-      },
-      buy: {
-        price: lot.buyDetails?.inGame,
-      },
-      buy_history: {
-        pre_game: lot.buyDetails?.preGame,
-        in_game: lot.buyDetails?.inGame,
-      },
-    },
+    owner: lot.owner || null,
     // building
     building_details: {
       type: lot.buildingDetails?.type,
-      bedrooms: lot.buildingDetails?.bedrooms,
-      bathrooms: lot.buildingDetails?.bathrooms,
-      floors: lot.buildingDetails?.floors,
-      title: lot?.apartmentTitle,
+      apartment_title: lot.buildingDetails?.apartmentTitle || null,
+      bedrooms: lot.buildingDetails?.bedrooms || null,
+      bathrooms: lot.buildingDetails?.bathrooms || null,
+      floors: lot.buildingDetails?.floors || null,
+    },
+    // transaction
+    transaction: {
+      type: lot?.transactionType || null,
+      main_price: mainPrice,
+      rent_details: rentDetails,
+      buy_details: buyHistory,
     },
   };
 };
