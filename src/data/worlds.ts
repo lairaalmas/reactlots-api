@@ -20,7 +20,7 @@ const WARN_LOG = '⚠️ Warning mapping worlds:';
  * error: id invalid
  * warn: title missing
  */
-const validateWorldSource = (id: string, title: string, index: number) => {
+const validateSource = (id: string, title: string, index: number) => {
   let isValid = true;
   if (!id) {
     console.error(`${ERROR_LOG} Missing id. Data[${index}] was not mapped.`);
@@ -37,7 +37,7 @@ const validateWorldSource = (id: string, title: string, index: number) => {
 
 const mapToDTO = (list: World[]) => {
   return list.reduce<WorldDTO[]>((acc, w, index) => {
-    if (!validateWorldSource(w.id, w.title, index)) return acc;
+    if (!validateSource(w.id, w.title, index)) return acc;
 
     acc.push({
       id: w.id,

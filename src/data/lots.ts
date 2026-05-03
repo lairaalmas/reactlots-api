@@ -10,9 +10,6 @@ import type { World } from '../types/world.js';
 import type { LotDataByNeighborhood, LotDataByWorld } from './source/lotData.js';
 import type { LotSummaryById } from '../types/lot.js';
 
-// unfurnished - 1x deposit + Nx weekply
-// furniture - 1x deposito + 1x furniture + Nx weekly
-
 const ERROR_LOG = '❌ Error mapping lots:';
 const WARN_LOG = '⚠️ Warning mapping lots:';
 
@@ -22,7 +19,7 @@ const WARN_LOG = '⚠️ Warning mapping lots:';
  * error: id invalid
  * warn: title missing
  */
-const validateDomainFields = (id: string, title: string, index: number) => {
+const validateSource = (id: string, title: string, index: number) => {
   let isValid = true;
   if (!id) {
     console.error(`${ERROR_LOG} Missing id. Data${index}] was not mapped.`);
@@ -118,7 +115,7 @@ const mapToDTO = (lotsByWorld: LotDataByWorld): LotDTO[] => {
 
     // for lots listed in the neighborhood
     const lots = lotsByNeighborhood[neighborhoodId].reduce<any>((accL, l, index) => {
-      if (!validateDomainFields(l.id, l.title, index)) return accL;
+      if (!validateSource(l.id, l.title, index)) return accL;
 
       const neighborhoodRef = neighborhoodSummaryById[neighborhoodId];
       const worldRef = neighborhoodRef?.world;
@@ -160,13 +157,3 @@ const mapToDTO = (lotsByWorld: LotDataByWorld): LotDTO[] => {
 };
 
 export const lots = mapToDTO(lotData);
-
-export const lotSummaryById = lots.reduce<LotSummaryById>((acc, l) => {
-  return {
-    ...acc,
-    [l.id]: l,
-  };
-}, {});
-export const LOT_KEYS = Object.keys(lotSummaryById) as Array<keyof LotSummaryById>;
-
-// console.log(LOT_KEYS);
