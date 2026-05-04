@@ -158,8 +158,8 @@ export type LotDTO = {
   // lot
   type: LotCategory;
   dimensions: {
-    width: number;
-    depth: number;
+    width: number | null;
+    depth: number | null;
   };
   availability: ResidentialAvailability | CommunityAvailability | SpecialAvailability;
   // lot - sim

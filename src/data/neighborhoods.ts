@@ -27,14 +27,14 @@ const validateSource = (id: string, title: string) => {
   let isValid = true;
 
   if (!id) {
-    console.error(`${ERROR_LOG} Missing id. Data was not mapped.`);
+    console.error(`${ERROR_LOG} Missing id. Skipping.`);
     isValid = false;
   } else if (!isValidSlug(id)) {
-    console.error(`${ERROR_LOG} Invalid id format '${id}'. Data was not mapped.`);
+    console.error(`${ERROR_LOG} Invalid id format '${id}'. Skipping.`);
     isValid = false;
   }
   if (!title) {
-    console.warn(`${WARN_LOG} Missing title for '${id}'. Fallbacked to id.`);
+    console.warn(`${WARN_LOG} Missing title for '${id}'. Fallbacking to id.`);
   }
   return isValid;
 };
@@ -49,7 +49,7 @@ const mapToDTO = (neighborhoodsByWorld: NeighborhoodData) => {
     const worldTitle = world?.title || worldId;
     const neighborhoods = neighborhoodsByWorld[worldId];
 
-    // if there are no items for that world, skip
+    // if there are no neighborhoods for that world, skip
     if (!neighborhoods) {
       console.warn(`${WARN_LOG} Known world '${worldId}' is not present in neighborhood data. Skipping.`);
       continue;
@@ -68,7 +68,7 @@ const mapToDTO = (neighborhoodsByWorld: NeighborhoodData) => {
 
       if (!validateSource(id, title)) continue;
 
-      // If there are duplicate ids, skip
+      // If there are duplicate neighborhood ids, skip
       if (mappedIds.has(id)) {
         console.error(`${ERROR_LOG} Duplicate neighborhood id '${id}'. Skipping.`);
         continue;
@@ -92,7 +92,7 @@ const mapToDTO = (neighborhoodsByWorld: NeighborhoodData) => {
   // Log worlds in neighborhood list that are not in worldSummaryById
   for (const worldId of Object.keys(neighborhoodsByWorld)) {
     if (!WORLD_KEYS.includes(worldId))
-      console.warn(`${WARN_LOG} World '${worldId}' from neighborhood list is unknown. Not mapped.`);
+      console.warn(`${WARN_LOG} World '${worldId}' from neighborhood list is unknown. Skipped.`);
   }
 
   return result;
