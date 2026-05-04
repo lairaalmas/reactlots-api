@@ -1,17 +1,9 @@
-import { worldSummaryById } from './worlds.js';
-import { WORLD_KEYS } from './worlds.js';
-import { NEIGHBORHOOD_KEYS, neighborhoodSummaryById } from './neighborhoods.js';
+import { WORLD_ID_SET } from './worlds.js';
+import { NEIGHBORHOOD_IDS, NEIGHBORHOOD_ID_SET, neighborhoodSummaryById } from './neighborhoods.js';
 import { lotData } from './source/lotData.js';
 import { isValidSlug } from '../utils/functions.js';
-import { numberValueTBD } from '../utils/constants.js';
-import type { LotDTO, Lot } from '../types/lot.js';
-import type { Neighborhood } from '../types/neighborhood.js';
-import type { World } from '../types/world.js';
+import type { Lot, LotDTO, MainPriceDTO, RentDetailsDTO, BuyDetailsDTO } from '../types/lot.js';
 import type { LotDataByNeighborhood, LotDataByWorld } from './source/lotData.js';
-import type { LotSummaryById } from '../types/lot.js';
-
-// unfurnished - 1x deposit + Nx weekply
-// furniture - 1x deposito + 1x furniture + Nx weekly
 
 const ERROR_LOG = '❌ Error mapping lots:';
 const WARN_LOG = '⚠️ Warning mapping lots:';
@@ -22,151 +14,209 @@ const WARN_LOG = '⚠️ Warning mapping lots:';
  * error: id invalid
  * warn: title missing
  */
-const validateDomainFields = (id: string, title: string, index: number) => {
+const validateSource = (id?: string, title?: string, entityTextInsert?: string) => {
   let isValid = true;
+  const entity = entityTextInsert ? `${entityTextInsert} ` : '';
+
   if (!id) {
-    console.error(`${ERROR_LOG} Missing id. Data${index}] was not mapped.`);
+    console.error(`${ERROR_LOG} Missing ${entity}id. Skipping.`);
     isValid = false;
-  }
-  if (!isValidSlug(id)) {
-    console.error(`${ERROR_LOG} Invalid id format '${id}'. Data was not mapped.`);
-    isValid = false;
+  } else {
+    if (!isValidSlug(id)) {
+      console.error(`${ERROR_LOG} Invalid ${entity}id format '${id}'. Skipping.`);
+      isValid = false;
+    }
   }
   if (!title) {
-    console.warn(`${WARN_LOG} Missing title for '${id}'. Fallbacked to id.`);
+    console.warn(`${WARN_LOG} Missing title for ${entity}'${id}'. Fallbacking to id.`);
   }
   return isValid;
 };
 
-const mapLot = (
-  lot: Lot,
-  neighborhood: Pick<Neighborhood, 'id' | 'title' | 'color'>,
-  world: Pick<World, 'id' | 'title'>
-): LotDTO => {
-  const price = lot.rentDetails?.inGame?.rent
-    ? lot.rentDetails?.inGame?.rent
-    : lot.buyDetails?.inGame || numberValueTBD;
+const getMainPrice = (lot: Lot): MainPriceDTO => {
+  return lot?.rentDetails?.inGame?.rent ?? lot?.buyDetails?.inGame ?? null;
+};
+
+const mapRentDetails = (lot: Lot): RentDetailsDTO => {
+  let rentDetails: RentDetailsDTO = {
+    rent: null,
+    deposit: null,
+    furniture: null,
+    period: null,
+    price_history: {
+      in_game: { furniture: null },
+      pre_game: { furniture: null },
+    },
+  };
+  if (lot.rentDetails) {
+    const { inGame, preGame } = lot.rentDetails;
+    rentDetails = {
+      rent: inGame?.rent ?? null,
+      deposit: inGame?.deposit ?? null,
+      furniture: inGame?.furniture ?? null,
+      period: inGame?.period ?? null,
+      price_history: {
+        in_game: { furniture: inGame?.furniture ?? null },
+        pre_game: { furniture: preGame?.furniture ?? null },
+      },
+    };
+  }
+  return rentDetails;
+};
+
+const mapBuyDetails = (lot: Lot): BuyDetailsDTO => {
+  let buyDetails: BuyDetailsDTO = {
+    price: null,
+    price_history: {
+      pre_game: null,
+      in_game: null,
+    },
+  };
+  if (lot.buyDetails) {
+    const { inGame, preGame } = lot.buyDetails;
+    buyDetails = {
+      price: inGame ?? null,
+      price_history: {
+        pre_game: preGame ?? null,
+        in_game: inGame ?? null,
+      },
+    };
+  }
+  return buyDetails;
+};
+
+const mapLot = (lot: Lot, neighborhood: LotDTO['neighborhood'], world: LotDTO['world']): LotDTO => {
+  const mainPrice = getMainPrice(lot);
+  const rentDetails = mapRentDetails(lot);
+  const buyDetails = mapBuyDetails(lot);
 
   return {
     // metadata
     id: lot.id,
     title: lot.title || lot.id,
-    description: lot.description || '',
-    image_url: lot.imageURL || '',
+    description: lot.description ?? '',
+    image_url: lot.imageURL ?? '',
     // metadata - ref
     world,
     neighborhood,
     // lot
     type: lot.type,
     dimensions: {
-      width: lot.dimensions?.width,
-      depth: lot.dimensions?.depth,
+      width: lot.dimensions?.width ?? null,
+      depth: lot.dimensions?.depth ?? null,
     },
     availability: lot.availability,
     // lot - sim
-    owner: lot.owner || '',
-    // transaction
-    transaction: {
-      type: lot?.transactionType,
-      main_price: price,
-      rent: {
-        rent: lot.rentDetails?.inGame?.rent,
-        deposit: lot.rentDetails?.inGame?.deposit,
-        furniture: lot.rentDetails?.inGame?.furniture,
-        period: lot.rentDetails?.inGame?.period || 'week',
-      },
-      rent_history: {
-        pre_game: lot.rentDetails?.preGame,
-        in_game: lot.rentDetails?.inGame,
-      },
-      buy: {
-        price: lot.buyDetails?.inGame,
-      },
-      buy_history: {
-        pre_game: lot.buyDetails?.preGame,
-        in_game: lot.buyDetails?.inGame,
-      },
-    },
+    owner: lot.owner ?? null,
     // building
     building_details: {
       type: lot.buildingDetails?.type,
-      bedrooms: lot.buildingDetails?.bedrooms,
-      bathrooms: lot.buildingDetails?.bathrooms,
-      floors: lot.buildingDetails?.floors,
-      title: lot?.apartmentTitle,
+      apartment_title: lot.buildingDetails?.apartmentTitle ?? null,
+      bedrooms: lot.buildingDetails?.bedrooms ?? null,
+      bathrooms: lot.buildingDetails?.bathrooms ?? null,
+      floors: lot.buildingDetails?.floors ?? null,
+    },
+    // transaction
+    transaction: {
+      type: lot?.transactionType ?? null,
+      main_price: mainPrice,
+      rent_details: rentDetails,
+      buy_details: buyDetails,
     },
   };
 };
 
-const transformLotData = (list: LotDataByWorld): LotDataByNeighborhood => {
-  const neighsList = Object.values(list);
-  return neighsList.reduce<LotDataByNeighborhood>((acc, neighList) => {
-    return { ...acc, ...neighList };
-  }, {});
-};
+const createLotsByNeighborhood = (lotsByWorld: LotDataByWorld): LotDataByNeighborhood => {
+  const result: LotDataByNeighborhood = {};
+  const mappedNeighIds = new Set<string>();
 
-const mapToDTO = (lotsByWorld: LotDataByWorld): LotDTO[] => {
-  const lotsByNeighborhood = transformLotData(lotsByWorld);
-
-  // for each neighborhood key
-  const validLots = NEIGHBORHOOD_KEYS.reduce<any>((accN, neighborhoodId) => {
-    // if there is no info for that neighborhood, skip
-    if (!lotsByNeighborhood[neighborhoodId]) {
-      console.warn(`${WARN_LOG} Known neighborhood '${neighborhoodId}' is not mapped in lots. Skipping.`);
-      return accN;
+  for (const [worldId, neighborhoods] of Object.entries(lotsByWorld)) {
+    if (!WORLD_ID_SET.has(worldId)) {
+      console.warn(`${WARN_LOG} World '${worldId}' from lot list is unknown. Skipped.`);
+      continue;
     }
 
-    // for lots listed in the neighborhood
-    const lots = lotsByNeighborhood[neighborhoodId].reduce<any>((accL, l, index) => {
-      if (!validateDomainFields(l.id, l.title, index)) return accL;
-
-      const neighborhoodRef = neighborhoodSummaryById[neighborhoodId];
-      const worldRef = neighborhoodRef?.world;
-
-      if (!worldRef?.id) {
-        console.warn(`${WARN_LOG} Missing ref to world id in lot '${l.id}'. Skipping.`);
-        return accL;
+    for (const [neighId, lots] of Object.entries(neighborhoods)) {
+      if (!NEIGHBORHOOD_ID_SET.has(neighId)) {
+        console.warn(`${WARN_LOG} Neighborhood '${neighId}' from lot list is unknown. Skipped.`);
+        continue;
       }
 
-      const world = {
-        id: worldRef.id,
-        title: worldSummaryById[worldRef.id]?.title || worldRef.id,
-      };
-      const neighborhood = {
-        id: neighborhoodId,
-        title: neighborhoodRef?.title || neighborhoodId,
-        color: neighborhoodRef?.color || 'default',
-      };
+      if (mappedNeighIds.has(neighId)) {
+        console.error(`${ERROR_LOG} Duplicate neighborhood id '${neighId}' in lot data. Skipping.`);
+        continue;
+      }
+      mappedNeighIds.add(neighId);
 
-      // if lot is valid, map to DTO w/ world and neighborhoodref
-      return [...accL, mapLot(l, neighborhood, world)];
-    }, []);
+      result[neighId] = lots;
+    }
+  }
 
-    return [...accN, ...lots];
-  }, []);
+  return result;
+};
 
-  Object.keys(lotsByWorld)
-    .filter((id) => !WORLD_KEYS.includes(id))
-    .forEach((id) => {
-      console.warn(`${WARN_LOG} World '${id}' from lot list is unknown. Not mapped.`);
-    });
-  Object.keys(lotsByNeighborhood)
-    .filter((id) => !NEIGHBORHOOD_KEYS.includes(id))
-    .forEach((id) => {
-      console.warn(`${WARN_LOG} Neighborhood '${id}' from lot list is unknown. Not mapped.`);
-    });
+const mapToDTO = (lotsByWorld: LotDataByWorld) => {
+  const result: LotDTO[] = [];
+  const mappedIds = new Set<string>();
 
-  return validLots;
+  const lotsByNeighborhood = createLotsByNeighborhood(lotsByWorld);
+
+  // for each ref world key
+  for (const neighId of NEIGHBORHOOD_IDS) {
+    const neighborhood = neighborhoodSummaryById[neighId];
+    const neighTitle = neighborhood?.title || neighId;
+    const neighColor = neighborhood?.color || 'default';
+
+    const world = neighborhood?.world;
+    const worldId = world?.id || '';
+    const worldTitle = world?.title || worldId;
+
+    const lots = lotsByNeighborhood[neighId];
+
+    // if there are no lots for that neighborhood, skip
+    if (!lots) {
+      console.warn(`${WARN_LOG} Known neighborhood '${neighId}' is not present in lot data. Skipping.`);
+      continue;
+    }
+    if (lots.length === 0) {
+      console.warn(`${WARN_LOG} Known neighborhood '${neighId}' has no lots mapped. Skipping.`);
+      continue;
+    }
+
+    if (
+      !validateSource(worldId, worldTitle, 'ref to world') ||
+      !validateSource(neighId, neighTitle, 'ref to neighborhood')
+    )
+      continue;
+
+    const worldRef = {
+      id: worldId,
+      title: worldTitle,
+    };
+    const neighborhoodRef = {
+      id: neighId,
+      title: neighTitle,
+      color: neighColor,
+    };
+
+    // for each lot
+    for (const lot of lots) {
+      const { id, title } = lot;
+
+      if (!validateSource(id, title)) continue;
+
+      // If there are duplicate lot ids, skip
+      if (mappedIds.has(id)) {
+        console.error(`${ERROR_LOG} Duplicate lot id '${id}'. Skipping.`);
+        continue;
+      }
+      mappedIds.add(id);
+
+      result.push(mapLot(lot, neighborhoodRef, worldRef));
+    }
+  }
+
+  return result;
 };
 
 export const lots = mapToDTO(lotData);
-
-export const lotSummaryById = lots.reduce<LotSummaryById>((acc, l) => {
-  return {
-    ...acc,
-    [l.id]: l,
-  };
-}, {});
-export const LOT_KEYS = Object.keys(lotSummaryById) as Array<keyof LotSummaryById>;
-
-// console.log(LOT_KEYS);

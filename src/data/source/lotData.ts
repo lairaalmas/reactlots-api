@@ -4,8 +4,8 @@ import type { Lot } from '../../types/lot.js';
 export type LotDataByNeighborhood = Record<string, Lot[]>;
 export type LotDataByWorld = Record<string, LotDataByNeighborhood>;
 
-const NOT_AVAILABLE_IN_PREGAME = undefined;
-const NOT_AVAILABLE_EVER = undefined;
+const PRICE_NOT_AVAILABLE_IN_PREGAME = undefined;
+const PRICE_NOT_AVAILABLE_EVER = undefined;
 
 export const lotData: LotDataByWorld = {
   'willow-creek': {
@@ -110,7 +110,7 @@ export const lotData: LotDataByWorld = {
         description: 'A sprawling colonial with landscaping perfect for outdoor entertaining.',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 85545,
         },
         dimensions: {
@@ -133,11 +133,6 @@ export const lotData: LotDataByWorld = {
         id: 'sylvian-glade',
         title: 'Sylvan Glade',
         description: stringValueDoesntExist,
-        transactionType: undefined,
-        buyDetails: {
-          preGame: NOT_AVAILABLE_EVER,
-          inGame: NOT_AVAILABLE_EVER,
-        },
         dimensions: {
           width: 15,
           depth: 10,
@@ -146,9 +141,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'secret',
-          bedrooms: NOT_AVAILABLE_EVER,
-          bathrooms: NOT_AVAILABLE_EVER,
-          floors: NOT_AVAILABLE_EVER,
         },
         imageURL:
           'https://static.wikia.nocookie.net/sims/images/4/46/Sylvan_Tree.png/revision/latest?cb=20140913002758',
@@ -182,7 +174,7 @@ export const lotData: LotDataByWorld = {
         description: 'Built for outdoor living, this colonial features a wraparound porch and balcony.',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 91681,
         },
         dimensions: {
@@ -206,7 +198,7 @@ export const lotData: LotDataByWorld = {
         description: 'This modified double shotgun has plenty of space for a comfort and entertaining.',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 40114,
         },
         dimensions: {
@@ -231,7 +223,7 @@ export const lotData: LotDataByWorld = {
         description: stringValueDoesntExist,
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 120945,
         },
         dimensions: {
@@ -256,7 +248,7 @@ export const lotData: LotDataByWorld = {
         description: 'A cozy cottage with a welcoming porch that just screams, "RELAX!"',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 35074,
         },
         dimensions: {
@@ -303,7 +295,7 @@ export const lotData: LotDataByWorld = {
         description: 'A huge colonial with lovely grounds, this home is sure to impress.',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 157882,
         },
         dimensions: {
@@ -327,7 +319,7 @@ export const lotData: LotDataByWorld = {
         description: 'A large, traditional home with verandas and balconies galore.',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 101951,
         },
         dimensions: {
@@ -351,7 +343,7 @@ export const lotData: LotDataByWorld = {
         description: 'History (and mystery) emanates from this tri-story Gothic mansion.',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 226386,
         },
         dimensions: {
@@ -378,7 +370,7 @@ export const lotData: LotDataByWorld = {
         description: 'A large property with classical styling, this is the quintessential Garden Estates home.',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 231138,
         },
         dimensions: {
@@ -402,7 +394,7 @@ export const lotData: LotDataByWorld = {
         description: 'Modern meets traditional in this three-story home with extensive landscaping.',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 232512,
         },
         dimensions: {
@@ -427,9 +419,8 @@ export const lotData: LotDataByWorld = {
         id: 'municipal-muses',
         title: 'Municipal Muses',
         description: stringValueDoesntExist,
-        transactionType: undefined,
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 122873,
         },
         dimensions: {
@@ -440,7 +431,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'museum',
-          bedrooms: NOT_AVAILABLE_EVER,
           bathrooms: 2,
           floors: 2,
         },
@@ -451,9 +441,9 @@ export const lotData: LotDataByWorld = {
         id: 'the-blue-velvet',
         title: 'The Blue Velvet',
         description: stringValueDoesntExist,
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 93558,
         },
         dimensions: {
@@ -464,7 +454,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'nightclub',
-          bedrooms: NOT_AVAILABLE_EVER,
           bathrooms: 2,
           floors: 2,
         },
@@ -475,9 +464,9 @@ export const lotData: LotDataByWorld = {
         id: 'movers-and-shakers',
         title: 'Movers & Shakers',
         description: stringValueDoesntExist,
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 85139,
         },
         dimensions: {
@@ -488,7 +477,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'gym',
-          bedrooms: NOT_AVAILABLE_EVER,
           bathrooms: 3,
           floors: 2,
         },
@@ -499,9 +487,9 @@ export const lotData: LotDataByWorld = {
         id: 'willow-creek-archive',
         title: 'Willow Creek Archive',
         description: stringValueDoesntExist,
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 103410,
         },
         dimensions: {
@@ -512,7 +500,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'library',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 2,
           floors: 2,
         },
@@ -526,9 +514,9 @@ export const lotData: LotDataByWorld = {
         title: 'Magnolia Blossom',
         description:
           'Magnolia Blossom Park is a historic park where Willow Creek inhabitants from all walks of life can come together to enjoy nature in a lush, green environment.',
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 69642,
         },
         dimensions: {
@@ -539,7 +527,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'park',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 2,
           floors: 1,
         },
@@ -625,7 +613,7 @@ export const lotData: LotDataByWorld = {
         description: stringValueDoesntExist,
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 35974,
         },
         dimensions: {
@@ -676,7 +664,7 @@ export const lotData: LotDataByWorld = {
         description: stringValueDoesntExist,
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 44368,
         },
         dimensions: {
@@ -700,7 +688,7 @@ export const lotData: LotDataByWorld = {
         description: stringValueDoesntExist,
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 37562,
         },
         dimensions: {
@@ -744,7 +732,7 @@ export const lotData: LotDataByWorld = {
         description: stringValueDoesntExist,
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 63488,
         },
         dimensions: {
@@ -769,7 +757,7 @@ export const lotData: LotDataByWorld = {
         description: stringValueDoesntExist,
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 133086,
         },
         dimensions: {
@@ -795,7 +783,7 @@ export const lotData: LotDataByWorld = {
         description: stringValueDoesntExist,
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 114595,
         },
         dimensions: {
@@ -840,7 +828,7 @@ export const lotData: LotDataByWorld = {
         description: stringValueDoesntExist,
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 174922,
         },
         dimensions: {
@@ -865,7 +853,7 @@ export const lotData: LotDataByWorld = {
         description: stringValueDoesntExist,
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 172947,
         },
         dimensions: {
@@ -891,7 +879,7 @@ export const lotData: LotDataByWorld = {
         description: stringValueDoesntExist,
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 278612,
         },
         dimensions: {
@@ -916,7 +904,7 @@ export const lotData: LotDataByWorld = {
         description: stringValueDoesntExist,
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 297883,
         },
         dimensions: {
@@ -940,9 +928,9 @@ export const lotData: LotDataByWorld = {
         id: 'the-futures-past',
         title: 'The Futures Past',
         description: stringValueDoesntExist,
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 90036,
         },
         dimensions: {
@@ -953,7 +941,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'museum',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 4,
           floors: 3,
         },
@@ -964,9 +952,9 @@ export const lotData: LotDataByWorld = {
         id: 'the-solar-flare',
         title: 'The Solar Flare',
         description: stringValueDoesntExist,
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 59015,
         },
         dimensions: {
@@ -977,7 +965,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'lounge',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 2,
           floors: 2,
         },
@@ -988,9 +976,9 @@ export const lotData: LotDataByWorld = {
         id: 'burners-and-builders',
         title: 'Burners & Builders',
         description: stringValueDoesntExist,
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 93083,
         },
         dimensions: {
@@ -1001,7 +989,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'gym',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 3,
           floors: 1,
         },
@@ -1012,9 +1000,9 @@ export const lotData: LotDataByWorld = {
         id: 'rattlesnake-juice',
         title: 'Rattlesnake Juice',
         description: stringValueDoesntExist,
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 81078,
         },
         dimensions: {
@@ -1025,7 +1013,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'bar',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 2,
           floors: 1,
         },
@@ -1038,9 +1026,9 @@ export const lotData: LotDataByWorld = {
         id: 'desert-bloom',
         title: 'Desert Bloom',
         description: stringValueDoesntExist,
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 102086,
         },
         type: 'community',
@@ -1051,7 +1039,7 @@ export const lotData: LotDataByWorld = {
         },
         buildingDetails: {
           type: 'park',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 4,
           floors: 1,
         },
@@ -1062,11 +1050,6 @@ export const lotData: LotDataByWorld = {
         id: 'forgotten-grotto',
         title: 'Forgotten Grotto',
         description: stringValueDoesntExist,
-        transactionType: undefined,
-        buyDetails: {
-          preGame: NOT_AVAILABLE_EVER,
-          inGame: NOT_AVAILABLE_EVER,
-        },
         type: 'special',
         availability: 'unavailable',
         dimensions: {
@@ -1075,9 +1058,6 @@ export const lotData: LotDataByWorld = {
         },
         buildingDetails: {
           type: 'secret',
-          bedrooms: NOT_AVAILABLE_EVER,
-          bathrooms: NOT_AVAILABLE_EVER,
-          floors: NOT_AVAILABLE_EVER,
         },
         imageURL:
           'https://static.wikia.nocookie.net/sims/images/d/d9/Sims4_forgotten_grotto_entrance.jpg/revision/latest/scale-to-width-down/1000?cb=20150818121602',
@@ -1402,7 +1382,6 @@ export const lotData: LotDataByWorld = {
       {
         id: 'culpepper-house-a',
         title: '17 Culpepper House',
-        apartmentTitle: 'Culpepper Apartments',
         description: 'A snug apartment in the heart of the desirable Spice Market district.',
         transactionType: 'rent',
         rentDetails: {
@@ -1424,6 +1403,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'Culpepper Apartments',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 1,
@@ -1435,7 +1415,6 @@ export const lotData: LotDataByWorld = {
       {
         id: 'culpepper-house-b',
         title: '18 Culpepper House',
-        apartmentTitle: 'Culpepper Apartments',
         description:
           'Once home to a famous local Chef, legend holds that Pufferfish Nigiri was invented in this very kitchen. Additionally, the dining room boasts brand new clean floors and fresh paint throughout.',
         transactionType: 'rent',
@@ -1458,6 +1437,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'Culpepper Apartments',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 1,
@@ -1469,7 +1449,6 @@ export const lotData: LotDataByWorld = {
       {
         id: 'culpepper-house-c',
         title: '19 Culpepper House',
-        apartmentTitle: 'Culpepper Apartments',
         description: 'A fixer-upper apartment with very reasonable rent and a spacious balcony.',
         transactionType: 'rent',
         rentDetails: {
@@ -1491,6 +1470,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'Culpepper Apartments',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -1503,15 +1483,14 @@ export const lotData: LotDataByWorld = {
       {
         id: 'culpepper-house-d',
         title: '20 Culpepper House',
-        apartmentTitle: 'Culpepper Apartments',
         description: 'A spacious brownstone apartment with bay windows, dockside views and an open plan kitchen.',
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 1200,
             deposit: 4800,
-            furniture: NOT_AVAILABLE_EVER,
+            furniture: PRICE_NOT_AVAILABLE_EVER,
           },
         },
         dimensions: {
@@ -1522,6 +1501,7 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         owner: 'Rasoya',
         buildingDetails: {
+          apartmentTitle: 'Culpepper Apartments',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 2,
@@ -1534,15 +1514,14 @@ export const lotData: LotDataByWorld = {
       {
         id: 'jasmine-suites-a',
         title: '2A Jasmine Suites',
-        apartmentTitle: 'Jasmine Suites Apartments',
         description: 'A compact apartment with character in a family friendly neighborhood.',
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 400,
             deposit: 800,
-            furniture: NOT_AVAILABLE_EVER,
+            furniture: PRICE_NOT_AVAILABLE_EVER,
           },
         },
         dimensions: {
@@ -1553,6 +1532,7 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         owner: 'Bheeda',
         buildingDetails: {
+          apartmentTitle: 'Jasmine Suites Apartments',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 1,
@@ -1564,7 +1544,6 @@ export const lotData: LotDataByWorld = {
       {
         id: 'jasmine-suites-b',
         title: '2B Jasmine Suites',
-        apartmentTitle: 'Jasmine Suites Apartments',
         description: "A charming family home overlooking the Spice Market's famous festival square.",
         transactionType: 'rent',
         rentDetails: {
@@ -1586,6 +1565,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'Jasmine Suites Apartments',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -1602,7 +1582,7 @@ export const lotData: LotDataByWorld = {
           'A sleek family home in a converted docklands building, The Old Salt House is a triumph of urban renewal.',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 113378,
         },
         dimensions: {
@@ -1626,9 +1606,9 @@ export const lotData: LotDataByWorld = {
         title: 'waterside-warble',
         description:
           "Constructed from a converted cannery, Waterside Warble's original warehouse layout was the perfect canvas to section off some intimate karaoke rooms.",
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 88361,
         },
         dimensions: {
@@ -1639,7 +1619,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'karaoke bar',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 2,
           floors: 2,
         },
@@ -1652,16 +1632,15 @@ export const lotData: LotDataByWorld = {
       {
         id: 'medina-studios-a',
         title: '910 Medina Studios',
-        apartmentTitle: 'Medina Studios Apartments',
         description:
           "A cramped apartment with... personality that overlooks the Art Quarter's lovely center plaza. The cozy kitchen is just big enough and the living room boasts a classic mauve carpet.",
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 400,
             deposit: 500,
-            furniture: NOT_AVAILABLE_EVER,
+            furniture: PRICE_NOT_AVAILABLE_EVER,
           },
         },
         dimensions: {
@@ -1672,6 +1651,7 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         owner: 'Benali',
         buildingDetails: {
+          apartmentTitle: 'Medina Studios Apartments',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 1,
@@ -1683,12 +1663,11 @@ export const lotData: LotDataByWorld = {
       {
         id: 'medina-studios-b',
         title: '920 Medina Studios',
-        apartmentTitle: 'Medina Studios Apartments',
         description:
           "It's said a medium once lived in this spooky little place. Who knows what strange after effects may linger here...",
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 1000,
             deposit: 800,
@@ -1702,6 +1681,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'Medina Studios Apartments',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -1713,7 +1693,6 @@ export const lotData: LotDataByWorld = {
       {
         id: 'medina-studios-c',
         title: '930 Medina Studios',
-        apartmentTitle: 'Medina Studios Apartments',
         description: 'Surprisingly cheap for its size, this fine old apartment is the most grand in the building.',
         transactionType: 'rent',
         rentDetails: {
@@ -1735,6 +1714,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'Medina Studios Apartments',
           type: 'apartment',
           bedrooms: 3,
           bathrooms: 1,
@@ -1747,12 +1727,11 @@ export const lotData: LotDataByWorld = {
       {
         id: 'hakim-house-a',
         title: '121 Hakim House',
-        apartmentTitle: 'Hakim House Apartments',
         description:
           'Though not the largest apartment in the building, the home studio and funky furnishings are certainly a desirable plus!',
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 1200,
             deposit: 4800,
@@ -1767,6 +1746,7 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         owner: 'Jang',
         buildingDetails: {
+          apartmentTitle: 'Hakim House Apartments',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -1778,11 +1758,10 @@ export const lotData: LotDataByWorld = {
       {
         id: 'hakim-house-b',
         title: '122 Hakim House',
-        apartmentTitle: 'Hakim House Apartments',
         description: 'Spacious and luxurious, this apartment also has a historical connection to a famous local artist',
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 1400,
             deposit: 5600,
@@ -1796,6 +1775,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'Hakim House Apartments',
           type: 'apartment',
           bedrooms: 3,
           bathrooms: 2,
@@ -1808,12 +1788,11 @@ export const lotData: LotDataByWorld = {
       {
         id: 'fountainview-penthouse',
         title: 'FountainView Penthouse',
-        apartmentTitle: 'Hakim House Apartments',
         description:
           'Boasting some of the finest views in the Arts Quarter, this penthouse is prime real estate indeed.',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 83188,
         },
         dimensions: {
@@ -1823,6 +1802,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'Hakim House Apartments',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 1,
@@ -1837,9 +1817,9 @@ export const lotData: LotDataByWorld = {
         title: 'Cashbah Gallery',
         description:
           'This modern glass structure in the heart of the Arts Quarter is a chic destination for a date or a recreational day devoted to improving your artistic skills.',
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 201329,
         },
         dimensions: {
@@ -1850,7 +1830,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'arts center',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 2,
           floors: 4,
         },
@@ -1863,11 +1843,10 @@ export const lotData: LotDataByWorld = {
       {
         id: 'zenview-a',
         title: '701 ZenView',
-        apartmentTitle: 'ZenView Apartments',
         description: 'A snug multi-floor apartment with amazing balcony views of the Fashion District.',
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 700,
             deposit: 2100,
@@ -1882,6 +1861,7 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         owner: 'Karaoke Legends',
         buildingDetails: {
+          apartmentTitle: 'ZenView Apartments',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 2,
@@ -1893,11 +1873,10 @@ export const lotData: LotDataByWorld = {
       {
         id: 'zenview-b',
         title: '702 ZenView',
-        apartmentTitle: 'ZenView Apartments',
         description: 'A highly modern two floor apartment in the heart of the Fashion District.',
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 1200,
             deposit: 4800,
@@ -1911,6 +1890,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'ZenView Apartments',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 2,
@@ -1922,7 +1902,6 @@ export const lotData: LotDataByWorld = {
       {
         id: 'twenty-one-chic-street-a',
         title: '1310 21 Chic Street',
-        apartmentTitle: '21 Chic Street Apartments',
         description:
           "This quaint apartment's generous windows are front-row seats for watching the city dwellers outside. This space makes perfect living quarters for a small group of roommates needing easy access to the center of the bustling city!",
         transactionType: 'rent',
@@ -1945,6 +1924,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: '21 Chic Street Apartments',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -1957,11 +1937,10 @@ export const lotData: LotDataByWorld = {
       {
         id: 'twenty-one-chic-street-b',
         title: '1312 21 Chic Street',
-        apartmentTitle: '21 Chic Street Apartments',
         description: 'The perfect starter apartment, this compact studio commands great views of the Fashion District.',
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 400,
             deposit: 600,
@@ -1976,6 +1955,7 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         owner: 'Pizzazz',
         buildingDetails: {
+          apartmentTitle: '21 Chic Street Apartments',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 1,
@@ -1987,11 +1967,10 @@ export const lotData: LotDataByWorld = {
       {
         id: 'twenty-one-chic-street-c',
         title: '1313 21 Chic Street',
-        apartmentTitle: '21 Chic Street Apartments',
         description: "This place is incredibly, suspiciously cheap. It's like the Landlord can't give it away...",
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 300,
             deposit: 600,
@@ -2005,6 +1984,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: '21 Chic Street Apartments',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -2021,7 +2001,7 @@ export const lotData: LotDataByWorld = {
           'This huge penthouse with a priceless view of the Fashion District has room for everything! With permits for complete interior remodeling, owners will be able to create the perfect home, no matter how grand their visions.',
         transactionType: 'buy',
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 240429,
         },
         dimensions: {
@@ -2045,9 +2025,9 @@ export const lotData: LotDataByWorld = {
         title: 'Planet Honey Popl',
         description:
           "Built in the center of the Fashion District, Planet Honey Pop! Karaoke Bar's sprightly melodies are in perfect harmony with the songs of the metro train below",
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 91464,
         },
         dimensions: {
@@ -2058,7 +2038,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'karaoke bar',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 2,
           floors: 1,
         },
@@ -2070,12 +2050,11 @@ export const lotData: LotDataByWorld = {
       {
         id: 'alto-apartments-a',
         title: '1010 Alto Apartments',
-        apartmentTitle: 'Alto Apartments',
         description:
           "A huge family home with luxury Chef's kitchen, this apartment is the epitome of Uptown chic living.",
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 3500,
             deposit: 15500,
@@ -2089,6 +2068,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'Alto Apartments',
           type: 'apartment',
           bedrooms: 4,
           bathrooms: 3,
@@ -2101,16 +2081,15 @@ export const lotData: LotDataByWorld = {
       {
         id: 'alto-apartments-b',
         title: '1020 Alto Apartments',
-        apartmentTitle: 'Alto Apartments',
         description:
           'Huge floor to ceiling windows combined with a beautiful feature fireplace and a striking view of the Spice Market neighborhood makes this apartment an unforgettable home.',
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 2500,
             deposit: 12500,
-            furniture: NOT_AVAILABLE_EVER,
+            furniture: PRICE_NOT_AVAILABLE_EVER,
           },
         },
         dimensions: {
@@ -2121,6 +2100,7 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         owner: 'Lobo',
         buildingDetails: {
+          apartmentTitle: 'Alto Apartments',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 2,
@@ -2132,12 +2112,11 @@ export const lotData: LotDataByWorld = {
       {
         id: 'viii-landgraab',
         title: 'VIII Landgraab',
-        apartmentTitle: 'Landgraab Apartments',
         description:
           'While many are stunned by the panoramic vistas including a fantastic view of a helicopter landing pad, visitors will note the exclusive address and luxury walk-in closets as the prime qualities of this spacious residence.',
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 5000,
             deposit: 25000,
@@ -2151,6 +2130,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'Landgraab Apartments',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 2,
@@ -2163,16 +2143,15 @@ export const lotData: LotDataByWorld = {
       {
         id: 'ix-landgraab',
         title: 'IX Landgraab',
-        apartmentTitle: 'Landgraab Apartments',
         description:
           'Though the exclusive address is reason enough to take this dazzling suite, the upper-level loft and floor to ceiling windows certainly add to the appeal.',
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 3750,
             deposit: 16500,
-            furniture: NOT_AVAILABLE_EVER,
+            furniture: PRICE_NOT_AVAILABLE_EVER,
           },
         },
         dimensions: {
@@ -2183,6 +2162,7 @@ export const lotData: LotDataByWorld = {
         availability: 'occupied',
         owner: 'Feng',
         buildingDetails: {
+          apartmentTitle: 'Landgraab Apartments',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 2,
@@ -2194,12 +2174,11 @@ export const lotData: LotDataByWorld = {
       {
         id: 'spire-apartments',
         title: '888 Spire Apartments',
-        apartmentTitle: 'Spire Apartments',
         description:
           "With commanding views of the bay, the secluded 888 Spire Apartments is perhaps the most prestigious apartment for rent in the entire city. One glimpse through the floor to ceiling windows and you'll understand why.",
         transactionType: 'rent',
         rentDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: {
             rent: 7500,
             deposit: 37500,
@@ -2213,6 +2192,7 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
+          apartmentTitle: 'Spire Apartments',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 3,
@@ -2227,9 +2207,9 @@ export const lotData: LotDataByWorld = {
         title: 'Stargazer Lounge',
         description:
           "Rooftop party, anyone? This decadent penthouse property overlooking the city has arguably the best bird's eye view of San Myshuno the market has to offer!",
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 123321,
         },
         dimensions: {
@@ -2240,7 +2220,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'lounge',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 2,
           floors: 1,
         },
@@ -2252,9 +2232,9 @@ export const lotData: LotDataByWorld = {
         title: 'Skye Fitness',
         description:
           "Skye Fitness Gym sits at the head of Uptown's behemoth architectural complex. Enjoy breathtaking views of the city while shooting hoops on the gorgeous open-air basketball court.",
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 123989,
         },
         dimensions: {
@@ -2265,7 +2245,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'gym',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 8,
           floors: 3,
         },
@@ -2279,9 +2259,9 @@ export const lotData: LotDataByWorld = {
         title: 'Myshuno Meadows',
         description:
           'Surrounded by both trees and the cityscape, Myshuno Meadows is a great place for a relaxed wedding or outdoor birthday party. Centered on Barnabas Skye’s old Observatory, part of the area has been converted into an event space while still retaining the original telescope.',
-        transactionType: undefined,
+
         buyDetails: {
-          preGame: NOT_AVAILABLE_IN_PREGAME,
+          preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 210927,
         },
         dimensions: {
@@ -2292,7 +2272,7 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'center park',
-          bedrooms: NOT_AVAILABLE_EVER,
+
           bathrooms: 2,
           floors: 2,
         },
