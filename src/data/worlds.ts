@@ -36,8 +36,15 @@ const validateSource = (id: string, title: string, index: number) => {
 };
 
 const mapToDTO = (list: World[]) => {
+  const mappedIds = new Set<string>();
   return list.reduce<WorldDTO[]>((acc, w, index) => {
     if (!validateSource(w.id, w.title, index)) return acc;
+
+    if (mappedIds.has(w.id)) {
+      console.error(`${ERROR_LOG} Duplicate neighborhood id '${w.id}'. Skipping.`);
+      return acc;
+    }
+    mappedIds.add(w.id);
 
     acc.push({
       id: w.id,
