@@ -1,4 +1,4 @@
-import { worldSummaryById, WORLD_KEYS } from './worlds.js';
+import { worldSummaryById, WORLD_IDS, WORLD_ID_SET } from './worlds.js';
 import { isValidSlug } from '../utils/functions.js';
 import { neighborhoodData } from './source/neighborhoodData.js';
 import type { NeighborhoodDTO, NeighborhoodSummaryById } from '../types/neighborhood.js';
@@ -44,7 +44,7 @@ const mapToDTO = (neighborhoodsByWorld: NeighborhoodData) => {
   const mappedIds = new Set<string>();
 
   // for each ref world key
-  for (const worldId of WORLD_KEYS) {
+  for (const worldId of WORLD_IDS) {
     const world = worldSummaryById[worldId];
     const worldTitle = world?.title || worldId;
     const neighborhoods = neighborhoodsByWorld[worldId];
@@ -91,7 +91,7 @@ const mapToDTO = (neighborhoodsByWorld: NeighborhoodData) => {
 
   // Log worlds in neighborhood list that are not in worldSummaryById
   for (const worldId of Object.keys(neighborhoodsByWorld)) {
-    if (!WORLD_KEYS.includes(worldId))
+    if (!WORLD_ID_SET.has(worldId))
       console.warn(`${WARN_LOG} World '${worldId}' from neighborhood list is unknown. Skipped.`);
   }
 
@@ -117,6 +117,5 @@ const createNeighborhoodSummaryById = (list: NeighborhoodDTO[]) =>
 
 export const neighborhoodSummaryById = createNeighborhoodSummaryById(neighborhoods);
 
-export const NEIGHBORHOOD_KEYS = Object.keys(neighborhoodSummaryById) as Array<keyof NeighborhoodSummaryById>;
-
-// console.log(NEIGHBORHOOD_KEYS);
+export const NEIGHBORHOOD_IDS = Object.keys(neighborhoodSummaryById) as Array<keyof NeighborhoodSummaryById>;
+export const NEIGHBORHOOD_ID_SET = new Set(NEIGHBORHOOD_IDS);

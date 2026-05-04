@@ -67,6 +67,8 @@ const createWorldSummaryById = (list: WorldDTO[]) => {
 
 export const worldSummaryById = createWorldSummaryById(worlds);
 
-export const WORLD_KEYS = Object.keys(worldSummaryById) as Array<keyof WorldSummaryById>;
-
-// console.log(WORLD_KEYS);
+// worldData -> worldSummaryById -> WORLD_IDS -> WORLD_ID_SET
+// (valid) neighborhoodData -> uses WORLD_IDS -> neighborhoodSummaryById -> NEIGHBORHOOD_IDS -> NEIGHBORHOOD_ID_SET
+// (valid) lotData -> uses NEIGHBORHOOD_IDS
+export const WORLD_IDS = Object.keys(worldSummaryById) as Array<keyof WorldSummaryById>;
+export const WORLD_ID_SET = new Set(WORLD_IDS);

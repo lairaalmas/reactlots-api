@@ -1,5 +1,5 @@
-import { WORLD_KEYS } from './worlds.js';
-import { NEIGHBORHOOD_KEYS, neighborhoodSummaryById } from './neighborhoods.js';
+import { WORLD_ID_SET } from './worlds.js';
+import { NEIGHBORHOOD_IDS, NEIGHBORHOOD_ID_SET, neighborhoodSummaryById } from './neighborhoods.js';
 import { lotData } from './source/lotData.js';
 import { isValidSlug } from '../utils/functions.js';
 import type { Lot, LotDTO, MainPriceDTO, RentDetailsDTO, BuyDetailsDTO } from '../types/lot.js';
@@ -131,13 +131,13 @@ const createLotsByNeighborhood = (lotsByWorld: LotDataByWorld): LotDataByNeighbo
   const mappedNeighIds = new Set<string>();
 
   for (const [worldId, neighborhoods] of Object.entries(lotsByWorld)) {
-    if (!WORLD_KEYS.includes(worldId)) {
+    if (!WORLD_ID_SET.has(worldId)) {
       console.warn(`${WARN_LOG} World '${worldId}' from lot list is unknown. Skipped.`);
       continue;
     }
 
     for (const [neighId, lots] of Object.entries(neighborhoods)) {
-      if (!NEIGHBORHOOD_KEYS.includes(neighId)) {
+      if (!NEIGHBORHOOD_ID_SET.has(neighId)) {
         console.warn(`${WARN_LOG} Neighborhood '${neighId}' from lot list is unknown. Skipped.`);
         continue;
       }
@@ -162,7 +162,7 @@ const mapToDTO = (lotsByWorld: LotDataByWorld) => {
   const lotsByNeighborhood = createLotsByNeighborhood(lotsByWorld);
 
   // for each ref world key
-  for (const neighId of NEIGHBORHOOD_KEYS) {
+  for (const neighId of NEIGHBORHOOD_IDS) {
     const neighborhood = neighborhoodSummaryById[neighId];
     const neighTitle = neighborhood?.title || neighId;
     const neighColor = neighborhood?.color || 'default';
