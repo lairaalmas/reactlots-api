@@ -1,5 +1,7 @@
 import type { ThemeColors } from './neighborhood.js';
 
+// -------- LOT --------
+
 // SPECIFIC INFO - residential x community x special
 type LotCategory = 'residential' | 'community' | 'special';
 
@@ -92,7 +94,7 @@ type CommunityLot = BaseLot & {
     floors?: number;
   };
   owner?: never;
-  // todo validate: community lots are not listed for transaction, but may expose in-game/pre-game value data.
+  // TBD: community lots are not listed for transaction, but may expose in-game/pre-game value data.
   transactionType?: never;
   rentDetails?: never;
   buyDetails?: BuyHistory;
@@ -115,7 +117,7 @@ type SpecialLot = BaseLot & {
 
 export type Lot = ResidentialLot | CommunityLot | SpecialLot;
 
-// -------- DTO --------
+// -------- LOT DTO --------
 
 type WorldReference = {
   id: string;
@@ -186,7 +188,7 @@ export type LotDTO = {
 type LotQueryParamSort = 'asc' | 'desc';
 type LotQueryParamSortBy = 'price' | 'bedrooms' | 'bathrooms' | 'floors';
 
-// LotQueryParams -> parse/normalize -> LotFilters
+// LotQueryParams -> LotFilters
 export type LotQueryParams = {
   world?: string;
   neighborhood?: string;
@@ -205,15 +207,30 @@ export type LotQueryParams = {
 export type LotFilters = {
   world?: string;
   neighborhood?: string;
-  type?: LotCategory;
-  availability?: ResidentialAvailability | CommunityAvailability | SpecialAvailability;
-  transactionType?: ResidentialTransactionType;
-  buildingType?: ResidentialBuildingType | CommunityBuildingType | SpecialBuildingType;
+  type?: string;
+  availability?: string;
+  transactionType?: string;
+  buildingType?: string;
   bedrooms?: number;
   bathrooms?: number;
   floors?: number;
   minPrice?: number;
   maxPrice?: number;
-  sort?: LotQueryParamSort;
-  sortBy?: LotQueryParamSortBy;
+  sort?: string;
+  sortBy?: string;
 };
+// export type LotFilters = {
+//   world?: string;
+//   neighborhood?: string;
+//   type?: LotCategory;
+//   availability?: ResidentialAvailability | CommunityAvailability | SpecialAvailability;
+//   transactionType?: ResidentialTransactionType;
+//   buildingType?: ResidentialBuildingType | CommunityBuildingType | SpecialBuildingType;
+//   bedrooms?: number;
+//   bathrooms?: number;
+//   floors?: number;
+//   minPrice?: number;
+//   maxPrice?: number;
+//   sort?: LotQueryParamSort;
+//   sortBy?: LotQueryParamSortBy;
+// };
