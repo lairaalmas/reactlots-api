@@ -5,7 +5,7 @@ import type { ThemeColors } from './neighborhood.js';
 // SPECIFIC INFO - residential x community x special
 type LotCategory = 'residential' | 'community' | 'special';
 
-type ResidentialBuildingType = 'empty' | 'house' | 'apartment';
+type ResidentialBuildingType = 'empty' | 'house' | 'apartment' | 'penthouse';
 type ResidentialAvailability = 'available' | 'occupied';
 type ResidentialTransactionType = 'rent' | 'buy' | 'both';
 type ResidentialOwner = string;

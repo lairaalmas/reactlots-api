@@ -1815,7 +1815,7 @@ export const lotData: LotDataByWorld = {
         buildingDetails: {
           apartmentTitle: 'FountainView',
           apartmentNumber: '',
-          type: 'apartment',
+          type: 'penthouse',
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -2029,7 +2029,7 @@ export const lotData: LotDataByWorld = {
         buildingDetails: {
           apartmentTitle: 'Torendi Tower',
           apartmentNumber: '1',
-          type: 'apartment',
+          type: 'penthouse',
           bedrooms: 3,
           bathrooms: 3,
           floors: 2,
