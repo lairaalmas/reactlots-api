@@ -72,6 +72,7 @@ type ResidentialLot = BaseLot & {
   buildingDetails: {
     type: ResidentialBuildingType;
     apartmentTitle?: string;
+    apartmentNumber?: string;
     // TBD: only lots that are not empty have bedroom, bathrooms and floors
     bedrooms?: number;
     bathrooms?: number;
@@ -89,6 +90,7 @@ type CommunityLot = BaseLot & {
   buildingDetails: {
     type: CommunityBuildingType;
     apartmentTitle?: never;
+    apartmentNumber?: never;
     bedrooms?: never;
     bathrooms?: number;
     floors?: number;
@@ -105,6 +107,7 @@ type SpecialLot = BaseLot & {
   buildingDetails: {
     type: SpecialBuildingType;
     apartmentTitle?: never;
+    apartmentNumber?: never;
     bedrooms?: never;
     bathrooms?: never;
     floors?: never;
@@ -127,6 +130,7 @@ type NeighborhoodReference = {
   id: string;
   title: string;
   color: ThemeColors;
+  description: string;
 };
 
 export type MainPriceDTO = number | null;
@@ -170,6 +174,7 @@ export type LotDTO = {
   building_details: {
     type: ResidentialBuildingType | CommunityBuildingType | SpecialBuildingType;
     apartment_title: string | null;
+    apartment_number: string | null;
     bedrooms: number | null;
     bathrooms: number | null;
     floors: number | null;

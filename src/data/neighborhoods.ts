@@ -107,6 +107,7 @@ const createNeighborhoodSummaryById = (list: NeighborhoodDTO[]) =>
       id: n.id,
       title: n.title,
       color: n.color,
+      description: n.description,
       world: {
         id: n.world.id,
         title: n.world.title,

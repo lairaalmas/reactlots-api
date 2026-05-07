@@ -54,7 +54,7 @@ const mapRentDetails = (lot: Lot): RentDetailsDTO => {
       rent: inGame?.rent ?? null,
       deposit: inGame?.deposit ?? null,
       furniture: inGame?.furniture ?? null,
-      period: inGame?.period ?? null,
+      period: inGame?.period ?? 'week',
       price_history: {
         in_game: { furniture: inGame?.furniture ?? null },
         pre_game: { furniture: preGame?.furniture ?? null },
@@ -112,6 +112,7 @@ const mapLot = (lot: Lot, neighborhood: LotDTO['neighborhood'], world: LotDTO['w
     building_details: {
       type: lot.buildingDetails?.type,
       apartment_title: lot.buildingDetails?.apartmentTitle ?? null,
+      apartment_number: lot.buildingDetails?.apartmentNumber ?? null,
       bedrooms: lot.buildingDetails?.bedrooms ?? null,
       bathrooms: lot.buildingDetails?.bathrooms ?? null,
       floors: lot.buildingDetails?.floors ?? null,
@@ -166,6 +167,7 @@ const mapToDTO = (lotsByWorld: LotDataByWorld) => {
     const neighborhood = neighborhoodSummaryById[neighId];
     const neighTitle = neighborhood?.title || neighId;
     const neighColor = neighborhood?.color || 'default';
+    const neighDescription = neighborhood?.description || '';
 
     const world = neighborhood?.world;
     const worldId = world?.id || '';
@@ -197,6 +199,7 @@ const mapToDTO = (lotsByWorld: LotDataByWorld) => {
       id: neighId,
       title: neighTitle,
       color: neighColor,
+      description: neighDescription,
     };
 
     // for each lot
