@@ -19,5 +19,5 @@ export type NeighborhoodDTO = {
   };
 };
 
-export type NeighborhoodSummaryDTO = Omit<NeighborhoodDTO, 'description'>;
+export type NeighborhoodSummaryDTO = NeighborhoodDTO;
 export type NeighborhoodSummaryById = Record<string, NeighborhoodSummaryDTO>;

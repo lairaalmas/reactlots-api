@@ -1404,6 +1404,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: 'Culpepper Apartments',
+          apartmentNumber: '17',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 1,
@@ -1438,6 +1439,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: 'Culpepper Apartments',
+          apartmentNumber: '18',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 1,
@@ -1471,6 +1473,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: 'Culpepper Apartments',
+          apartmentNumber: '19',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -1502,6 +1505,7 @@ export const lotData: LotDataByWorld = {
         owner: 'Rasoya',
         buildingDetails: {
           apartmentTitle: 'Culpepper Apartments',
+          apartmentNumber: '20',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 2,
@@ -1533,6 +1537,7 @@ export const lotData: LotDataByWorld = {
         owner: 'Bheeda',
         buildingDetails: {
           apartmentTitle: 'Jasmine Suites Apartments',
+          apartmentNumber: '2A',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 1,
@@ -1566,6 +1571,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: 'Jasmine Suites Apartments',
+          apartmentNumber: '2B',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -1652,6 +1658,7 @@ export const lotData: LotDataByWorld = {
         owner: 'Benali',
         buildingDetails: {
           apartmentTitle: 'Medina Studios Apartments',
+          apartmentNumber: '910',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 1,
@@ -1682,6 +1689,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: 'Medina Studios Apartments',
+          apartmentNumber: '920',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -1715,6 +1723,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: 'Medina Studios Apartments',
+          apartmentNumber: '930',
           type: 'apartment',
           bedrooms: 3,
           bathrooms: 1,
@@ -1747,6 +1756,7 @@ export const lotData: LotDataByWorld = {
         owner: 'Jang',
         buildingDetails: {
           apartmentTitle: 'Hakim House Apartments',
+          apartmentNumber: '121',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -1776,6 +1786,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: 'Hakim House Apartments',
+          apartmentNumber: '122',
           type: 'apartment',
           bedrooms: 3,
           bathrooms: 2,
@@ -1802,8 +1813,9 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
-          apartmentTitle: 'Hakim House Apartments',
-          type: 'apartment',
+          apartmentTitle: 'FountainView',
+          apartmentNumber: '',
+          type: 'penthouse',
           bedrooms: 1,
           bathrooms: 1,
           floors: 1,
@@ -1830,7 +1842,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'arts center',
-
           bathrooms: 2,
           floors: 4,
         },
@@ -1862,6 +1873,7 @@ export const lotData: LotDataByWorld = {
         owner: 'Karaoke Legends',
         buildingDetails: {
           apartmentTitle: 'ZenView Apartments',
+          apartmentNumber: '701',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 2,
@@ -1891,6 +1903,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: 'ZenView Apartments',
+          apartmentNumber: '702',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 2,
@@ -1925,6 +1938,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: '21 Chic Street Apartments',
+          apartmentNumber: '1310',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -1956,6 +1970,7 @@ export const lotData: LotDataByWorld = {
         owner: 'Pizzazz',
         buildingDetails: {
           apartmentTitle: '21 Chic Street Apartments',
+          apartmentNumber: '1312',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 1,
@@ -1985,6 +2000,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: '21 Chic Street Apartments',
+          apartmentNumber: '1313',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 1,
@@ -2011,10 +2027,12 @@ export const lotData: LotDataByWorld = {
         type: 'residential',
         availability: 'available',
         buildingDetails: {
-          type: 'apartment',
+          apartmentTitle: 'Torendi Tower',
+          apartmentNumber: '1',
+          type: 'penthouse',
           bedrooms: 3,
           bathrooms: 3,
-          floors: 1,
+          floors: 2,
         },
         imageURL:
           'http://static.wikia.nocookie.net/sims/images/1/11/Torendi_Tower.jpg/revision/latest?cb=20161221005932',
@@ -2025,7 +2043,6 @@ export const lotData: LotDataByWorld = {
         title: 'Planet Honey Popl',
         description:
           "Built in the center of the Fashion District, Planet Honey Pop! Karaoke Bar's sprightly melodies are in perfect harmony with the songs of the metro train below",
-
         buyDetails: {
           preGame: PRICE_NOT_AVAILABLE_IN_PREGAME,
           inGame: 91464,
@@ -2038,7 +2055,6 @@ export const lotData: LotDataByWorld = {
         availability: 'unavailable',
         buildingDetails: {
           type: 'karaoke bar',
-
           bathrooms: 2,
           floors: 1,
         },
@@ -2069,6 +2085,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: 'Alto Apartments',
+          apartmentNumber: '1010',
           type: 'apartment',
           bedrooms: 4,
           bathrooms: 3,
@@ -2101,6 +2118,7 @@ export const lotData: LotDataByWorld = {
         owner: 'Lobo',
         buildingDetails: {
           apartmentTitle: 'Alto Apartments',
+          apartmentNumber: '1020',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 2,
@@ -2131,6 +2149,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: 'Landgraab Apartments',
+          apartmentNumber: 'VIII',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 2,
@@ -2163,6 +2182,7 @@ export const lotData: LotDataByWorld = {
         owner: 'Feng',
         buildingDetails: {
           apartmentTitle: 'Landgraab Apartments',
+          apartmentNumber: 'IX',
           type: 'apartment',
           bedrooms: 1,
           bathrooms: 2,
@@ -2193,6 +2213,7 @@ export const lotData: LotDataByWorld = {
         availability: 'available',
         buildingDetails: {
           apartmentTitle: 'Spire Apartments',
+          apartmentNumber: '888',
           type: 'apartment',
           bedrooms: 2,
           bathrooms: 3,
